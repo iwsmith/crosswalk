@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Crosswalk</title>
+</head>
+<body>
+
+    <h1>Current Status</h1>
+    {{ status }}
+
+    <h1>Images</h1>
+
+    <ul>
+    {% for image in images %}
+        <li> <a href="{{ url_for('display_image', filename=image)}}">
+            <img title={{image}} src="{{ url_for('static', filename='img/'+image) }}">
+        </a></li>
+    {% endfor %}
+    </ul>
+
+    <h1>Demo</h1>
+    <ul>
+    {% for demo in demos %}
+        <li><a href="{{ url_for('run_demo', n=loop.index0) }}">{{demo}}</a></li>
+    {% endfor %}
+    </ul>
+
+
+</body>
+</html>

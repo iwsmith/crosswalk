@@ -1,55 +1,41 @@
-import subprocess
-import random
-import copy
-import os
-from flask import Flask, abort, request
+from flask import Flask, abort, request, jsonify, render_template, redirect, url_for
+from led_controller import LEDController
+
+led = LEDController("./static/img")
 app = Flask(__name__)
 
-current_process = None
 
-DEMO_ARGS = ['demo', '--led-cols=64', '--led-chain=2', '-L', '-D']
-IMG_VIEWER_ARGS = ['led-image-viewer', '--led-cols=64', '--led-no-hardware-pulse', '--led-chain=2', '--led-gpio-mapping=adafruit-hat', '-L', '-R 270']
-
-IMAGES_PATH = os.getenv('CROSSWALK_IMAGES')
+@app.route("/")
+def index():
+    return render_template('index.html',
+                           images=led.list_images(),
+                           demos=led.list_demos(),
+                           status=str(led))
 
 @app.route("/kill")
 def kill_current():
-    global current_process
-    if current_process:
-        current_process.kill()
-        current_process = None
-        return ""
-    return ""
+    led.kill()
+    return redirect(url_for('index'))
 
 @app.route("/demo/<int:n>")
 def run_demo(n):
-    global current_process
-    args = copy.copy(DEMO_ARGS)
-
-    if n < 0 or n > 11:
-        abort(400)
-
-    args.append(str(n))
-    if n is 1 or n is 2:
-        args.append(os.path.join(IMAGES_PATH, request.args["f"]))
-        
-    kill_current()
-    current_process = subprocess.Popen(args)
-    return ""
+    led.demo(n, request.args.get("f"))
+    return redirect(url_for('index'))
 
 @app.route("/image/<string:filename>")
 def display_image(filename):
-    global current_process
-    args = copy.copy(IMG_VIEWER_ARGS)
+    led.image(filename)
+    return redirect(url_for('index'))
 
-    args.append(os.path.join(IMAGES_PATH, filename))
-
-    kill_current()
-    current_process = subprocess.Popen(args)
-    return ""
+@app.route("/images")
+def list_images():
+    return jsonify(led.list_images())
 
 @app.route("/random")
-def next_image():
-    random_file = random.choice(os.listdir(IMAGES_PATH))
-    return display_image(random_file)
+def random_image():
+    return led.random_image()
+
+@app.route("/status")
+def status():
+    return str(led)
 
