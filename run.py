@@ -1,4 +1,5 @@
 import subprocess
+import random
 import copy
 import os
 from flask import Flask, abort, request
@@ -10,7 +11,6 @@ DEMO_ARGS = ['demo', '--led-cols=64', '--led-chain=2', '-L', '-D']
 IMG_VIEWER_ARGS = ['led-image-viewer', '--led-cols=64', '--led-no-hardware-pulse', '--led-chain=2', '--led-gpio-mapping=adafruit-hat', '-L', '-R 270']
 
 IMAGES_PATH = os.getenv('CROSSWALK_IMAGES')
-
 
 @app.route("/kill")
 def kill_current():
@@ -47,4 +47,9 @@ def display_image(filename):
     kill_current()
     current_process = subprocess.Popen(args)
     return ""
+
+@app.route("/random")
+def next_image():
+    random_file = random.choice(os.listdir(IMAGES_PATH))
+    return display_image(random_file)
 
