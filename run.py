@@ -36,3 +36,15 @@ def run_demo(n):
     kill_current()
     current_process = subprocess.Popen(args)
     return ""
+
+@app.route("/image/<string:filename>")
+def display_image(filename):
+    global current_process
+    args = copy.copy(IMG_VIEWER_ARGS)
+
+    args.append(os.path.join(IMAGES_PATH, filename))
+
+    kill_current()
+    current_process = subprocess.Popen(args)
+    return ""
+
