@@ -27,6 +27,11 @@
     {% endfor %}
     </ul>
 
+    <h1>Upload</h1>
+    <form enctype="multipart/form-data" method="post" action="{{ url_for('upload_file') }}">
+        <input name="image" type="file">
+        <input type="submit" value="Upload">
+    </form>
 
 </body>
 </html>

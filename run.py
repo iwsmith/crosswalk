@@ -1,5 +1,7 @@
 from flask import Flask, abort, request, jsonify, render_template, redirect, url_for
 from led_controller import LEDController
+from werkzeug.utils import secure_filename
+import os
 
 led = LEDController("./static/img")
 app = Flask(__name__)
@@ -40,3 +42,8 @@ def random_image():
 def status():
     return led.status()
 
+@app.route("/upload", methods=['POST'])
+def upload_file():
+    f = request.files['image']
+    f.save(os.path.join(led.image_path, secure_filename(f.filename)))
+    return redirect(url_for('index'))
