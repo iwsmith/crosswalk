@@ -7,7 +7,7 @@ app = Flask(__name__)
 current_process = None
 
 DEMO_ARGS = ['demo', '--led-cols=64', '--led-chain=2', '-L', '-D']
-IMG_VIEWER_ARGS = ['led-image-viewer', '--led-cols=64', '--led-no-hardware-pulse', '--led-chain=2','--led-gpio-mapping=adafruit-hat']
+IMG_VIEWER_ARGS = ['led-image-viewer', '--led-cols=64', '--led-no-hardware-pulse', '--led-chain=2', '--led-gpio-mapping=adafruit-hat', '-L', '-R 270']
 
 IMAGES_PATH = os.getenv('CROSSWALK_IMAGES')
 
