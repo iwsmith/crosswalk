@@ -33,7 +33,8 @@ def list_images():
 
 @app.route("/random")
 def random_image():
-    return led.random_image()
+    led.random_image()
+    return redirect(url_for('index'))
 
 @app.route("/status")
 def status():

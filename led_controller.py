@@ -46,7 +46,10 @@ class LEDController:
             args.append(os.path.join(self.image_path, f))
 
         self.__exec(args)
-        self._current_mode = "Demo: " + DEMOS[n] + str(f)
+        if f:
+            self._current_mode = "Demo: " + DEMOS[n] + " - " + f
+        else:
+            self._current_mode = "Demo: " + DEMOS[n]
 
     def image(self, filename):
         args = copy.copy(IMG_VIEWER_ARGS)
