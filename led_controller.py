@@ -45,15 +45,15 @@ class LEDController:
                 raise ValueError("An .ppm must be provided when running demo 1 or 2.")
             args.append(os.path.join(self.image_path, f))
 
-        self._current_mode = "Demo: " + DEMOS[n] + str(f)
         self.__exec(args)
+        self._current_mode = "Demo: " + DEMOS[n] + str(f)
 
     def image(self, filename):
         args = copy.copy(IMG_VIEWER_ARGS)
         args.append(os.path.join(self.image_path, filename))
 
-        self._current_mode = "Image " + filename
         self.__exec(args)
+        self._current_mode = "Image: " + filename
 
     def __exec(self, args):
         self.kill()
