@@ -45,7 +45,7 @@ class LEDController:
                 raise ValueError("An .ppm must be provided when running demo 1 or 2.")
             args.append(os.path.join(self.image_path, f))
 
-        self._current_mode = "Demo " + n + f
+        self._current_mode = "Demo: " + DEMOS[n] + str(f)
         self.__exec(args)
 
     def image(self, filename):
@@ -67,6 +67,9 @@ class LEDController:
 
     def random_image(self):
         return self.image(random.choice(self.list_images()))
+
+    def status(self):
+        return str(self)
 
     def __str__(self):
         return "LEDController: " + self._current_mode

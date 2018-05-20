@@ -37,5 +37,5 @@ def random_image():
 
 @app.route("/status")
 def status():
-    return str(led)
+    return led.status()
 
