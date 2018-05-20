@@ -1,37 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <title>Crosswalk</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+  <title>Crosswalk</title>
 </head>
 <body>
 
-    <h1>Current Status</h1>
-    {{ status }}
-    <h4><a href="{{ url_for('kill_current') }}">Kill</a></h4>
-    <h4><a href="{{ url_for('random_image') }}">Random</a></h4>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script> -->
 
-    <h1>Images</h1>
+<div class="container">
+  <h1>Current Status</h1>
+  {{ status }}
+  <br>
+  <a class="btn btn-danger" href="{{ url_for('kill_current') }}">Kill</a>
+  <a class="btn btn-primary" href="{{ url_for('random_image') }}">Random</a>
 
-    <ul>
+  <hr>
+  <h1>Images</h1>
+
+  <div class="list-group">
     {% for image in images %}
-        <li> <a href="{{ url_for('display_image', filename=image)}}">
-            <img title={{image}} src="{{ url_for('static', filename='img/'+image) }}">
-        </a></li>
+    <a class="list-group-item list-group-item-action" href="{{ url_for('display_image', filename=image)}}">
+      <img class="img-thumbnail img-fluid" title={{image}} src="{{ url_for('static', filename='img/'+image) }}">
+    </a>
     {% endfor %}
-    </ul>
+  </div>
 
-    <h1>Demo</h1>
-    <ul>
+  <hr>
+  <h1>Demo</h1>
+  <div class="list-group">
     {% for demo in demos %}
-        <li><a href="{{ url_for('run_demo', n=loop.index0) }}">{{demo}}</a></li>
+    <a class="list-group-item list-group-item-action" href="{{ url_for('run_demo', n=loop.index0) }}">{{demo}}</a>
     {% endfor %}
-    </ul>
+  </div>
 
-    <h1>Upload</h1>
-    <form enctype="multipart/form-data" method="post" action="{{ url_for('upload_file') }}">
-        <input name="image" type="file">
-        <input type="submit" value="Upload">
-    </form>
+  <hr>
+  <h1>Upload</h1>
+  <form enctype="multipart/form-data" method="post" action="{{ url_for('upload_file') }}">
+    <div class="form-group">
+      <input name="image" class="form-control-file" type="file">
+    </div>
+    <input type="submit" class="btn btn-primary" value="Upload">
+  </form>
+</div>
 
 </body>
 </html>
