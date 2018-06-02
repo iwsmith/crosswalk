@@ -1,0 +1,49 @@
+---
+- name: Install flask
+  apt:
+    name: 'python3-flask'
+    state: present
+
+- name: Create crosswalk user
+  user:
+    name: crosswalk
+    home: '{{crosswalk_home}}'
+    shell: /usr/sbin/nologin
+
+- name: Create service directory
+  file:
+    path: '{{crosswalk_home}}'
+    state: directory
+    owner: crosswalk
+    group: crosswalk
+    mode: '0755'
+
+- name: Create bin directory
+  file:
+    path: '{{crosswalk_home}}/bin'
+    state: directory
+    owner: crosswalk
+    group: crosswalk
+    mode: '0755'
+
+- name: Clone crosswalk repo
+  git:
+    repo: '{{crosswalk_src}}'
+    dest: '{{crosswalk_home}}/code'
+  notify:
+    - Restart crosswalk
+
+- name: Write crosswalk service unit
+  template:
+    src: crosswalk.service
+    dest: /etc/systemd/system/crosswalk.service
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - Restart crosswalk
+
+- name: Ensure crosswalk is started
+  service:
+    name: crosswalk
+    state: started

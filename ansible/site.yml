@@ -1,0 +1,7 @@
+---
+- hosts: crosswalk-*
+  become: true
+  vars_files:
+    - private/crosswalk/vars.yml
+  roles:
+    - crosswalk

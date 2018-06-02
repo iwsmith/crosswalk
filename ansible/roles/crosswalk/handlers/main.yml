@@ -1,0 +1,5 @@
+---
+- name: Restart crosswalk
+  service:
+    name: crosswalk
+    state: restarted
