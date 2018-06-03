@@ -33,7 +33,7 @@
     remote_src: true
     owner: root
     group: root
-    mode: '01755'
+    mode: '04755'
   with_items:
     - 'examples-api-use/demo'
     - 'utils/led-image-viewer'
