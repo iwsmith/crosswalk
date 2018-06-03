@@ -2,7 +2,7 @@ import yaml
 
 
 class AnimatedImage:
-    def __init__(self, filename, loops=None, frame_delay=-1):
+    def __init__(self, filename, loops=-1, frame_delay=-1):
         self.filename = filename
         self.loops = loops
         self.frame_delay = frame_delay
