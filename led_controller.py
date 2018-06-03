@@ -29,7 +29,7 @@ class LEDController:
         self._current_mode = "Off"
 
     def make_animation(self, animation):
-        return ["-l", animation.loops, "-D", animation.frame_delay, os.path.join(self.image_path, animation.filename)]
+        return ["-l", str(animation.loops), "-D", str(animation.frame_delay), os.path.join(self.image_path, animation.filename)]
 
     def scene(self, scene):
         args = copy.copy(IMG_VIEWER_ARGS)
