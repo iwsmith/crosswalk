@@ -39,7 +39,7 @@ class LEDController:
         args.append("&&")
         args.extend(IMG_VIEWER_ARGS)
         args.extend(self.make_animation(scene.final))
-        self._exec(" ".join(args))
+        self._exec(" ".join(args), shell=True)
         self._current_mode = str(scene)
 
     def kill(self):
