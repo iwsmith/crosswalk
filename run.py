@@ -1,9 +1,12 @@
 from flask import Flask, abort, request, jsonify, render_template, redirect, url_for
-from led_controller import LEDController
+from led_controller import LEDController, MockController
 from werkzeug.utils import secure_filename
+from scene import from_yaml
 import os
 
-led = LEDController("./static/img")
+#led = LEDController("./static/img")
+led = MockController("./static/img")
+scenes = from_yaml("./static/scenes.yaml")
 app = Flask(__name__)
 
 
@@ -27,6 +30,11 @@ def run_demo(n):
 @app.route("/image/<string:filename>")
 def display_image(filename):
     led.image(filename)
+    return redirect(url_for('index'))
+
+@app.route("/scene/<string:name>")
+def play_scene(name):
+    led.scene(scenes[name])
     return redirect(url_for('index'))
 
 @app.route("/images")

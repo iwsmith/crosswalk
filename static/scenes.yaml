@@ -1,0 +1,15 @@
+---
+corgi-walk:
+-
+  filename: corgi.gif
+  loops: 10
+-
+  filename: stop.png
+  loops: -1
+nyan:
+-
+  filename: nyan.gif
+  loops: 10
+-
+  filename: stop.png
+  loops: -1

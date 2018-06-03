@@ -2,6 +2,7 @@ import copy
 import os
 import random
 import subprocess
+import logging
 
 DEMO_ARGS = ['demo', '--led-cols=64', '--led-chain=2', '-L', '-D']
 IMG_VIEWER_ARGS = ['led-image-viewer', '--led-cols=64', '--led-no-hardware-pulse', '--led-chain=2', '--led-gpio-mapping=adafruit-hat', '-L', '-R 270']
@@ -24,14 +25,25 @@ DEMOS = ["some rotating square",
 class LEDController:
     def __init__(self, image_path):
         self.image_path = image_path
-        self.__process = None
+        self._process = None
         self._current_mode = "Off"
+
+    def make_animation(self, animation):
+        return ["-l", animation.loops, "-D", animation.frame_delay, os.path.join(self.image_path, animation.filename)]
+
+    def scene(self, scene):
+        args = copy.copy(IMG_VIEWER_ARGS)
+        for animation in scene:
+            args.extend(self.make_animation(animation))
+
+        self._exec(args)
+        self._current_mode = str(scene)
 
     def kill(self):
         self._current_mode = "Off"
-        if self.__process:
-            self.__process.kill()
-            self.__process = None
+        if self._process:
+            self._process.kill()
+            self._process = None
 
     def demo(self, n, f=None):
         if n < 0 or n > 11:
@@ -45,7 +57,7 @@ class LEDController:
                 raise ValueError("An .ppm must be provided when running demo 1 or 2.")
             args.append(os.path.join(self.image_path, f))
 
-        self.__exec(args)
+        self._exec(args)
         if f:
             self._current_mode = "Demo: " + DEMOS[n] + " - " + f
         else:
@@ -55,12 +67,12 @@ class LEDController:
         args = copy.copy(IMG_VIEWER_ARGS)
         args.append(os.path.join(self.image_path, filename))
 
-        self.__exec(args)
+        self._exec(args)
         self._current_mode = "Image: " + filename
 
-    def __exec(self, args):
+    def _exec(self, args):
         self.kill()
-        self.__process = subprocess.Popen(args)
+        self._process = subprocess.Popen(args)
 
     def list_images(self):
         return os.listdir(self.image_path)
@@ -78,4 +90,21 @@ class LEDController:
         return "LEDController: " + self._current_mode
 
 
+class MockController(LEDController):
+    def __init__(self, image_path):
+        LEDController.__init__(self, image_path)
+
+    def _exec(self, args):
+        self.kill()
+        logging.info(args)
+        self._process = args
+
+    def kill(self):
+        self._current_mode = "Off"
+        if self._process:
+            logging.info("Kill" + str(self._process))
+            self._process = None
+
+    def __str__(self):
+        return "MockController: " + self._current_mode + str(self._process)
 
