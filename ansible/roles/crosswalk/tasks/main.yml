@@ -4,6 +4,11 @@
     name: 'python3-flask'
     state: present
 
+- name: Install yaml
+  apt:
+    name: 'python3-yaml'
+    state: present
+
 - name: Create crosswalk user
   user:
     name: crosswalk

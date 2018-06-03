@@ -4,8 +4,8 @@ from werkzeug.utils import secure_filename
 from scene import from_yaml
 import os
 
-#led = LEDController("./static/img")
-led = MockController("./static/img")
+led = LEDController("./static/img")
+#led = MockController("./static/img")
 scenes = from_yaml("./static/scenes.yaml")
 app = Flask(__name__)
 
