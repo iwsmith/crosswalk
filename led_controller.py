@@ -36,7 +36,10 @@ class LEDController:
         for animation in scene:
             args.extend(self.make_animation(animation))
 
-        self._exec(args)
+        args.append("&&")
+        args.extend(IMG_VIEWER_ARGS)
+        args.extend(self.make_animation(scene.final))
+        self._exec(" ".join(args))
         self._current_mode = str(scene)
 
     def kill(self):
@@ -70,9 +73,9 @@ class LEDController:
         self._exec(args)
         self._current_mode = "Image: " + filename
 
-    def _exec(self, args):
+    def _exec(self, args, shell=False):
         self.kill()
-        self._process = subprocess.Popen(args)
+        self._process = subprocess.Popen(args, shell=shell)
 
     def list_images(self):
         return os.listdir(self.image_path)
@@ -94,7 +97,7 @@ class MockController(LEDController):
     def __init__(self, image_path):
         LEDController.__init__(self, image_path)
 
-    def _exec(self, args):
+    def _exec(self, args, shell=False):
         self.kill()
         logging.info(args)
         self._process = args

@@ -11,6 +11,9 @@ class AnimatedImage:
 class BasicScene:
     def __init__(self, name, animations):
         self.name = name
+
+        self.final = animations.pop()
+
         self.animations = animations
 
     def __iter__(self):
@@ -24,6 +27,6 @@ def from_yaml(filename):
     with open(filename) as f:
         raw_scenes = yaml.load(f)
 
-    return {name:BasicScene(name, [AnimatedImage(**animation) for animation in animations]) for name, animations in raw_scenes.items()}
+    return {name: BasicScene(name, [AnimatedImage(**animation) for animation in animations]) for name, animations in raw_scenes.items()}
 
 
