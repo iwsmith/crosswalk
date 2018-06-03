@@ -6,6 +6,7 @@ corgi-walk:
 -
   filename: stop.png
   loops: -1
+
 nyan:
 -
   filename: nyan.gif
@@ -13,3 +14,13 @@ nyan:
 -
   filename: stop.png
   loops: -1
+
+complex:
+-
+  filename: nyan.gif
+  loops: 3
+-
+  filename: corgi.gif
+  loops: 3
+-
+  filename: stop.png
