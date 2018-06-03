@@ -26,6 +26,14 @@
   <a class="btn btn-primary" href="{{ url_for('random_image') }}">Random</a>
 
   <hr>
+  <h1>Scenes</h1>
+    <div class="list-group">
+        {% for scene in scenes.values() %}
+        <a class="list-group-item list-group-item-action" href="{{ url_for('play_scene', name=scene.name) }}">{{scene}}</a>
+        {% endfor %}
+    </div>
+
+  <hr>
   <h1>Images</h1>
 
   <div class="list-group">

@@ -20,7 +20,7 @@ class BasicScene:
         return iter(self.animations)
 
     def __str__(self):
-        return "BasicScene " + self.name + ": " + str(len(self.animations)) + " animations"
+        return "BasicScene " + self.name + ": " + str(len(self.animations) + 1) + " animations"
 
 
 def from_yaml(filename):
