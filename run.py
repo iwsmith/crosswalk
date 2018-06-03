@@ -15,6 +15,7 @@ def index():
     return render_template('index.html',
                            images=led.list_images(),
                            demos=led.list_demos(),
+                           scenes=scenes,
                            status=str(led))
 
 @app.route("/kill")
