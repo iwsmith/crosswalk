@@ -9,6 +9,7 @@ User=crosswalk
 Group=crosswalk
 WorkingDirectory={{crosswalk_home}}/code
 Environment=FLASK_APP=run.py
+Environment=PATH={{crosswalk_home}}/bin:${PATH}
 EnvironmentFile=-/etc/default/crosswalk
 ExecStart=/usr/local/bin/flask run --host=0.0.0.0
 #ExecReload=/bin/kill -HUP $MAINPID

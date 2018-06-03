@@ -24,7 +24,19 @@
     state: directory
     owner: crosswalk
     group: crosswalk
-    mode: '0755'
+    mode: '0750'
+
+- name: Copy driver binaries
+  copy:
+    src: '{{led_driver_src}}/{{item}}'
+    dest: '{{crosswalk_home}}/bin/'
+    remote_src: true
+    owner: root
+    group: root
+    mode: '01755'
+  with_items:
+    - 'examples-api-use/demo'
+    - 'utils/led-image-viewer'
 
 - name: Clone crosswalk repo
   git:
