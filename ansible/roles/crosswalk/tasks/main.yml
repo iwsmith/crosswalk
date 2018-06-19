@@ -42,6 +42,7 @@
   git:
     repo: '{{crosswalk_src}}'
     dest: '{{crosswalk_home}}/code'
+    version: '{{crosswalk_version}}'
   notify:
     - Restart crosswalk
 

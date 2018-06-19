@@ -1,4 +1,5 @@
 ---
 led_driver_src: /home/pi/rpi-rgb-led-matrix
 crosswalk_src: https://github.com/iwsmith/crosswalk
+crosswalk_version: scenes
 crosswalk_port: 80
