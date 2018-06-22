@@ -45,7 +45,7 @@ class LEDController:
     def kill(self):
         self._current_mode = "Off"
         if self._process:
-            subprocess.call(['pkill', '-P', self._process.pid])
+            subprocess.call(['pkill', '-P', str(self._process.pid)])
             self._process.kill()
             self._process = None
 
