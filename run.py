@@ -28,6 +28,11 @@ def run_demo(n):
     led.demo(n, request.args.get("f"))
     return redirect(url_for('index'))
 
+@app.route("/delete/<string:filename>")
+def delete_image(filename):
+    os.remove(os.path.join(led.image_path, secure_filename(filename)))
+    return redirect(url_for('index'))
+
 @app.route("/image/<string:filename>")
 def display_image(filename):
     led.image(filename)
