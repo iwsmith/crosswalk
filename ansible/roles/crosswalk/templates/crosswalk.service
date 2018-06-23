@@ -5,13 +5,13 @@ After=network.target
 
 [Service]
 Type=simple
-User=crosswalk
+User=root
 Group=crosswalk
 WorkingDirectory={{crosswalk_home}}/code
 Environment=FLASK_APP=run.py
 Environment=PATH={{crosswalk_home}}/bin:${PATH}
 EnvironmentFile=-/etc/default/crosswalk
-ExecStart=/usr/bin/flask run --host=0.0.0.0
+ExecStart=/usr/bin/flask run --host=0.0.0.0 --port={{crosswalk_port}}
 #ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 Restart=on-failure

@@ -4,6 +4,11 @@
     name: 'python3-flask'
     state: present
 
+- name: Install yaml
+  apt:
+    name: 'python3-yaml'
+    state: present
+
 - name: Create crosswalk user
   user:
     name: crosswalk
@@ -31,9 +36,9 @@
     src: '{{led_driver_src}}/{{item}}'
     dest: '{{crosswalk_home}}/bin/'
     remote_src: true
-    owner: root
-    group: root
-    mode: '04755'
+    owner: crosswalk
+    group: crosswalk
+    mode: '0755'
   with_items:
     - 'examples-api-use/demo'
     - 'utils/led-image-viewer'
@@ -42,20 +47,23 @@
   git:
     repo: '{{crosswalk_src}}'
     dest: '{{crosswalk_home}}/code'
+    version: '{{crosswalk_version}}'
   notify:
     - Restart crosswalk
 
 - name: Write crosswalk service unit
   template:
     src: crosswalk.service
-    dest: /etc/systemd/system/crosswalk.service
+    dest: /lib/systemd/system/crosswalk.service
     owner: root
     group: root
     mode: '0644'
   notify:
     - Restart crosswalk
 
-- name: Ensure crosswalk is started
-  service:
+- name: Enable crosswalk service
+  systemd:
     name: crosswalk
     state: started
+    enabled: true
+    daemon_reload: true

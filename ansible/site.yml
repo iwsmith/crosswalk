@@ -1,7 +1,5 @@
 ---
 - hosts: signs
   become: true
-  vars_files:
-    - private/crosswalk.yml
   roles:
     - crosswalk
