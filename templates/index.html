@@ -26,13 +26,32 @@
   <a class="btn btn-primary" href="{{ url_for('random_image') }}">Random</a>
 
   <hr>
+  <h1>Scenes</h1>
+    <div class="list-group">
+        {% for scene in scenes.values() %}
+        <a class="list-group-item list-group-item-action" href="{{ url_for('play_scene', name=scene.name) }}">{{scene}}</a>
+        {% endfor %}
+    </div>
+
+  <hr>
   <h1>Images</h1>
 
   <div class="list-group">
     {% for image in images %}
-    <a class="list-group-item list-group-item-action" href="{{ url_for('display_image', filename=image)}}">
-      <img class="img-thumbnail img-fluid" title={{image}} src="{{ url_for('static', filename='img/'+image) }}">
-    </a>
+    <div class="row align-items-center">
+
+        <div class="col">
+            <figure class="figure">
+                <a  href="{{ url_for('display_image', filename=image)}}">
+                    <img class="img-thumbnail img-fluid" title={{image}} src="{{ url_for('static', filename='img/'+image) }}">
+                </a>
+                <figcaption class="figure-caption text-right">{{ image }}</figcaption>
+            </figure>
+        </div>
+        <div class="col-1">
+            <a class="btn btn-danger" href="{{ url_for('delete_image', filename=image)}}">Delete</a>
+        </div>
+    </div>
     {% endfor %}
   </div>
 
