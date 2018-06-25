@@ -9,6 +9,11 @@
     name: 'python3-yaml'
     state: present
 
+- name: Install bluealsa
+  apt:
+    name: 'bluealsa'
+    state: present
+
 - name: Create crosswalk user
   user:
     name: crosswalk

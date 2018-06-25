@@ -6,3 +6,7 @@
 
 ## Running
 1. As **root** `FLASK_APP=run.py  flask run --host=0.0.0.0`
+
+## Content
+### Creating New Voice Commands
+On a Mac `say -v Samantha "Walk Sign Is On. Walk Now." --data-format=LEF32@22050 -o walk_now.wav` 
