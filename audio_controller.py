@@ -3,8 +3,8 @@ import copy
 import os
 import logging
 
-WAV_ARGS = ["aplay"]
-MP3_ARGS = ["mpg123"]
+WAV_ARGS = ["/usr/bin/aplay"]
+MP3_ARGS = ["/usr/bin/mpg123"]
 
 
 class AudioController:
