@@ -1,11 +1,13 @@
 from flask import Flask, abort, request, jsonify, render_template, redirect, url_for
 from led_controller import LEDController, MockController
+from audio_controller import AudioController
 from werkzeug.utils import secure_filename
 from scene import from_yaml
 import os
 
 led = LEDController("./static/img")
 #led = MockController("./static/img")
+audio = AudioController("./static/snd")
 scenes = from_yaml("./static/scenes.yaml")
 app = Flask(__name__)
 
@@ -36,6 +38,7 @@ def delete_image(filename):
 @app.route("/image/<string:filename>")
 def display_image(filename):
     led.image(filename)
+    audio.play("walk_now.wav")
     return redirect(url_for('index'))
 
 @app.route("/scene/<string:name>")
