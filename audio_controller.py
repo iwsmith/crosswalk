@@ -1,6 +1,7 @@
 import subprocess
 import copy
 import os
+import logging
 
 WAV_ARGS = ["aplay"]
 MP3_ARGS = ["mpg123"]
@@ -27,5 +28,7 @@ class AudioController:
             raise Exception("Unknown file extension" + filename)
 
         args.append(os.path.join(self.sound_path, filename))
+
+        logging.info(args)
 
         self._process = subprocess.Popen(args)
