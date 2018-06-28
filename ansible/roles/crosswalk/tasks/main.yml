@@ -9,9 +9,14 @@
     name: 'python3-yaml'
     state: present
 
-- name: Install bluealsa
+- name: Install gpiozero
   apt:
-    name: 'bluealsa'
+    name: 'python3-gpiozero'
+    state: present
+
+- name: Install requests
+  apt:
+    name: 'python3-requests'
     state: present
 
 - name: Create crosswalk user
