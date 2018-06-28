@@ -4,7 +4,7 @@ import requests
 
 def button_press():
     print("button")
-    requests.get("localhost/random")
+    requests.get("http://localhost/random")
 
 button = Button(18)
 
