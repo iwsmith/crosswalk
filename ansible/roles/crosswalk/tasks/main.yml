@@ -1,23 +1,13 @@
 ---
-- name: Install flask
+- name: Install python packages
   apt:
-    name: 'python3-flask'
+    name: 'python3-{{item}}'
     state: present
-
-- name: Install yaml
-  apt:
-    name: 'python3-yaml'
-    state: present
-
-- name: Install gpiozero
-  apt:
-    name: 'python3-gpiozero'
-    state: present
-
-- name: Install requests
-  apt:
-    name: 'python3-requests'
-    state: present
+  with_items:
+    - flask
+    - gpiozero
+    - requests
+    - yaml
 
 - name: Create crosswalk user
   user:
