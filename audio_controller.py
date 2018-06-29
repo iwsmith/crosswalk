@@ -2,15 +2,17 @@ import subprocess
 import copy
 import os
 import logging
+import yaml
 
 WAV_ARGS = ["/usr/bin/aplay"]
 MP3_ARGS = ["/usr/bin/mpg123"]
 
 
 class AudioController:
-    def __init__(self, sound_path):
+    def __init__(self, sound_path, image_mapping):
         self._process = None
         self.sound_path = sound_path
+        self.image_sound_mapping = from_yaml(image_mapping)
 
     def kill(self):
         if self._process:
@@ -32,3 +34,18 @@ class AudioController:
         logging.info(args)
 
         self._process = subprocess.Popen(args)
+
+    def image(self, imagename):
+        try:
+            snd = self.image_sound_mapping[imagename]
+            if snd:
+                self.play(snd)
+        except KeyError:
+            self.play(self.image_sound_mapping["default"])
+
+
+def from_yaml(filename):
+    with open(filename) as f:
+        image_sound_mapping = yaml.load(f)
+
+    return image_sound_mapping
