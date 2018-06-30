@@ -2,7 +2,7 @@ from flask import Flask, abort, request, jsonify, render_template, redirect, url
 from led_controller import LEDController, MockController
 from audio_controller import AudioController
 from werkzeug.utils import secure_filename
-from scene import BasicScene, from_yaml
+from scene import AnimatedImage, BasicScene, from_yaml
 import random
 import os
 
@@ -55,7 +55,7 @@ def list_images():
 def random_image():
     walk = random.choice(led.list_images())
     audio.image(walk)
-    led.scene(BasicScene("Random", [walk, "stop.png"]))
+    led.scene(BasicScene("Random", [AnimatedImage(walk), AnimatedImage("stop.png")]))
     return redirect(url_for('index'))
 
 @app.route("/status")
