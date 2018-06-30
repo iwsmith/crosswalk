@@ -53,7 +53,7 @@ def list_images():
 
 @app.route("/random")
 def random_image():
-    walk = random.shuffle(led.list_images())[0]
+    walk = random.choice(led.list_images())
     audio.image(walk)
     led.scene(BasicScene("Random", [walk, "stop.png"]))
     return redirect(url_for('index'))
