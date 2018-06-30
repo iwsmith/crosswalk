@@ -55,7 +55,7 @@ def list_images():
 def random_image():
     walk = random.choice(led.list_images())
     audio.image(walk)
-    led.scene(BasicScene("Random", [AnimatedImage(walk), AnimatedImage("stop.png")]))
+    led.scene(BasicScene("Random", [AnimatedImage(walk, loops=1), AnimatedImage("stop.png")]))
     return redirect(url_for('index'))
 
 @app.route("/status")
