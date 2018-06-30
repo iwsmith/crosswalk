@@ -2,12 +2,13 @@ from flask import Flask, abort, request, jsonify, render_template, redirect, url
 from led_controller import LEDController, MockController
 from audio_controller import AudioController
 from werkzeug.utils import secure_filename
-from scene import from_yaml
+from scene import AnimatedImage, BasicScene, from_yaml
+import random
 import os
 
 led = LEDController("./static/img")
 #led = MockController("./static/img")
-audio = AudioController("./static/snd")
+audio = AudioController("./static/snd", "./static/images.yaml")
 scenes = from_yaml("./static/scenes.yaml")
 app = Flask(__name__)
 
@@ -38,7 +39,7 @@ def delete_image(filename):
 @app.route("/image/<string:filename>")
 def display_image(filename):
     led.image(filename)
-    audio.play("walk_now.wav")
+    audio.image(filename)
     return redirect(url_for('index'))
 
 @app.route("/scene/<string:name>")
@@ -52,7 +53,9 @@ def list_images():
 
 @app.route("/random")
 def random_image():
-    led.random_image()
+    walk = random.choice(led.list_images())
+    audio.image(walk)
+    led.scene(BasicScene("Random", [AnimatedImage(walk, loops=1), AnimatedImage("stop.png")]))
     return redirect(url_for('index'))
 
 @app.route("/status")
