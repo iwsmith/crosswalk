@@ -1,13 +1,18 @@
-from gpiozero import Button
+from gpiozero import Button, LED
 from signal import pause
 import requests
 
-def button_press():
-    print("button")
-    requests.get("http://localhost/random")
+led = LED(24)
+led.on()
 
 button = Button(18)
 
-button.when_released = button_press
+def btn():
+    led.on()
+
+    requests.get("http://localhost/random")
+
+button.when_pressed = led.off
+button.when_released =  btn
 
 pause()
