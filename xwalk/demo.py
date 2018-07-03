@@ -50,6 +50,15 @@ class DemoController:
         }
 
 
+    def kill(self):
+        """Kill the currently running demo, if any."""
+        self._playing = None
+        if self._process:
+            #subprocess.call(['/usr/bin/pkill', '-P', str(self._process.pid)])
+            self._process.kill()
+            self._process = None
+
+
     def play(demo_id, image=None):
         """
         Play the demo with the given identifier, if available in the
@@ -71,12 +80,3 @@ class DemoController:
         self.kill()
         self._process = subprocess.Popen(args)
         self._playing = demo_id
-
-
-    def kill(self):
-        """Kill the currently running demo, if any."""
-        self._playing = None
-        if self._process:
-            #subprocess.call(['/usr/bin/pkill', '-P', str(self._process.pid)])
-            self._process.kill()
-            self._process = None
