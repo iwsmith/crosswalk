@@ -48,7 +48,10 @@
             </figure>
         </div>
         <div class="col-1">
-            <button class="btn" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'walk', walk: '{{ image.name }}'})">Play</button>
+            <button class="btn" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'image', image: '{{ image.name }}'})">Play</button>
+        </div>
+        <div class="col-1">
+            <button class="btn" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'walk', walk: '{{ image.name }}'})">Walk</button>
         </div>
     </div>
     {% endfor %}

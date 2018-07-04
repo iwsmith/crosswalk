@@ -125,4 +125,31 @@ class Library:
         # TODO: implement
         pass
 
-    # ...
+
+def pick_name(table):
+    """Choose an animation out of the table and return it."""
+    total = sum(table.values())
+    point = random.randrange(0, total)
+    for name, weight in table.items():
+        selected = name
+        point -= weight
+        if point <= 0:
+            break
+    return selected
+
+
+def scheduled_at(schedule, time=datetime.now()):
+    """
+    Search through the schedule looking at the start date. Returns the last
+    entry which is earlier than the present.
+    """
+    # Nothing to pick if schedule is empty.
+    if not schedule:
+        return None
+    recent = schedule.first()
+    for entry in schedule:
+        start = entry.get('start')
+        if start is None or time < start:
+            break
+        recent = entry
+    return recent
