@@ -110,6 +110,13 @@ class Library:
         self.uploads = self._load_images('uploads')
 
 
+    def find_image(self, name):
+        """Look for an image by name in the walks and uploads folders."""
+        for animation in self.walks + self.uploads:
+            if animation.name == name:
+                return animation
+
+
     def choose_walk(self):
         """
         Generate a new walk scene by selecting from the available intros,

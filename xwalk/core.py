@@ -58,7 +58,7 @@ class CrossWalk:
         self.mode = 'demo'
 
 
-    def image(self, animation):
+    def show(self, animation):
         """Set the crosswalk mode to show an image."""
         self.demos.kill()
         self.audio.kill()

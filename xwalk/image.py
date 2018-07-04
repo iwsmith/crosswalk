@@ -40,7 +40,7 @@ class ImageController:
         if animation.frame_delay:
             args.append("-D")
             args.append(animation.frame_delay)
-        args.append(animation.path)
+        args.append(animation.image_path)
         return args
 
 

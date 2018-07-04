@@ -67,7 +67,7 @@
             </figure>
         </div>
         <div class="col-1">
-            <button class="btn" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'image', path: '{{ image.image_path }}'})">Play</button>
+            <button class="btn" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'image', image: '{{ image.name }}'})">Play</button>
         </div>
         <div class="col-1">
             <button class="btn btn-danger" onclick="sendRequest('DELETE', '{{ url_for('delete_image', id=image) }}')">Delete</button>

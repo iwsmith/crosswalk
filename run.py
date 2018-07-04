@@ -72,14 +72,20 @@ def set_state():
             return jsonify({'error': "No demo id provided"}), 400
         crosswalk.demo(demo_id)
     elif mode == 'image':
-        # TODO: show image
-        raise "NYI"
+        name = body.get('image')
+        if name is None:
+            return jsonify({error: "No image name provided"}), 400
+        image = library.find_image(name)
+        if image is None:
+            return jsonify({error: "No image with name {}".format(name)}), 404
+        crosswalk.show(image)
     elif mode == 'walk':
+        # TODO:
         # check sync flag
         # kill demo controller
         # play walk images
         # play walk audio
-        raise "NYI"
+        crosswalk.walk()
     else:
         return jsonify({'error': "Unknown mode: {}".format(mode)}), 400
     return jsonify(crosswalk.state())
