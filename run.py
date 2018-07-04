@@ -85,6 +85,14 @@ def set_state():
     return jsonify(crosswalk.state())
 
 
+@app.route("/button", methods=['POST'])
+def push_button():
+    body = request.get_json()
+    hold = body.get('hold', 0.0)
+    crosswalk.button(hold)
+    return jsonify({})
+
+
 ### Demo Handlers ###
 
 @app.route("/demos/")
