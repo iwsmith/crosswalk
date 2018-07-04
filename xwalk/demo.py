@@ -51,9 +51,9 @@ class DemoController:
         }
 
 
-    def list_demos(self):
+    def __iter__(self):
         """Return a list of the available demos to play."""
-        return self._demos.values()
+        return iter(self._demos.values())
 
 
     def kill(self):

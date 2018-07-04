@@ -24,7 +24,15 @@
   <h1>Current Status</h1>
   {{ status }}
   <br>
-  <a class="btn btn-danger" href="#" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'off'})">Off</a>
+  <button class="btn btn-danger" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'off'})">Off</button>
+
+  <hr>
+  <h1>Demos</h1>
+  <div class="list-group">
+    {% for demo in demos %}
+    <button class="list-group-item list-group-item-action" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'demo', demo: {{ demo.demo_id }}})">{{ demo.description }}</button>
+    {% endfor %}
+  </div>
 
   <hr>
   <h1>Images</h1>
@@ -45,14 +53,6 @@
             <a class="btn btn-danger" href="{{ url_for('delete_image', image_id=image)}}">Delete</a>
         </div>
     </div>
-    {% endfor %}
-  </div>
-
-  <hr>
-  <h1>Demo</h1>
-  <div class="list-group">
-    {% for demo in demos %}
-    <a class="list-group-item list-group-item-action" href="{{ url_for('set_state', n=loop.index0) }}">{{demo}}</a>
     {% endfor %}
   </div>
 

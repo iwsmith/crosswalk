@@ -47,7 +47,7 @@ def index():
     return render_template(
         'index.html',
         #images=led.list_images(),
-        demos=crosswalk.demo.list_demos(),
+        demos=crosswalk.demos,
         status=str(crosswalk.state()))
 
 

@@ -14,7 +14,7 @@ class CrossWalk:
     """
 
     def __init__(self, image_dir, audio_dir):
-        self.demo = DemoController()
+        self.demos = DemoController()
         self.image = ImageController()
         self.audio = AudioController()
         self.mode = 'off'
@@ -34,7 +34,7 @@ class CrossWalk:
         """Return the crosswalk state."""
         return {
             'mode': self.mode,
-            'demo': self.demo._playing,
+            'demo': self.demos._playing,
             'image': self.image._playing,
             'audio': self.audio._playing,
             'cooldown': self.cooldown,
@@ -45,7 +45,7 @@ class CrossWalk:
 
     def off(self):
         """Set the crosswalk mode to 'off'."""
-        self.demo.kill()
+        self.demos.kill()
         self.image.kill()
         self.audio.kill()
         self.mode = 'off'
@@ -55,13 +55,13 @@ class CrossWalk:
         """Set the crosswalk mode to play a demo."""
         self.image.kill()
         self.audio.kill()
-        self.demo.play(demo_id)
+        self.demos.play(demo_id)
         self.mode = 'demo'
 
 
     def image(self, animation):
         """Set the crosswalk mode to show an image."""
-        self.demo.kill()
+        self.demos.kill()
         self.audio.kill()
         self.image.play(animation)
         self.mode = 'image'
@@ -69,7 +69,7 @@ class CrossWalk:
 
     def walk(self):
         """Set the crosswalk to walk mode."""
-        self.demo.kill()
+        self.demos.kill()
         self.audio.kill()
         self.image.play(self.halt)
         self.mode = 'walk'
