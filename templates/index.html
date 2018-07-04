@@ -26,6 +26,7 @@
   <br>
   <button class="btn btn-danger" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'off'})">Off</button>
   <button class="btn" onclick="sendRequest('POST', '{{ url_for('push_button') }}', {})">Cross</button>
+  <button class="btn" onclick="sendRequest('POST', '{{ url_for('refresh_library') }}')">Refresh Library</button>
 
   <hr>
   <h1>Demos</h1>
@@ -60,9 +61,7 @@
     <div class="row align-items-center">
         <div class="col">
             <figure class="figure">
-                <a  href="{{ url_for('get_image', id=image)}}">
-                    <img class="img-thumbnail img-fluid" title={{image.name}} src="{{ url_for('static', filename=image.image_path.replace('/static', '')) }}">
-                </a>
+                <img class="img-thumbnail img-fluid" title={{image.name}} src="{{ url_for('static', filename=image.image_path.replace('/static', '')) }}">
                 <figcaption class="figure-caption text-right">{{ image.name }}</figcaption>
             </figure>
         </div>
@@ -70,7 +69,7 @@
             <button class="btn" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'image', image: '{{ image.name }}'})">Play</button>
         </div>
         <div class="col-1">
-            <button class="btn btn-danger" onclick="sendRequest('DELETE', '{{ url_for('delete_image', id=image) }}')">Delete</button>
+            <button class="btn btn-danger" onclick="sendRequest('DELETE', '{{ url_for('delete_image', name=image.name) }}')">Delete</button>
         </div>
     </div>
     {% endfor %}

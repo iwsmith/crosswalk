@@ -20,22 +20,24 @@ library = Library('./static/img', './static/snd', 'config.yml')
 crosswalk = CrossWalk(library)
 
 
-# GET  /                 index page
-# POST /button           trigger button press
 
-# GET  /state            get the current app state
-# POST /state            set a new state for the app
+# GET    /               index page
+
+# GET    /state          get the current app state
+# POST   /state          set a new state for the app
 #   mode=off
 #   mode=demo demo=n
 #   mode=image path=p
 #   mode=walk
 #   mode=sync id=x [intro=y] [outro=z]
 
-# GET    /demos/         list available demos
+# POST   /button         trigger button press
 
-# GET    /images/        list available images
+# GET    /demos/         list available demos
+# GET    /walks/         list available walk animations
+
+# GET    /images/        list available uploaded images
 # POST   /images/        upload a new image
-# GET    /images/:id     fetch image by id
 # DELETE /images/:id     delete an image by id
 
 # GET    /queue/         list the queued scenes
@@ -53,6 +55,12 @@ def index():
         walks=library.walks,
         uploads=library.uploads,
         status=str(crosswalk.state()))
+
+
+@app.route("/refresh", methods=['POST'])
+def refresh_library():
+    library.refresh()
+    return "", 204
 
 
 @app.route("/state")
@@ -74,10 +82,10 @@ def set_state():
     elif mode == 'image':
         name = body.get('image')
         if name is None:
-            return jsonify({error: "No image name provided"}), 400
+            return jsonify({'error': "No image name provided"}), 400
         image = library.find_image(name)
         if image is None:
-            return jsonify({error: "No image with name {}".format(name)}), 404
+            return jsonify({'error': "No image with name {}".format(name)}), 404
         crosswalk.show(image)
     elif mode == 'walk':
         # TODO:
@@ -96,41 +104,85 @@ def push_button():
     body = request.get_json()
     hold = body.get('hold', 0.0)
     crosswalk.button(hold)
-    return jsonify({})
+    return jsonify({ok: True})
 
 
 ### Demo Handlers ###
 
 @app.route("/demos/")
 def list_demos():
-    # TODO: implement
-    raise "NYI"
+    demos = [
+        {
+            'id': demo.demo_id,
+            'description': demo.description,
+            'ppm_required': demo.ppm_required,
+
+        }
+        for demo in crosswalk.demos
+    ]
+    return jsonify(demos)
 
 
 ### Image Handlers ###
 
+@app.route("/walks/")
+def list_walks():
+    walks = []
+    for image in library.walks:
+        data = {
+            'name': image.name,
+            'image_path': image.image_path,
+        }
+        if image.audio_path:
+            data['audio_path'] = image.audio_path
+        if image.loops:
+            data['loops'] = image.loops
+        if image.frame_delay:
+            data['frame_delay'] = image.frame_delay
+        walks.append(data)
+    return jsonify(walks)
+
+
 @app.route("/images/")
 def list_images():
-    # TODO: implement
-    raise "NYI"
+    images = []
+    for image in library.uploads:
+        data = {
+            'name': image.name,
+            'image_path': image.image_path,
+        }
+        if image.audio_path:
+            data['audio_path'] = image.audio_path
+        if image.loops:
+            data['loops'] = image.loops
+        if image.frame_delay:
+            data['frame_delay'] = image.frame_delay
+        images.append(data)
+    return jsonify(images)
 
 
 @app.route("/images/", methods=['POST'])
 def upload_image():
-    # TODO: implement
-    raise "NYI"
+    f = request.files['image']
+    if not f:
+        return jsonify({'error': "No image file provided"}), 400
+    f.save(os.path.join(library.image_dir, 'uploads', secure_filename(f.filename)))
+    library.refresh()
+    return redirect(url_for('index'))
 
 
-@app.route("/images/<string:id>")
-def get_image(image_id):
-    # TODO: implement
-    raise "NYI"
-
-
-@app.route("/images/<string:id>", methods=['DELETE'])
-def delete_image(image_id):
-    # TODO: implement
-    raise "NYI"
+@app.route("/images/<string:name>", methods=['DELETE'])
+def delete_image(name):
+    if name is None:
+        return jsonify({'error': "No image name provided"}), 400
+    image = library.find_image(name)
+    if image is None:
+        return jsonify({'error': "No image with name {}".format(name)}), 404
+    if image not in library.uploads:
+        return jsonify({'error': "Image {} is not an upload and cannot be deleted".format(name)}), 400
+    os.remove(os.path.join(library.image_dir, secure_filename(filename)))
+    library.refresh()
+    return "", 204
 
 
 ### Queue Handlers ###
@@ -138,27 +190,16 @@ def delete_image(image_id):
 @app.route("/queue/")
 def get_queue():
     # TODO: implement
-    raise "NYI"
+    raise Error("NYI")
 
 
 @app.route("/queue/", methods=['POST'])
 def add_queue():
     # TODO: implement
-    raise "NYI"
+    raise Error("NYI")
 
 
 @app.route("/queue/", methods=['DELETE'])
 def clear_queue():
     # TODO: implement
-    raise "NYI"
-
-
-
-
-### Old Code ###
-
-#@app.route("/upload", methods=['POST'])
-#def upload_file():
-#    f = request.files['image']
-#    f.save(os.path.join(led.image_path, secure_filename(f.filename)))
-#    return redirect(url_for('index'))
+    raise Error("NYI")
