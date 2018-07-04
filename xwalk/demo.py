@@ -67,7 +67,7 @@ class DemoController:
     def kill(self):
         """Kill the currently running demo, if any."""
         if self._process:
-            logger.debug("Killing {}".format(self._playing))
+            logger.debug("Killing: %s", self._playing)
             self._process.kill()
             self._process = None
         self._playing = None
@@ -76,8 +76,8 @@ class DemoController:
     def _exec(self, command):
         """Execute the given command as a new subprocess."""
         self.kill()
-        logger.debug(command)
-        #self._process = subprocess.Popen(args)
+        logger.debug("Executing: %s", " ".join(command))
+        self._process = subprocess.Popen(command)
 
 
     def play(self, demo_id, image=None):
@@ -98,6 +98,6 @@ class DemoController:
                 raise ValueError("A .ppm image must be provided for demo {}".format(demo.demo_id))
             args.append(image)
 
-        logger.info("Playing {} ({})".format(demo.description, " ".join(args)))
+        logger.info("Playing: %s", demo.description)
         self._exec(args)
         self._playing = demo

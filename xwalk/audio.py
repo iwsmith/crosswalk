@@ -43,7 +43,7 @@ class AudioController:
     def kill(self):
         """Kill the currently playing sound, if any."""
         if self._process:
-            logger.debug("Killing {}".format(self._playing))
+            logger.debug("Killing: %s", self._playing)
             subprocess.call(['/usr/bin/pkill', '-P', str(self._process.pid)])
             self._process.kill()
             self._process = None
@@ -59,7 +59,7 @@ class AudioController:
             return
 
         command = self._play_command(path)
-        logger.info("Playing {} ({})".format(path, " ".join(command)))
+        logger.info("Playing: %s", path)
 
         self._process = subprocess.Popen(args)
         self._playing = [path]
@@ -83,7 +83,7 @@ class AudioController:
 
         commands = [" ".join(self._play_command(path)) for path in paths]
         script = " && ".join(commands)
-        logger.info("Playing all {} ({})".format(paths, script))
+        logger.info("Playing all: %s", paths)
 
         self._process = subprocess.Popen(script, shell=True)
         self._playing = paths
