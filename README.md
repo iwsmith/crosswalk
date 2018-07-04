@@ -13,7 +13,7 @@ the sign display, audio, and interactivity.
 - **off** - no display or sound
 - **demo** - run one of the demo programs shipped with the LED drivers
 - **image** - display a single image on loop
-- **crossing** - main crosswalk interaction mode
+- **walk** - main crosswalk interaction mode
 
 When in crossing mode, the signs will react to button presses by generating a
 _scene_, composed of an _intro_, _walk_, and _outro_ animations. The signs then

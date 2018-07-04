@@ -109,22 +109,8 @@ def get_image(image_id):
     raise "NYI"
 
 
-@app.route("/images/<string:id>/delete", methods=['POST'])
+@app.route("/images/<string:id>", methods=['DELETE'])
 def delete_image(image_id):
-    # TODO: implement
-    raise "NYI"
-
-
-### Walk Handlers ###
-
-@app.route("/walks/")
-def list_walks():
-    # TODO: implement
-    raise "NYI"
-
-
-@app.route("/walks/<string:id>")
-def get_walk():
     # TODO: implement
     raise "NYI"
 
@@ -143,7 +129,7 @@ def add_queue():
     raise "NYI"
 
 
-@app.route("/queue/clear", methods=['POST'])
+@app.route("/queue/", methods=['DELETE'])
 def clear_queue():
     # TODO: implement
     raise "NYI"
@@ -153,48 +139,6 @@ def clear_queue():
 
 ### Old Code ###
 
-#@app.route("/kill")
-#def kill_current():
-#    led.kill()
-#    return redirect(url_for('index'))
-#
-#
-#@app.route("/demo/<int:n>")
-#def run_demo(n):
-#    led.demo(n, request.args.get("f"))
-#    return redirect(url_for('index'))
-#
-#@app.route("/delete/<string:filename>")
-#def delete_image(filename):
-#    os.remove(os.path.join(led.image_path, secure_filename(filename)))
-#    return redirect(url_for('index'))
-#
-#@app.route("/image/<string:filename>")
-#def display_image(filename):
-#    led.image(filename)
-#    audio.image(filename)
-#    return redirect(url_for('index'))
-#
-#@app.route("/scene/<string:name>")
-#def play_scene(name):
-#    led.scene(scenes[name])
-#    return redirect(url_for('index'))
-#
-#@app.route("/images")
-#def list_images():
-#    return jsonify(led.list_images())
-#
-#@app.route("/random")
-#def random_image():
-#    walk = random.choice(led.list_images())
-#    audio.image(walk)
-#    led.scene(BasicScene("Random", [AnimatedImage(walk, loops=1), AnimatedImage("stop.png")]))
-#    return redirect(url_for('index'))
-#
-#@app.route("/status")
-#def status():
-#    return led.status()
-#
 #@app.route("/upload", methods=['POST'])
 #def upload_file():
 #    f = request.files['image']
