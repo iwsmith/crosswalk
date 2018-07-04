@@ -25,12 +25,13 @@
   {{ status }}
   <br>
   <button class="btn btn-danger" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'off'})">Off</button>
+  <button class="btn" onclick="sendRequest('POST', '{{ url_for('push_button') }}', {})">Cross</button>
 
   <hr>
   <h1>Demos</h1>
   <div class="list-group">
     {% for demo in demos %}
-    <button class="list-group-item list-group-item-action" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'demo', demo: {{ demo.demo_id }}})">{{ demo.description }}</button>
+    <button class="list-group-item list-group-item-action" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'demo', demo: {{ demo.demo_id }}})"{% if demo.demo_id in [1, 2] %} disabled="disabled"{% endif %}>{{ demo.description }}</button>
     {% endfor %}
   </div>
 
@@ -46,7 +47,7 @@
             </figure>
         </div>
         <div class="col-1">
-            <button class="btn" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'walk', walk: '{{ image.name }}'})">Play</a>
+            <button class="btn" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'walk', walk: '{{ image.name }}'})">Play</button>
         </div>
     </div>
     {% endfor %}
@@ -66,10 +67,10 @@
             </figure>
         </div>
         <div class="col-1">
-            <button class="btn" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'image', path: '{{ image.image_path }}'})">Play</a>
+            <button class="btn" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'image', path: '{{ image.image_path }}'})">Play</button>
         </div>
         <div class="col-1">
-            <button class="btn btn-danger" onclick="sendRequest('DELETE', '{{ url_for('delete_image', id=image) }}')">Delete</a>
+            <button class="btn btn-danger" onclick="sendRequest('DELETE', '{{ url_for('delete_image', id=image) }}')">Delete</button>
         </div>
     </div>
     {% endfor %}
