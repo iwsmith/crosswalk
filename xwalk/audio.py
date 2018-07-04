@@ -2,6 +2,8 @@ import logging
 import os
 import subprocess
 
+import xwalk.scene
+
 
 WAV_COMMAND = ["/usr/bin/aplay"]
 MP3_COMMAND = ["/usr/bin/mpg123"]
@@ -34,16 +36,18 @@ class AudioController:
     def kill(self):
         """Kill the currently playing sound, if any."""
         if self._process:
+            logging.debug("Killing {}".format(self._playing))
             subprocess.call(['/usr/bin/pkill', '-P', str(self._process.pid)])
             self._process.kill()
             self._process = None
         self._playing = None
 
 
-    def play(self, path):
+    def play(self, animation):
         """Play a sound file. Any currently playing sound will be replaced."""
         self.kill()
 
+        path = animation and animation.audio_path
         if path is None:
             return
 
@@ -54,12 +58,18 @@ class AudioController:
         self._playing = [path]
 
 
-    def play_all(self, paths):
+    def play_all(self, animations):
         """
         Play the given audio files in sequence. Any currently playing audio
         will be replaced.
         """
         self.kill()
+
+        paths = [
+            animation.audio_path
+            for animation in animations
+            if animation.audio_path
+        ]
 
         if not paths:
             return

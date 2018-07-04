@@ -1,3 +1,4 @@
+import logging
 import subprocess
 
 
@@ -31,8 +32,8 @@ class DemoController:
         """Construct a new demo controller."""
         self._process = None
         self._playing = None
-        self.demos = {
-            i, LEDDemo(i, desc, i in [1, 2])
+        self._demos = {
+            i: LEDDemo(i, desc, i in [1, 2])
             for i, desc in enumerate([
                 "Rotating Square",
                 "Forward Scrolling Image",
@@ -50,23 +51,35 @@ class DemoController:
         }
 
 
+    def list_demos(self):
+        """Return a list of the available demos to play."""
+        return self._demos.values()
+
+
     def kill(self):
         """Kill the currently running demo, if any."""
-        self._playing = None
         if self._process:
-            #subprocess.call(['/usr/bin/pkill', '-P', str(self._process.pid)])
+            logging.debug("Killing {}".format(self._playing))
             self._process.kill()
             self._process = None
+        self._playing = None
 
 
-    def play(demo_id, image=None):
+    def _exec(self, command):
+        """Execute the given command as a new subprocess."""
+        self.kill()
+        logging.debug(command)
+        #self._process = subprocess.Popen(args)
+
+
+    def play(self, demo_id, image=None):
         """
         Play the demo with the given identifier, if available in the
         controller. Any currently playing demo will be replaced.
         """
-        if demo_id not in self.demos:
-            raise ValueError("Demo id must be in {}".format(self.demos.keys()))
-        demo = self.demos[demo_id]
+        if demo_id not in self._demos:
+            raise ValueError("Demo id must be in {}".format(self._demos.keys()))
+        demo = self._demos[demo_id]
 
         args = []
         args.extend(DEMO_COMMAND)
@@ -77,6 +90,6 @@ class DemoController:
                 raise ValueError("A .ppm image must be provided for demo {}".format(demo.demo_id))
             args.append(image)
 
-        self.kill()
-        self._process = subprocess.Popen(args)
+        logging.info("Playing {} ({})".format(demo.description, command))
+        self._exec(args)
         self._playing = demo_id

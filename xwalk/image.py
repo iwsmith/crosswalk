@@ -1,6 +1,8 @@
 import logging
 import subprocess
 
+import xwalk.scene
+
 
 VIEWER_COMMAND = [
     'led-image-viewer',
@@ -11,19 +13,6 @@ VIEWER_COMMAND = [
     '-L',
     '-R 270',
 ]
-
-
-class Animation:
-    """
-    An instruction to show an animated image. The image may be played for a
-    fixed number of loops and at a desired speed.
-    """
-
-    def __init__(self, path, loops=None, frame_delay=None):
-        """Construct a new animated image step."""
-        self.path = path
-        self.loops = loops
-        self.frame_delay = frame_delay
 
 
 class ImageController:
@@ -55,12 +44,19 @@ class ImageController:
 
     def kill(self):
         """Kill the currently playing animation, if any."""
-        logging.debug("Killing " + self._playing)
         if self._process:
+            logging.debug("Killing {}".format(self._playing))
             subprocess.call(['/usr/bin/pkill', '-P', str(self._process.pid)])
             self._process.kill()
             self._process = None
         self._playing = None
+
+
+    def _exec(self, command, shell=False):
+        """Execute a new subprocess command."""
+        self.kill()
+        logging.debug(command)
+        #self._process = subprocess.Popen(args, shell=shell)
 
 
     def play(self, animation):
@@ -73,9 +69,9 @@ class ImageController:
             return
 
         command = self._display_command(animation)
-        logging.debug("Playing {} ({})".format(animation, command))
 
-        self._process = subprocess.Popen(command)
+        logging.info("Playing {} ({})".format(animation, command))
+        self._exec(command)
         self._playing = [animation]
 
 
@@ -91,7 +87,7 @@ class ImageController:
 
         commands = [" ".join(self._display_command(animation)) for animation in animations]
         script = " && ".join(commands)
-        logging.debug("Playing all {} ({})".format(animations, script))
 
-        self._process = subprocess.Popen(script, shell=True)
+        logging.debug("Playing all {} ({})".format(animations, script))
+        self._exec(script, shell=True)
         self._playing = animations
