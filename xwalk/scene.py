@@ -53,14 +53,14 @@ class Library:
         self.outros = []
         self.walks = []
         self.uploads = []
-        self.reresh()
+        self.refresh()
 
 
     def _load_images(self, namespace, config={}, sounds={}, default_sound=None):
         """Load a directory of images, returning a list of animations."""
         animations = []
         for filename in os.listdir(os.path.join(self.image_dir, namespace)):
-            name = os.path.splitext(filename).first()
+            name = os.path.splitext(filename)[0]
             path = os.path.join(self.image_dir, namespace, filename)
             cfg = config.get(namespace, {}).get(name, {})
             animation = Animation(name, path)
@@ -92,7 +92,7 @@ class Library:
             config = {}
 
         sounds = {
-            os.path.splitext(filename).first(): os.path.join(self.audio_dir, filename)
+            os.path.splitext(filename)[0]: os.path.join(self.audio_dir, filename)
             for filename in os.listdir(self.audio_dir)
         }
 

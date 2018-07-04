@@ -4,7 +4,7 @@ import os
 from xwalk.audio import AudioController
 from xwalk.demo import DemoController
 from xwalk.image import ImageController
-from xwalk.scene import Animation, Scene
+from xwalk.scene import Animation, Scene, Library
 
 
 
@@ -13,16 +13,15 @@ class CrossWalk:
     Core crossXwalk logic engine.
     """
 
-    def __init__(self, image_dir, audio_dir):
+    def __init__(self, library):
+        self.library = library
         self.demos = DemoController()
         self.image = ImageController()
         self.audio = AudioController()
+        self.halt = Animation('halt', os.path.join(library.image_dir, 'stop.png'))
         self.mode = 'off'
-        self.halt = Animation('halt', os.path.join(image_dir, 'stop.png'))
         self.cooldown = 30
         self.ready_at = datetime.now()
-
-        # TODO: load images and audio independently from controllers.
 
 
     def is_ready(self):

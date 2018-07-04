@@ -35,22 +35,41 @@
   </div>
 
   <hr>
-  <h1>Images</h1>
-
+  <h1>Walks</h1>
   <div class="list-group">
-    {% for image in images %}
+    {% for image in walks %}
     <div class="row align-items-center">
-
         <div class="col">
             <figure class="figure">
-                <a  href="{{ url_for('get_image', id=image)}}">
-                    <img class="img-thumbnail img-fluid" title={{image}} src="{{ url_for('static', filename='img/'+image) }}">
-                </a>
-                <figcaption class="figure-caption text-right">{{ image }}</figcaption>
+                <img class="img-thumbnail img-fluid" title="{{ image.name }}" src="{{ url_for('static', filename=image.image_path.replace('/static', '')) }}">
+                <figcaption class="figure-caption text-right">{{ image.name }}</figcaption>
             </figure>
         </div>
         <div class="col-1">
-            <a class="btn btn-danger" href="{{ url_for('delete_image', image_id=image)}}">Delete</a>
+            <button class="btn" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'walk', walk: '{{ image.name }}'})">Play</a>
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <hr>
+  <h1>Uploads</h1>
+  <div class="list-group">
+    {% for image in uploads %}
+    <div class="row align-items-center">
+        <div class="col">
+            <figure class="figure">
+                <a  href="{{ url_for('get_image', id=image)}}">
+                    <img class="img-thumbnail img-fluid" title={{image.name}} src="{{ url_for('static', filename=image.image_path.replace('/static', '')) }}">
+                </a>
+                <figcaption class="figure-caption text-right">{{ image.name }}</figcaption>
+            </figure>
+        </div>
+        <div class="col-1">
+            <button class="btn" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'image', path: '{{ image.image_path }}'})">Play</a>
+        </div>
+        <div class="col-1">
+            <button class="btn btn-danger" onclick="sendRequest('DELETE', '{{ url_for('delete_image', id=image) }}')">Delete</a>
         </div>
     </div>
     {% endfor %}

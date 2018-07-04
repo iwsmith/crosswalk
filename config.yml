@@ -1,0 +1,19 @@
+---
+intros:
+
+outros:
+  9s-count:
+    file: 9s-count.gif
+
+walks:
+  corgi:
+    audio: corgi.wav
+
+
+weights:
+  A: {}
+
+
+schedule:
+  - start: 2018-07-09T00:00:00
+    weights: A

@@ -7,37 +7,36 @@ from flask import Flask, abort, request, jsonify, render_template, redirect, url
 from werkzeug.utils import secure_filename
 
 from xwalk.core import CrossWalk
+from xwalk.scene import Library
 
 
 
 app = Flask(__name__)
-crosswalk = CrossWalk('./static/img', './static/snd')
+library = Library('./static/img', './static/snd', 'config.yml')
+crosswalk = CrossWalk(library)
 
 
-# GET  /                   index page
-# POST /button             trigger button press
+# GET  /                 index page
+# POST /button           trigger button press
 
-# GET  /state              get the current app state
-# POST /state              set a new state for the app
+# GET  /state            get the current app state
+# POST /state            set a new state for the app
 #   mode=off
 #   mode=demo demo=n
 #   mode=image path=p
 #   mode=walk
 #   mode=sync id=x [intro=y] [outro=z]
 
-# GET  /demos/             list available demos
+# GET    /demos/         list available demos
 
-# GET  /images/            list available images
-# POST /images/            upload a new image
-# GET  /images/:id         fetch image by id
-# POST /images/:id/delete  delete an image by id
+# GET    /images/        list available images
+# POST   /images/        upload a new image
+# GET    /images/:id     fetch image by id
+# DELETE /images/:id     delete an image by id
 
-# GET  /walks/             list available scenes
-# GET  /walks/:id          get info about a scene
-
-# GET  /queue/             list the queued scenes
-# POST /queue/             enqueue a scene to play
-# POST /queue/clear        empty the queued scenes
+# GET    /queue/         list the queued scenes
+# POST   /queue/         enqueue a scene to play
+# DELETE /queue/         empty the queued scenes
 
 
 ### State Handlers ###
@@ -46,8 +45,9 @@ crosswalk = CrossWalk('./static/img', './static/snd')
 def index():
     return render_template(
         'index.html',
-        #images=led.list_images(),
         demos=crosswalk.demos,
+        walks=library.walks,
+        uploads=library.uploads,
         status=str(crosswalk.state()))
 
 
