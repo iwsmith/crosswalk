@@ -14,6 +14,8 @@ VIEWER_COMMAND = [
     '-R 270',
 ]
 
+logger = logging.getLogger(__name__)
+
 
 class ImageController:
     """
@@ -45,7 +47,7 @@ class ImageController:
     def kill(self):
         """Kill the currently playing animation, if any."""
         if self._process:
-            logging.debug("Killing {}".format(self._playing))
+            logger.debug("Killing {}".format(self._playing))
             subprocess.call(['/usr/bin/pkill', '-P', str(self._process.pid)])
             self._process.kill()
             self._process = None
@@ -55,7 +57,7 @@ class ImageController:
     def _exec(self, command, shell=False):
         """Execute a new subprocess command."""
         self.kill()
-        logging.debug(command)
+        logger.debug(command)
         #self._process = subprocess.Popen(args, shell=shell)
 
 
@@ -70,7 +72,7 @@ class ImageController:
 
         command = self._display_command(animation)
 
-        logging.info("Playing {} ({})".format(animation, command))
+        logger.info("Playing {} ({})".format(animation, " ".join(command)))
         self._exec(command)
         self._playing = [animation]
 
@@ -88,6 +90,6 @@ class ImageController:
         commands = [" ".join(self._display_command(animation)) for animation in animations]
         script = " && ".join(commands)
 
-        logging.debug("Playing all {} ({})".format(animations, script))
+        logger.info("Playing all {} ({})".format(animations, script))
         self._exec(script, shell=True)
         self._playing = animations

@@ -10,6 +10,8 @@ DEMO_COMMAND = [
     '-D',
 ]
 
+logger = logging.getLogger(__name__)
+
 
 class LEDDemo:
     """
@@ -59,7 +61,7 @@ class DemoController:
     def kill(self):
         """Kill the currently running demo, if any."""
         if self._process:
-            logging.debug("Killing {}".format(self._playing))
+            logger.debug("Killing {}".format(self._playing))
             self._process.kill()
             self._process = None
         self._playing = None
@@ -68,7 +70,7 @@ class DemoController:
     def _exec(self, command):
         """Execute the given command as a new subprocess."""
         self.kill()
-        logging.debug(command)
+        logger.debug(command)
         #self._process = subprocess.Popen(args)
 
 
@@ -90,6 +92,6 @@ class DemoController:
                 raise ValueError("A .ppm image must be provided for demo {}".format(demo.demo_id))
             args.append(image)
 
-        logging.info("Playing {} ({})".format(demo.description, command))
+        logger.info("Playing {} ({})".format(demo.description, " ".join(args)))
         self._exec(args)
         self._playing = demo_id

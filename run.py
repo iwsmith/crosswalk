@@ -1,5 +1,6 @@
 # crossXwalk main app
 
+import logging
 import random
 import os
 
@@ -10,6 +11,9 @@ from xwalk.core import CrossWalk
 from xwalk.scene import Library
 
 
+logging.basicConfig(
+    level='DEBUG',
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 app = Flask(__name__)
 library = Library('./static/img', './static/snd', 'config.yml')

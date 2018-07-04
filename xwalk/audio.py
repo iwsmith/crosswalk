@@ -8,6 +8,8 @@ import xwalk.scene
 WAV_COMMAND = ["/usr/bin/aplay"]
 MP3_COMMAND = ["/usr/bin/mpg123"]
 
+logger = logging.getLogger(__name__)
+
 
 class AudioController:
     """
@@ -36,7 +38,7 @@ class AudioController:
     def kill(self):
         """Kill the currently playing sound, if any."""
         if self._process:
-            logging.debug("Killing {}".format(self._playing))
+            logger.debug("Killing {}".format(self._playing))
             subprocess.call(['/usr/bin/pkill', '-P', str(self._process.pid)])
             self._process.kill()
             self._process = None
@@ -52,7 +54,7 @@ class AudioController:
             return
 
         command = self._play_command(path)
-        logging.debug("Playing {} ({})".format(path, command))
+        logger.info("Playing {} ({})".format(path, " ".join(command)))
 
         self._process = subprocess.Popen(args)
         self._playing = [path]
@@ -76,7 +78,7 @@ class AudioController:
 
         commands = [" ".join(self._play_command(path)) for path in paths]
         script = " && ".join(commands)
-        logging.debug("Playing all {} ({})".format(paths, script))
+        logger.info("Playing all {} ({})".format(paths, script))
 
         self._process = subprocess.Popen(script, shell=True)
         self._playing = paths
