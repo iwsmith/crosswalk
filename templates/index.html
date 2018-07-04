@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<script src="static/site.js"></script>
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -22,16 +24,7 @@
   <h1>Current Status</h1>
   {{ status }}
   <br>
-  <a class="btn btn-danger" href="{{ url_for('kill_current') }}">Kill</a>
-  <a class="btn btn-primary" href="{{ url_for('random_image') }}">Random</a>
-
-  <hr>
-  <h1>Scenes</h1>
-    <div class="list-group">
-        {% for scene in scenes.values() %}
-        <a class="list-group-item list-group-item-action" href="{{ url_for('play_scene', name=scene.name) }}">{{scene}}</a>
-        {% endfor %}
-    </div>
+  <a class="btn btn-danger" href="#" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'off'})">Off</a>
 
   <hr>
   <h1>Images</h1>
@@ -42,14 +35,14 @@
 
         <div class="col">
             <figure class="figure">
-                <a  href="{{ url_for('display_image', filename=image)}}">
+                <a  href="{{ url_for('get_image', id=image)}}">
                     <img class="img-thumbnail img-fluid" title={{image}} src="{{ url_for('static', filename='img/'+image) }}">
                 </a>
                 <figcaption class="figure-caption text-right">{{ image }}</figcaption>
             </figure>
         </div>
         <div class="col-1">
-            <a class="btn btn-danger" href="{{ url_for('delete_image', filename=image)}}">Delete</a>
+            <a class="btn btn-danger" href="{{ url_for('delete_image', image_id=image)}}">Delete</a>
         </div>
     </div>
     {% endfor %}
@@ -59,13 +52,13 @@
   <h1>Demo</h1>
   <div class="list-group">
     {% for demo in demos %}
-    <a class="list-group-item list-group-item-action" href="{{ url_for('run_demo', n=loop.index0) }}">{{demo}}</a>
+    <a class="list-group-item list-group-item-action" href="{{ url_for('set_state', n=loop.index0) }}">{{demo}}</a>
     {% endfor %}
   </div>
 
   <hr>
   <h1>Upload</h1>
-  <form enctype="multipart/form-data" method="post" action="{{ url_for('upload_file') }}">
+  <form enctype="multipart/form-data" method="post" action="{{ url_for('upload_image') }}">
     <div class="form-group">
       <input name="image" class="form-control-file" type="file">
     </div>
