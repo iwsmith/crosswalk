@@ -35,6 +35,11 @@ class AudioController:
         return args
 
 
+    def playing(self):
+        """Return a vector of information about the currently playing animations."""
+        return [path for path in self._playing or []]
+
+
     def kill(self):
         """Kill the currently playing sound, if any."""
         if self._process:

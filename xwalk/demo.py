@@ -58,6 +58,12 @@ class DemoController:
         return iter(self._demos.values())
 
 
+    def playing(self):
+        """Return information about the currently playing demo."""
+        if self._playing:
+            return "{}: {}".format(self._playing.demo_id, self._playing.description)
+
+
     def kill(self):
         """Kill the currently running demo, if any."""
         if self._process:
@@ -94,4 +100,4 @@ class DemoController:
 
         logger.info("Playing {} ({})".format(demo.description, " ".join(args)))
         self._exec(args)
-        self._playing = demo_id
+        self._playing = demo

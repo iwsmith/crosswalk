@@ -33,9 +33,9 @@ class CrossWalk:
         """Return the crosswalk state."""
         return {
             'mode': self.mode,
-            'demo': self.demos._playing,
-            'image': self.image._playing,
-            'audio': self.audio._playing,
+            'demo': self.demos.playing(),
+            'image': self.image.playing(),
+            'audio': self.audio.playing(),
             'cooldown': self.cooldown,
             'ready_at': self.ready_at,
             'ready': self.is_ready(),

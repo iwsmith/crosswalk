@@ -19,6 +19,14 @@ class Animation:
         self.frame_delay = frame_delay
 
 
+    def __str__(self):
+        """Render the animation as a string."""
+        return "Animation {}: {}{}".format(
+            self.name,
+            self.image_path,
+            " ({})".format(self.audio_path) if self.audio_path else "")
+
+
 class Scene:
     """
     A scene is a sequence of animations.

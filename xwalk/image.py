@@ -44,6 +44,11 @@ class ImageController:
         return args
 
 
+    def playing(self):
+        """Return a vector of information about the currently playing animations."""
+        return [str(animation) for animation in self._playing or []]
+
+
     def kill(self):
         """Kill the currently playing animation, if any."""
         if self._process:
