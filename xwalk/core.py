@@ -17,6 +17,8 @@ class CrossWalk:
     """
 
     def __init__(self, library):
+        with open('/etc/hostname') as f:
+            self.host = f.read().rstrip()
         self.library = library
         self.demos = DemoController()
         self.image = ImageController()
@@ -35,6 +37,7 @@ class CrossWalk:
     def state(self):
         """Return the crosswalk state."""
         return {
+            'host': self.host,
             'mode': self.mode,
             'demo': self.demos.playing(),
             'image': self.image.playing(),
