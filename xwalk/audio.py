@@ -43,7 +43,7 @@ class AudioController:
     def kill(self):
         """Kill the currently playing sound, if any."""
         if self._process:
-            logger.debug("Killing: %s", self._playing)
+            #logger.debug("Killing: %s", self._playing)
             subprocess.call(['/usr/bin/pkill', '-P', str(self._process.pid)])
             self._process.kill()
             self._process = None

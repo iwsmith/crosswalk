@@ -123,15 +123,29 @@ class Library:
                 return animation
 
 
-    def choose_walk(self):
+    def find_scene(self, intro_name, walk_name, outro_name):
+        """
+        Build a scene attempting to match the given intro, walk, and outro
+        names.
+        """
+        intro = next(image for image in self.intros if image.name == intro_name)
+        outro = next(image for image in self.outros if image.name == outro_name)
+        walk = next(image for image in self.walks if image.name == walk_name)
+        return Scene([intro, walk, outro])
+
+
+    def choose_walk(self, weights=None):
         """
         Generate a new walk scene by selecting from the available intros,
         walks, and outros.
         """
         intro = random.choice(self.intros)
         outro = random.choice(self.outros)
-        # TODO: weighted probability tables
-        walk = random.choice(self.walks)
+        if weights is None:
+            walk = random.choice(self.walks)
+        else:
+            # TODO: weighted probability tables
+            raise Error("NYI")
         return Scene([intro, walk, outro])
 
 

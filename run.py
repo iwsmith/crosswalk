@@ -23,11 +23,11 @@ crosswalk = CrossWalk(library)
 
 # GET    /               index page
 # POST   /refresh        reload the animation library
+# POST   /button         trigger button press
 
 # GET    /state          get the current app state
 # POST   /state          set a new state for the app
-
-# POST   /button         trigger button press
+# POST   /sync           synchronize the sign
 
 # GET    /demos/         list available demos
 # GET    /walks/         list available walk animations
@@ -57,6 +57,14 @@ def index():
 def refresh_library():
     library.refresh()
     return "", 204
+
+
+@app.route("/button", methods=['POST'])
+def push_button():
+    body = request.get_json() or {}
+    hold = body.get('hold', 0.0)
+    crosswalk.button(hold)
+    return jsonify({'ok': True})
 
 
 @app.route("/state")
@@ -90,12 +98,17 @@ def set_state():
     return jsonify(crosswalk.state())
 
 
-@app.route("/button", methods=['POST'])
-def push_button():
+@app.route("/sync", methods=['POST'])
+def sync_state():
     body = request.get_json() or {}
-    hold = body.get('hold', 0.0)
-    crosswalk.button(hold)
-    return jsonify({'ok': True})
+    intro = body.get('intro')
+    outro = body.get('outro')
+    walk = body.get('walk')
+    if intro is None or outro is None or walk is None:
+        return jsonify({'error': "Missing intro, outro, or walk animations"}), 400
+    crosswalk.sync(intro, walk, outro)
+    return jsonify(crosswalk.state())
+
 
 
 ### Demo Handlers ###

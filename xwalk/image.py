@@ -52,7 +52,7 @@ class ImageController:
     def kill(self):
         """Kill the currently playing animation, if any."""
         if self._process:
-            logger.debug("Killing: %s", self.playing())
+            #logger.debug("Killing: %s", self.playing())
             subprocess.call(['/usr/bin/pkill', '-P', str(self._process.pid)])
             self._process.kill()
             self._process = None

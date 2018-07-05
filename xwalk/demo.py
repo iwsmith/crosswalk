@@ -67,7 +67,7 @@ class DemoController:
     def kill(self):
         """Kill the currently running demo, if any."""
         if self._process:
-            logger.debug("Killing: %s", self._playing)
+            #logger.debug("Killing: %s", self._playing)
             self._process.kill()
             self._process = None
         self._playing = None

@@ -25,8 +25,8 @@
   {{ status }}
   <br>
   <button class="btn btn-danger" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'off'})">Off</button>
-  <button class="btn" onclick="sendRequest('POST', '{{ url_for('push_button') }}', {})">Button</button>
   <button class="btn" onclick="sendRequest('POST', '{{ url_for('refresh_library') }}'); window.location.reload(true)">Refresh</button>
+  <button class="btn" onclick="sendRequest('POST', '{{ url_for('push_button') }}', {})">Button</button>
 
   <hr>
   <h1>Demos</h1>
