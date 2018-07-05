@@ -95,6 +95,6 @@ class ImageController:
         commands = [" ".join(self._display_command(animation)) for animation in animations]
         script = " && ".join(commands)
 
-        logger.info("Playing all: %s", animations)
+        logger.info("Playing all: %s", [image.name for image in animations])
         self._exec(script, shell=True)
         self._playing = animations

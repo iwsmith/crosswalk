@@ -43,9 +43,14 @@ class Scene:
         return iter(self.animations)
 
 
-    def extend(self, more):
-        """Extend this scene with more animations. Mutates the scene."""
-        self.animations.extend(more)
+    def __str__(self):
+        """Render the scene as a string."""
+        return "Scene {}".format([image.name for image in self.animations])
+
+
+    def append(self, animation):
+        """Add an animation to this scene.."""
+        self.animations.append(animation)
         return self
 
 
@@ -71,7 +76,7 @@ class Library:
         for filename in os.listdir(os.path.join(self.image_dir, namespace)):
             name = os.path.splitext(filename)[0]
             path = os.path.join(self.image_dir, namespace, filename)
-            cfg = config.get(namespace, {}).get(name, {})
+            cfg = (config.get(namespace) or {}).get(name, {})
             animation = Animation(name, path)
 
             if 'loops' in cfg:
@@ -123,8 +128,11 @@ class Library:
         Generate a new walk scene by selecting from the available intros,
         walks, and outros.
         """
-        # TODO: implement
-        pass
+        intro = random.choice(self.intros)
+        outro = random.choice(self.outros)
+        # TODO: weighted probability tables
+        walk = random.choice(self.walks)
+        return Scene([intro, walk, outro])
 
 
 def pick_name(table):

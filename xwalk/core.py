@@ -98,5 +98,12 @@ class CrossWalk:
             pass
         elif self.mode == 'walk':
             # TODO: if long press, switch off
-            # TODO: walk interaction
-            pass
+            if self.is_ready():
+                # TODO: walk interaction
+                # select a new walk scene
+                scene = self.library.choose_walk()
+                scene.append(self.halt)
+                logger.info("Selected scene: %s", scene)
+                # TODO: call alternate crosswalk
+                self.image.play_all(scene)
+                self.audio.play_all(scene)
