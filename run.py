@@ -101,12 +101,10 @@ def set_state():
 @app.route("/sync", methods=['POST'])
 def sync_state():
     body = request.get_json() or {}
-    intro = body.get('intro')
-    outro = body.get('outro')
-    walk = body.get('walk')
-    if intro is None or outro is None or walk is None:
-        return jsonify({'error': "Missing intro, outro, or walk animations"}), 400
-    crosswalk.sync(intro, walk, outro)
+    scene = body.get('scene')
+    if not scene:
+        return jsonify({'error': "Missing scene to synchronize"}), 400
+    crosswalk.sync(scene)
     return jsonify(crosswalk.state())
 
 

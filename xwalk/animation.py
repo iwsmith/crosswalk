@@ -28,6 +28,16 @@ class Animation:
             " ({})".format(self.audio_path) if self.audio_path else "")
 
 
+    def copy(self):
+        """Return a copy of this animation."""
+        return Animation(
+            self.name,
+            self.image_path,
+            self.audio_path,
+            self.loops,
+            self.frame_delay)
+
+
 class Scene:
     """
     A scene is a sequence of animations.
@@ -78,9 +88,7 @@ class Library:
             path = os.path.join(self.image_dir, namespace, filename)
             cfg = (config.get(namespace) or {}).get(name, {})
             animation = Animation(name, path)
-
-            if 'loops' in cfg:
-                animation.loops = cfg['loops']
+            animation.loops = cfg.get('loops', 1)
 
             if 'frame_delay' in cfg:
                 animation.frame_delay = cfg['frame_delay']
@@ -123,11 +131,12 @@ class Library:
                 return animation
 
 
-    def find_scene(self, intro_name, walk_name, outro_name):
+    def find_scene(self, image_names):
         """
         Build a scene attempting to match the given intro, walk, and outro
         names.
         """
+        intro_name, walk_name, outro_name = image_names
         intro = next(image for image in self.intros if image.name == intro_name)
         outro = next(image for image in self.outros if image.name == outro_name)
         walk = next(image for image in self.walks if image.name == walk_name)

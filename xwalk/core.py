@@ -2,6 +2,8 @@ from datetime import datetime, timedelta
 import logging
 import os
 
+import requests
+
 from xwalk.animation import Animation, Scene, Library
 from xwalk.audio import AudioController
 from xwalk.demo import DemoController
@@ -67,6 +69,8 @@ class CrossWalk:
     def show(self, animation):
         """Set the crosswalk mode to show an image."""
         self.demos.kill()
+        animation = animation.copy()
+        animation.loops = None
         if animation.audio_path:
             self.audio.play(animation)
         else:
@@ -91,7 +95,7 @@ class CrossWalk:
         self.ready_at = datetime.now() + timedelta(seconds=self.cooldown)
 
 
-    def sync(self, intro_name, walk_name, outro_name):
+    def sync(self, image_names):
         """
         Synchronize this crosswalk with an animation scene selected by the
         other sign.
@@ -105,7 +109,7 @@ class CrossWalk:
             return
         else:
             logger.warn("Overriding cooldown state for contentious sync call")
-        scene = self.library.find_scene(intro_name, walk_name, outro_name)
+        scene = self.library.find_scene(image_names)
         self._play_walk(scene)
 
 
@@ -128,9 +132,11 @@ class CrossWalk:
         elif self.mode == 'walk':
             # TODO: if long press, switch off
             if self.is_ready():
-                # TODO: walk interaction
-                # select a new walk scene
                 scene = self.library.choose_walk()
                 logger.info("Selected scene: %s", scene)
-                # TODO: sync alternate crosswalk
+                dual = 'crosswalk-b' if self.host == 'crosswalk-a' else 'crosswalk-a'
+                try:
+                    requests.post("http://{}/sync".format(dual), {'scene': scene})
+                except Exception as ex:
+                    logger.warn("Failed to synchronize with %s: %s", dual, ex)
                 self._play_walk(scene)

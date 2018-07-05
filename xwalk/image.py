@@ -36,10 +36,10 @@ class ImageController:
         args.extend(VIEWER_COMMAND)
         if animation.loops:
             args.append("-l")
-            args.append(animation.loops)
+            args.append(str(animation.loops))
         if animation.frame_delay:
             args.append("-D")
-            args.append(animation.frame_delay)
+            args.append(str(animation.frame_delay))
         args.append(animation.image_path)
         return args
 
