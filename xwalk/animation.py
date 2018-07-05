@@ -54,10 +54,10 @@ class Library:
     A library of animations, used to construct new scenes.
     """
 
-    def __init__(self, image_dir, audio_dir, config_path):
+    def __init__(self, config_path, image_dir, audio_dir):
+        self.config_path = config_path
         self.image_dir = image_dir
         self.audio_dir = audio_dir
-        self.config_path = config_path
         self.intros = []
         self.outros = []
         self.walks = []

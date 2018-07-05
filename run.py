@@ -7,8 +7,8 @@ import os
 from flask import Flask, abort, request, jsonify, render_template, redirect, url_for
 from werkzeug.utils import secure_filename
 
+from xwalk.animation import Library
 from xwalk.core import CrossWalk
-from xwalk.scene import Library
 
 
 logging.basicConfig(
@@ -16,20 +16,16 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 app = Flask(__name__)
-library = Library('./static/img', './static/snd', 'config.yml')
+library = Library('config.yml', './static/img', './static/snd')
 crosswalk = CrossWalk(library)
 
 
 
 # GET    /               index page
+# POST   /refresh        reload the animation library
 
 # GET    /state          get the current app state
 # POST   /state          set a new state for the app
-#   mode=off
-#   mode=demo demo=n
-#   mode=image path=p
-#   mode=walk
-#   mode=sync id=x [intro=y] [outro=z]
 
 # POST   /button         trigger button press
 
@@ -88,11 +84,6 @@ def set_state():
             return jsonify({'error': "No image with name {}".format(name)}), 404
         crosswalk.show(image)
     elif mode == 'walk':
-        # TODO:
-        # check sync flag
-        # kill demo controller
-        # play walk images
-        # play walk audio
         crosswalk.walk()
     else:
         return jsonify({'error': "Unknown mode: {}".format(mode)}), 400

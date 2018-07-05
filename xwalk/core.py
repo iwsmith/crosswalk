@@ -1,11 +1,14 @@
 from datetime import datetime
+import logging
 import os
 
+from xwalk.animation import Animation, Scene, Library
 from xwalk.audio import AudioController
 from xwalk.demo import DemoController
 from xwalk.image import ImageController
-from xwalk.scene import Animation, Scene, Library
 
+
+logger = logging.getLogger(__name__)
 
 
 class CrossWalk:
