@@ -61,7 +61,7 @@ class AudioController:
         command = self._play_command(path)
         logger.info("Playing: %s", path)
 
-        self._process = subprocess.Popen(args)
+        self._process = subprocess.Popen(command)
         self._playing = [path]
 
 
