@@ -85,5 +85,18 @@ class CrossWalk:
         Indicate that a button has been pressed. If 'hold' is set, it means the
         button was held down for at least that many seconds.
         """
-        # TODO: things
-        pass
+        logger.debug("Button press: %.1f s", hold)
+        if self.mode == 'off':
+            # TODO: if long press, switch to next on mode
+            pass
+        elif self.mode == 'demo':
+            # TODO: if long press, switch off
+            self.demos.next()
+        elif self.mode == 'image':
+            # TODO: if long press, switch off
+            # TODO: show next image
+            pass
+        elif self.mode == 'walk':
+            # TODO: if long press, switch off
+            # TODO: walk interaction
+            pass

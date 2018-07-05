@@ -101,3 +101,13 @@ class DemoController:
         logger.info("Playing: %s", demo.description)
         self._exec(args)
         self._playing = demo
+
+
+    def next(self):
+        """Play the next demo if one is currenly playing, or the first one."""
+        if self._playing is None:
+            self.play(0)
+        elif self._playing.demo_id in [0, 1, 2]:
+            self.play(3)
+        else:
+            self.play((self._playing.demo_id + 1) % len(self._demos))
