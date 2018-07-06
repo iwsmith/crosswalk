@@ -25,8 +25,8 @@
   {{ status }}
   <br>
   <button class="btn btn-danger" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'off'})">Off</button>
-  <button class="btn" onclick="sendRequest('POST', '{{ url_for('refresh_library') }}'); window.location.reload(true)">Refresh</button>
-  <button class="btn" onclick="sendRequest('POST', '{{ url_for('push_button') }}', {})">Button</button>
+  <button class="btn btn-success" onclick="sendRequest('POST', '{{ url_for('refresh_library') }}'); window.location.reload(true)">Refresh</button>
+  <button class="btn btn-primary" onclick="sendRequest('POST', '{{ url_for('push_button') }}', {})">Button</button>
 
   <hr>
   <h1>Demos</h1>
@@ -48,10 +48,10 @@
             </figure>
         </div>
         <div class="col-1">
-            <button class="btn" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'image', image: '{{ image.name }}'})">Play</button>
+            <button class="btn btn-primary" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'image', image: '{{ image.name }}'})">Play</button>
         </div>
         <div class="col-1">
-            <button class="btn" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'walk', walk: '{{ image.name }}'})">Walk</button>
+            <button class="btn btn-secondary" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'walk', walk: '{{ image.name }}'})">Queue</button>
         </div>
     </div>
     {% endfor %}
@@ -69,7 +69,7 @@
             </figure>
         </div>
         <div class="col-1">
-            <button class="btn" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'image', image: '{{ image.name }}'})">Play</button>
+            <button class="btn btn-primary" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'image', image: '{{ image.name }}'})">Play</button>
         </div>
         <div class="col-1">
             <button class="btn btn-danger" onclick="sendRequest('DELETE', '{{ url_for('delete_image', name=image.name) }}')">Delete</button>
