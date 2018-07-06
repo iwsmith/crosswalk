@@ -51,6 +51,14 @@
   notify:
     - Restart crosswalk
 
+- name: Set audio mixer default
+  copy:
+    src: asound.state
+    dest: /var/lib/alsa/asound.state
+    owner: root
+    group: root
+    mode: '0644'
+
 - name: Write crosswalk service unit
   template:
     src: crosswalk.service
