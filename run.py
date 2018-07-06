@@ -191,17 +191,23 @@ def delete_image(name):
 
 @app.route("/queue/")
 def get_queue():
-    # TODO: implement
-    raise Error("NYI")
+    return jsonify([walk.name for walk in crosswalk.queue])
 
 
 @app.route("/queue/", methods=['POST'])
 def add_queue():
-    # TODO: implement
-    raise Error("NYI")
+    body = request.get_json() or {}
+    name = body.get('walk')
+    if not name:
+        return jsonify({'error': "Missing walk animation name"}), 400
+    walk = crosswalk.library.find_image(name)
+    if not walk:
+        return jsonify({'error': "Walk animation {} not found".format(name)}), 404
+    crosswalk.queue.append(walk)
+    return get_queue()
 
 
 @app.route("/queue/", methods=['DELETE'])
 def clear_queue():
-    # TODO: implement
-    raise Error("NYI")
+    crosswalk.queue = []
+    return "", 204

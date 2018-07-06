@@ -29,6 +29,7 @@ class CrossWalk:
         self.mode = 'off'
         self.cooldown = 30
         self.ready_at = datetime.now()
+        self.queue = []
 
 
     def is_ready(self):
@@ -44,6 +45,7 @@ class CrossWalk:
             'demo': self.demos.playing(),
             'image': self.image.playing(),
             'audio': self.audio.playing(),
+            'queue': [walk.name for walk in self.queue],
             'cooldown': self.cooldown,
             'ready_at': self.ready_at,
             'ready': self.is_ready(),
