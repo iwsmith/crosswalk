@@ -1,8 +1,6 @@
 import logging
 import subprocess
 
-import xwalk.scene
-
 
 VIEWER_COMMAND = [
     'led-image-viewer',

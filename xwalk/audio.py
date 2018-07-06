@@ -2,8 +2,6 @@ import logging
 import os
 import subprocess
 
-import xwalk.scene
-
 
 WAV_COMMAND = ["/usr/bin/aplay"]
 MP3_COMMAND = ["/usr/bin/mpg123"]
