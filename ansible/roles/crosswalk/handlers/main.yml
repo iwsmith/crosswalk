@@ -3,3 +3,8 @@
   service:
     name: crosswalk
     state: restarted
+
+- name: Restart button
+  service:
+    name: button
+    state: restarted

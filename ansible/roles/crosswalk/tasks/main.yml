@@ -59,6 +59,23 @@
     group: root
     mode: '0644'
 
+- name: Write button service unit
+  template:
+    src: button.service
+    dest: /lib/systemd/system/button.service
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - Restart button
+
+- name: Enable button service
+  systemd:
+    name: button
+    state: started
+    enabled: true
+    daemon_reload: true
+
 - name: Write crosswalk service unit
   template:
     src: crosswalk.service

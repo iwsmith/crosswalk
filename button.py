@@ -15,7 +15,7 @@ def button_press():
         requests.post("http://localhost/button")
         last_press = datetime.now()
 
-button = Button(18)
+button = Button(18, bounce_time=0.5)
 
 button.when_released = button_press
 
