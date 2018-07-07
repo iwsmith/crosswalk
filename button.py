@@ -1,23 +1,30 @@
 from datetime import datetime
-from gpiozero import Button
+from gpiozero import LED, Button
 from signal import pause
+import logging
 import requests
 
-last_press = datetime.now()
+logging.warning("Starting button")
+led = LED(24)
+led.on()
+button = Button(18, bounce_time=.1, hold_time=20)
 
-def button_press():
-    global last_press
-    delta = datetime.now() - last_press
-    if delta.total_seconds() < 0.5:
-        print("debounced ({})".format(delta))
-    else:
-        print("button press")
-        requests.post("http://localhost/button")
-        last_press = datetime.now()
+def button_released():
+    print("Button released")
+    led.on()
+    requests.post("http://localhost/button")
 
-button = Button(18, bounce_time=0.5)
+def button_held():
+    print("Button held")
 
-button.when_released = button_press
+def button_pressed():
+    print("button pressed")
+    led.off()
+
+
+button.when_pressed = button_pressed
+button.when_released = button_released
+button.when_held = button_held
 
 # TODO: spin and check /state to set button light
 pause()
