@@ -49,7 +49,7 @@ while True:
                 logging.info("Crosswalk is ready!")
             sign_ready = True
             led.on()
-            time.sleep(1)
+            time.sleep(10)
         elif ready_at <= now:
             # Crosswalk just became ready.
             logging.debug("Wait for it...")
@@ -69,4 +69,4 @@ while True:
             time.sleep(naptime)
     except Exception as ex:
         logging.error("Caught exception while checking crosswalk state: %s", ex)
-        time.sleep(1)
+        time.sleep(10)
