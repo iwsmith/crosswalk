@@ -138,7 +138,7 @@ class CrossWalk:
                 logger.info("Selected scene: %s", scene)
                 dual = 'crosswalk-b' if self.host == 'crosswalk-a' else 'crosswalk-a'
                 try:
-                    requests.post("http://{}/sync".format(dual), {'scene': scene})
+                    requests.post("http://{}/sync".format(dual), json={'scene': [animation.name for animation in scene]})
                 except Exception as ex:
                     logger.warn("Failed to synchronize with %s: %s", dual, ex)
                 self._play_walk(scene)
