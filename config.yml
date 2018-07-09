@@ -1,5 +1,17 @@
 ---
 intros:
+  wait2:
+    file: wait2.gif
+    loops: 2
+  wait4:
+    file: wait4.gif
+    loops: 4
+  wait6:
+    file: wait6.gif
+    loops: 6
+  wait8:
+    file: wait8.gif
+    loops: 8
 
 outros:
   9s-count:
