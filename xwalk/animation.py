@@ -114,6 +114,9 @@ class Library:
 
             animations.append(animation)
 
+        categories = set([animation.category for animation in animations if animation.category])
+        logger.info("Loaded %d images across categories: %s", len(animations), ", ".join(categories))
+
         return animations
 
 
