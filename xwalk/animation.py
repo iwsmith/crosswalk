@@ -173,7 +173,7 @@ class Library:
         if not self.schedule:
             return None
         recent = self.schedule[0]
-        for entry in self.chedule:
+        for entry in self.schedule:
             start = entry.get('start')
             if start is None or time < start:
                 break
