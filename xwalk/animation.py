@@ -133,7 +133,7 @@ class Library:
         self.uploads = self._load_images('uploads')
         self.intros = self._load_images('intros', config, sounds)
         self.outros = self._load_images('outros', config, sounds)
-        self.outros = self._load_images('walks', config, sounds)
+        self.walks = self._load_images('walks', config, sounds)
 
         self.weights = config['weights'] or {}
         self.schedule = [
