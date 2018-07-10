@@ -4,41 +4,69 @@ import logging
 import requests
 import time
 
-logging.warning("Starting button")
+logging.basicConfig(
+    level='DEBUG',
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+logging.warning("Starting button watcher")
 led = LED(24)
-led.on()
-button = Button(18, bounce_time=.1, hold_time=20)
+button = Button(18, hold_time=20)
+sign_ready = False
 
 
 def button_released():
-    if led.value:
+    global sign_ready
+    logging.debug("Button released: %s (LED: %s)", sign_ready, led.value)
+    if sign_ready:
+        sign_ready = False
         requests.post("http://localhost/button")
+        led.off()
 
 
 def button_held():
     logging.warning("Long button press detected, resetting...")
-    requests.posts("http://localhost/reset")
+    requests.post("http://localhost/reset")
 
 
 def button_pressed():
-    led.off()
+    logging.debug("Button pressed (ready: %s)", sign_ready)
+    #led.off()
 
 
 button.when_pressed = button_pressed
 button.when_released = button_released
 button.when_held = button_held
 
-# TODO: spin and check /state to set button light
+# Spin and check /state to set button light.
 while True:
-    state = requests.get("Http://localhost/state").json()
-    if state["ready"]:
-        led.on()
-        time.sleep(1)
-    else:
-        delta = datetime.strptime(state["ready_at"], "%a, %d %b %Y %H:%M:%S %Z") - datetime.now()
-        logging.warning("Ready in %d seconds", delta)
-        if 600 > delta.seconds > 0:
-            time.sleep(delta.seconds)
-        else:
-            logging.error("Delay to high (%d seconds), polling at 1 second intervals...", delta.seconds)
+    try:
+        state = requests.get("http://localhost/state").json()
+        ready_at = datetime.strptime(state["ready_at"], "%a, %d %b %Y %H:%M:%S %Z")
+        now = datetime.now()
+        if state["ready"]:
+            # Crosswalk reports as ready
+            if sign_ready == False:
+                logging.info("Crosswalk is ready!")
+            sign_ready = True
+            led.on()
+            time.sleep(10)
+        elif ready_at <= now:
+            # Crosswalk just became ready.
+            logging.debug("Wait for it...")
             time.sleep(1)
+        else:
+            # Crosswalk is not ready yet
+            sign_ready = False
+            led.off()
+            delta = ready_at - now
+            if delta.seconds >= 60:
+                naptime = 30
+            elif delta.seconds >= 1:
+                naptime = delta.seconds/2
+            else:
+                naptime = delta.total_seconds() + 0.25
+            logging.debug("Crosswalk ready in %s (sleeping %.2f)", delta, naptime)
+            time.sleep(naptime)
+    except Exception as ex:
+        logging.error("Caught exception while checking crosswalk state: %s", ex)
+        time.sleep(10)

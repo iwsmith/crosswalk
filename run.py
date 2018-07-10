@@ -18,7 +18,7 @@ logging.basicConfig(
 app = Flask(__name__)
 library = Library('config.yml', './static/img', './static/snd')
 crosswalk = CrossWalk(library)
-
+crosswalk.walk()
 
 
 # GET    /               index page

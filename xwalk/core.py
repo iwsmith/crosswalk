@@ -25,7 +25,7 @@ class CrossWalk:
         self.demos = DemoController()
         self.image = ImageController()
         self.audio = AudioController()
-        self.halt = Animation('halt', os.path.join(library.image_dir, 'stop.png'))
+        self.halt = Animation('halt', os.path.join(library.image_dir, 'stop.gif'))
         self.mode = 'off'
         self.cooldown = 30
         self.ready_at = datetime.now()
@@ -138,7 +138,7 @@ class CrossWalk:
                 logger.info("Selected scene: %s", scene)
                 dual = 'crosswalk-b' if self.host == 'crosswalk-a' else 'crosswalk-a'
                 try:
-                    requests.post("http://{}/sync".format(dual), {'scene': scene})
+                    requests.post("http://{}/sync".format(dual), json={'scene': [animation.name for animation in scene]})
                 except Exception as ex:
                     logger.warn("Failed to synchronize with %s: %s", dual, ex)
                 self._play_walk(scene)

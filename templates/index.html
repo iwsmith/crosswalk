@@ -25,6 +25,7 @@
   {{ status }}
   <br>
   <button class="btn btn-danger" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'off'})">Off</button>
+  <button class="btn btn-success" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'walk'})">Walk</button>
   <button class="btn btn-success" onclick="sendRequest('POST', '{{ url_for('refresh_library') }}'); window.location.reload(true)">Refresh</button>
   <button class="btn btn-primary" onclick="sendRequest('POST', '{{ url_for('push_button') }}', {})">Button</button>
 
@@ -51,7 +52,7 @@
             <button class="btn btn-primary" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'image', image: '{{ image.name }}'})">Play</button>
         </div>
         <div class="col-1">
-            <button class="btn btn-secondary" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'walk', walk: '{{ image.name }}'})">Queue</button>
+            <button class="btn btn-secondary" onclick="sendRequest('POST', '{{ url_for('add_queue') }}', {walk: '{{ image.name }}'})">Enqueue</button>
         </div>
     </div>
     {% endfor %}
