@@ -137,7 +137,7 @@ class CrossWalk:
             if self.is_ready():
                 if self.queue:
                     next_walk = self.queue.pop(0)
-                    scene = self.library.build_scene(walk_name=next_walk)
+                    scene = self.library.build_scene(walk=next_walk)
                 else:
                     scene = self.library.build_scene()
                 logger.info("Selected scene: %s", scene)

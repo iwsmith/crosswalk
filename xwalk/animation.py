@@ -218,7 +218,7 @@ class Library:
         ])
 
 
-    def build_scene(self, walk_name=None):
+    def build_scene(self, walk=None):
         """
         Generate a new walk scene by selecting from the available intros,
         walks, and outros. A specific walk name may be provided to force its
@@ -226,10 +226,9 @@ class Library:
         """
         intro = random.choice(self.intros)
         outro = random.choice(self.outros)
-        if walk_name is None:
+        if walk is None:
             walk = self._choose_walk()
             logger.info("Randomly selected walk %s", walk)
         else:
-            walk = self._find_image(walk_name)
             logger.info("Force selected walk %s", walk)
         return Scene([intro, walk, outro])
