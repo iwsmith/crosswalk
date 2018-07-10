@@ -87,7 +87,7 @@ say -v $VOICE "Stretch sign is on. Hold this position until the end of the count
 
 say -v $VOICE "Ski sign is on. Ski now." --data-format=$DATA_FORMAT -o $SND_FOLDER/ski.wav
 
-say -v $VOICE "Sleep sign is on. Find a safe place and catch some z's now" --data-format=$DATA_FORMAT -o $SND_FOLDER/sleep.wav
+say -v $VOICE "Sleep sign is on. Find a safe place and catch some z's now" --data-format=$DATA_FORMAT -o "$SND_FOLDER/sleep.wav"
 
 say -v $VOICE "Nature appreciation sign is on. Go find a plant or animal to appreciate. Take in its color, its shape, its splendor. [[slnc 300]] Appreciate now." --data-format=$DATA_FORMAT -o $SND_FOLDER/natureappreciate.wav
 
@@ -100,6 +100,26 @@ say -v $VOICE "Business meeting sign is on. The youngest person must present on 
 say -v $VOICE "Pose sign is on. Pose now." --data-format=$DATA_FORMAT -o $SND_FOLDER/pose.wav
 
 say -v $VOICE "Squatwalk sign is on. Squat as much as you can and waddle across the road now." --data-format=$DATA_FORMAT -o $SND_FOLDER/squatwalk.wav
+
+say -v $VOICE "Hopscotch sign is on. Hopscotch now." --data-format=$DATA_FORMAT -o $SND_FOLDER/hopschotch.wav
+
+say -v $VOICE "Chestbump sign is on. Bro, bump chests now." --data-format=$DATA_FORMAT -o $SND_FOLDER/chestbump.wav
+
+say -v $VOICE "Superspeed sign is on. Break the sound barrier now." --data-format=$DATA_FORMAT -o $SND_FOLDER/superspeed.wav
+
+say -V $VOICE "Elephant sign is on. [[slcn 1000]] now." --data-format=$DATA_FORMAT -o $SND_FOLDER/elephant.wav
+
+say -V $VOICE "Camel sign is on. [[slcn 1000]] now." --data-format=$DATA_FORMAT -o $SND_FOLDER/camel.wav
+
+say -V $VOICE "Rabbit sign is on. [[slcn 1000]] now." --data-format=$DATA_FORMAT -o $SND_FOLDER/rabbit.wav
+
+say -V $VOICE "Turtle sign is on. [[slcn 1000]] now." --data-format=$DATA_FORMAT -o $SND_FOLDER/turtle.wav
+
+say -V $VOICE "Fish sign is on. [[slcn 1000]] now." --data-format=$DATA_FORMAT -o $SND_FOLDER/fish.wav
+
+say -V $VOICE "Whale sign is on. [[slcn 1000]] now." --data-format=$DATA_FORMAT -o $SND_FOLDER/whale.wav
+
+say -V $VOICE "Hummingbird sign is on. [[slcn 1000]] now." --data-format=$DATA_FORMAT -o $SND_FOLDER/hummingbird.wav
 
 #say -v $VOICE "" --data-format=$DATA_FORMAT -o $SND_FOLDER/
 
