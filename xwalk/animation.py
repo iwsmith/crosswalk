@@ -191,11 +191,11 @@ class Library:
 
         weight_name = current and current.get('weights')
         weights = weight_name and self.weights.get(weight_name) or {}
-        weights = [
+        weights = {
             category: weight
             for category, weight in weights.items()
             if category in valid_categories
-        ]
+        }
         logger.debug("Currently scheduled entry %s resulted in pruned weight table: %s", current, repr(weights))
 
         # Uniform random if no (or empty) weight table.
@@ -203,7 +203,7 @@ class Library:
             return random.choice(self.walks)
 
         # Find which category our random dart lands on.
-        total = sum(weights.values)
+        total = sum(weights.values())
         point = random.randrange(0, total)
         for category, weight in weights.items():
             selected = category
