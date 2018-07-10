@@ -138,8 +138,8 @@ class Library:
         self.weights = config['weights'] or {}
         self.schedule = [
             {
-                'start': datetime.parse(entry['start']),
-                'weights': entry['weights']
+                'start': datetime.strptime(entry['start'], "%Y-%m-%dT%H:%M:%S"),
+                'weights': entry['weights'],
             }
             for entry in config['schedule']
         ]
