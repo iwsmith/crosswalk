@@ -25,7 +25,7 @@ class CrossWalk:
         self.demos = DemoController()
         self.image = ImageController()
         self.audio = AudioController()
-        self.halt = Animation('halt', os.path.join(library.image_dir, 'stop.png'))
+        self.halt = Animation('halt', os.path.join(library.image_dir, 'stop.gif'))
         self.mode = 'off'
         self.cooldown = 30
         self.ready_at = datetime.now()
