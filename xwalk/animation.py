@@ -91,7 +91,7 @@ class Library:
         self.refresh()
 
 
-    def _load_images(self, namespace, config={}, sounds={}, default_sound=None):
+    def _load_images(self, namespace, config={}, sounds={}, default_sound=None, default_loops=1):
         """Load a directory of images, returning a list of animations."""
         animations = []
         subdir = os.path.join(self.image_dir, namespace)
@@ -103,7 +103,7 @@ class Library:
             animation = Animation(name, path)
             animation.category = cfg.get('category')
             animation.frame_delay = cfg.get('frame_delay')
-            animation.loops = cfg.get('loops', 1)
+            animation.loops = cfg.get('loops', default_loops)
 
             if 'audio' in cfg:
                 animation.audio_path = os.path.join(self.audio_dir, cfg['audio'])
@@ -133,7 +133,7 @@ class Library:
         self.uploads = self._load_images('uploads')
         self.intros = self._load_images('intros', config, sounds)
         self.outros = self._load_images('outros', config, sounds)
-        self.walks = self._load_images('walks', config, sounds)
+        self.walks = self._load_images('walks', config, sounds, 'walk_now.wav', 5)
 
         self.weights = config['weights'] or {}
         self.schedule = [
