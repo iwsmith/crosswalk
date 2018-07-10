@@ -1,7 +1,10 @@
 from datetime import datetime
+import logging
 import os
 import random
 import yaml
+
+logger = logging.getLogger(__name__)
 
 
 class Animation:
@@ -11,13 +14,19 @@ class Animation:
     associated with it.
     """
 
-    def __init__(self, name, image_path, audio_path=None, loops=None, frame_delay=None):
+    def __init__(
+            self, name, image_path,
+            audio_path=None,
+            frame_delay=None,
+            loops=None,
+            category=None):
         """Construct a new animated image step."""
         self.name = name
         self.image_path = image_path
         self.audio_path = audio_path
-        self.loops = loops
         self.frame_delay = frame_delay
+        self.loops = loops
+        self.category = category
 
 
     def __str__(self):
@@ -77,21 +86,24 @@ class Library:
         self.outros = []
         self.walks = []
         self.uploads = []
+        self.weights = {}
+        self.schedule = []
         self.refresh()
 
 
     def _load_images(self, namespace, config={}, sounds={}, default_sound=None, default_loops=1):
         """Load a directory of images, returning a list of animations."""
         animations = []
-        for filename in os.listdir(os.path.join(self.image_dir, namespace)):
+        subdir = os.path.join(self.image_dir, namespace)
+        logger.debug("Loading %s images in %s", namespace, subdir)
+        for filename in os.listdir(subdir):
             name = os.path.splitext(filename)[0]
-            path = os.path.join(self.image_dir, namespace, filename)
+            path = os.path.join(subdir, filename)
             cfg = (config.get(namespace) or {}).get(name, {})
             animation = Animation(name, path)
+            animation.category = cfg.get('category')
+            animation.frame_delay = cfg.get('frame_delay')
             animation.loops = cfg.get('loops', default_loops)
-
-            if 'frame_delay' in cfg:
-                animation.frame_delay = cfg['frame_delay']
 
             if 'audio' in cfg:
                 animation.audio_path = os.path.join(self.audio_dir, cfg['audio'])
@@ -118,10 +130,19 @@ class Library:
             for filename in os.listdir(self.audio_dir)
         }
 
+        self.uploads = self._load_images('uploads')
         self.intros = self._load_images('intros', config, sounds)
         self.outros = self._load_images('outros', config, sounds)
         self.walks = self._load_images('walks', config, sounds, 'walk_now.wav', 5)
-        self.uploads = self._load_images('uploads')
+
+        self.weights = config['weights'] or {}
+        self.schedule = [
+            {
+                'start': datetime.strptime(entry['start'], "%Y-%m-%dT%H:%M:%S"),
+                'weights': entry['weights'],
+            }
+            for entry in config['schedule']
+        ]
 
 
     def find_image(self, name):
@@ -143,45 +164,71 @@ class Library:
         return Scene([intro, walk, outro])
 
 
-    def choose_walk(self, weights=None):
+    def _scheduled_entry(self, time=datetime.now()):
+        """
+        Search through the schedule looking at the start dates. Returns the last
+        entry which is earlier than the given time.
+        """
+        # Nothing to pick if schedule is empty.
+        if not self.schedule:
+            return None
+        recent = self.schedule[0]
+        for entry in self.schedule:
+            start = entry.get('start')
+            if start is None or time < start:
+                break
+            recent = entry
+        return recent
+
+
+    def _choose_walk(self):
         """
         Generate a new walk scene by selecting from the available intros,
         walks, and outros.
         """
+        current = self._scheduled_entry()
+        valid_categories = set([animation.category for animation in self.walks if animation.category])
+
+        weight_name = current and current.get('weights')
+        weights = weight_name and self.weights.get(weight_name) or {}
+        weights = {
+            category: weight
+            for category, weight in weights.items()
+            if category in valid_categories
+        }
+        logger.debug("Currently scheduled entry %s resulted in pruned weight table: %s", current, repr(weights))
+
+        # Uniform random if no (or empty) weight table.
+        if not weights:
+            return random.choice(self.walks)
+
+        # Find which category our random dart lands on.
+        total = sum(weights.values())
+        point = random.randrange(0, total)
+        for category, weight in weights.items():
+            selected = category
+            point -= weight
+            if point <= 0:
+                break
+        # Pick a random image from the category.
+        return random.choice([
+            animation
+            for animation in self.walks
+            if selected == '_' and animation.category not in weights or animation.category == selected
+        ])
+
+
+    def build_scene(self, walk=None):
+        """
+        Generate a new walk scene by selecting from the available intros,
+        walks, and outros. A specific walk name may be provided to force its
+        selection.
+        """
         intro = random.choice(self.intros)
         outro = random.choice(self.outros)
-        if weights is None:
-            walk = random.choice(self.walks)
+        if walk is None:
+            walk = self._choose_walk()
+            logger.info("Randomly selected walk %s", walk)
         else:
-            # TODO: weighted probability tables
-            raise Error("NYI")
+            logger.info("Force selected walk %s", walk)
         return Scene([intro, walk, outro])
-
-
-def pick_name(table):
-    """Choose an animation out of the table and return it."""
-    total = sum(table.values())
-    point = random.randrange(0, total)
-    for name, weight in table.items():
-        selected = name
-        point -= weight
-        if point <= 0:
-            break
-    return selected
-
-
-def scheduled_at(schedule, time=datetime.now()):
-    """
-    Search through the schedule looking at the start date. Returns the last
-    entry which is earlier than the present.
-    """
-    # Nothing to pick if schedule is empty.
-    if not schedule:
-        return None
-    recent = schedule.first()
-    for entry in schedule:
-        start = entry.get('start')
-        if start is None or time < start:
-            break
-        recent = entry
-    return recent

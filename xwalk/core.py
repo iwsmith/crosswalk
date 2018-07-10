@@ -92,6 +92,7 @@ class CrossWalk:
     def _play_walk(self, scene):
         """Play a walk scene."""
         scene.append(self.halt)
+        self.demos.kill()
         self.image.play_all(scene)
         self.audio.play_all(scene)
         self.ready_at = datetime.now() + timedelta(seconds=self.cooldown)
@@ -134,7 +135,11 @@ class CrossWalk:
         elif self.mode == 'walk':
             # TODO: if long press, switch off
             if self.is_ready():
-                scene = self.library.choose_walk()
+                if self.queue:
+                    next_walk = self.queue.pop(0)
+                    scene = self.library.build_scene(walk=next_walk)
+                else:
+                    scene = self.library.build_scene()
                 logger.info("Selected scene: %s", scene)
                 dual = 'crosswalk-b' if self.host == 'crosswalk-a' else 'crosswalk-a'
                 try:

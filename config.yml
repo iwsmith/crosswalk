@@ -28,15 +28,30 @@ walks:
     loops: 12
   triptrap:
     loops: 1
-  why-cross: 
+  why-cross:
     loops: 1
   westworldmaze:
     loops: 18
 
 weights:
-  A: {}
+  all:
+    _: 1
+  normal:
+    normal: 1
+  tweak:
+    normal: 5
+    animals: 1
+    joke: 1
+    style: 1
+  ampup:
+    normal: 5
+    animals: 10
+    style: 5
+    joke: 2
+    special: 2
+    trippy: 1
 
 
 schedule:
-  - start: 2018-07-09T00:00:00
-    weights: A
+  - start: '2018-07-09T00:00:00'
+    weights: normal
