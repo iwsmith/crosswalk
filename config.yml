@@ -14,6 +14,7 @@ outros:
 walks:
   airguitar:
     category: long
+    loops: 20
   antelope:
     category: animals
   appreciate:
@@ -26,10 +27,12 @@ walks:
     category: actions
   businessmeeting:
     category: funny
+    loops: 7
   camel:
     category: animals
   cartwheel:
     category: actions
+    loops: 4
   converse:
     category: social
   corgi:
@@ -74,8 +77,10 @@ walks:
     category: actions
   meditate:
     category: mindful
+    loops: 60
   natureappreciate:
     category: mindful
+    loops: 7
   nyan:
     category: funny
   orca:
@@ -92,6 +97,7 @@ walks:
     loops: 1
   resilience:
     category: mindful
+    loops: 17
   rowboat:
     category: actions
   run:
@@ -126,6 +132,8 @@ walks:
     loops: 1
   wok:
     category: funny
+  westworldmaze:
+    loops: 18
 
 
 weights:
