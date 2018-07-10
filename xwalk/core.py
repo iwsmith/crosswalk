@@ -92,6 +92,7 @@ class CrossWalk:
     def _play_walk(self, scene):
         """Play a walk scene."""
         scene.append(self.halt)
+        self.demos.kill()
         self.image.play_all(scene)
         self.audio.play_all(scene)
         self.ready_at = datetime.now() + timedelta(seconds=self.cooldown)
