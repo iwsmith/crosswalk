@@ -112,6 +112,9 @@ class Library:
             elif default_sound is not None:
                 animation.audio_path = os.path.join(self.audio_dir, default_sound)
 
+            if not animation.category:
+                logger.warning("No category found for %s", filename)
+
             animations.append(animation)
 
         categories = set([animation.category for animation in animations if animation.category])

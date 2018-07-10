@@ -121,6 +121,8 @@ walks:
   turtle:
     category: animals
     loops: 12
+  unicycle:
+    category: actions
   walkdress:
     category: normal
   walkpants:
@@ -132,7 +134,10 @@ walks:
     loops: 1
   wok:
     category: funny
+  walkingtogether:
+    category: social
   westworldmaze:
+    category: mindful
     loops: 18
 
 
