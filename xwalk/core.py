@@ -135,7 +135,11 @@ class CrossWalk:
         elif self.mode == 'walk':
             # TODO: if long press, switch off
             if self.is_ready():
-                scene = self.library.choose_walk()
+                if self.queue:
+                    next_walk = self.queue.pop(0)
+                    scene = self.library.build_scene(walk_name=next_walk)
+                else:
+                    scene = self.library.build_scene()
                 logger.info("Selected scene: %s", scene)
                 dual = 'crosswalk-b' if self.host == 'crosswalk-a' else 'crosswalk-a'
                 try:
