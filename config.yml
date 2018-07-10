@@ -2,8 +2,6 @@
 intros:
 
 outros:
-  9s-count:
-    file: 9s-count.gif
 
 walks:
   corgi:
@@ -31,5 +29,5 @@ weights:
 
 
 schedule:
-  - start: 2018-07-09T00:00:00
+  - start: '2018-07-09T00:00:00'
     weights: normal
