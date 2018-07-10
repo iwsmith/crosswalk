@@ -80,7 +80,7 @@ class Library:
         self.refresh()
 
 
-    def _load_images(self, namespace, config={}, sounds={}, default_sound=None):
+    def _load_images(self, namespace, config={}, sounds={}, default_sound=None, default_loops=1):
         """Load a directory of images, returning a list of animations."""
         animations = []
         for filename in os.listdir(os.path.join(self.image_dir, namespace)):
@@ -88,7 +88,7 @@ class Library:
             path = os.path.join(self.image_dir, namespace, filename)
             cfg = (config.get(namespace) or {}).get(name, {})
             animation = Animation(name, path)
-            animation.loops = cfg.get('loops', 1)
+            animation.loops = cfg.get('loops', default_loops)
 
             if 'frame_delay' in cfg:
                 animation.frame_delay = cfg['frame_delay']
@@ -120,7 +120,7 @@ class Library:
 
         self.intros = self._load_images('intros', config, sounds)
         self.outros = self._load_images('outros', config, sounds)
-        self.walks = self._load_images('walks', config, sounds, 'walk_now.wav')
+        self.walks = self._load_images('walks', config, sounds, 'walk_now.wav', 5)
         self.uploads = self._load_images('uploads')
 
 

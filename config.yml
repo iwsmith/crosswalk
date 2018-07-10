@@ -7,9 +7,21 @@ outros:
 
 walks:
   corgi:
-    audio: corgi.wav
+    loops: 1
+  hammer-time:
+    loops: 1
+  nyan:
+    loops: 1
+  presentation:
+    loops: 1
+  race:
+    loops: 1
   turtle:
     loops: 12
+  triptrap:
+    loops: 1
+  why-cross: 
+    loops: 1
 
 weights:
   A: {}
