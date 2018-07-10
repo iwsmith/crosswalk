@@ -91,22 +91,19 @@ class Library:
         self.refresh()
 
 
-    def _load_images(self, namespace, config={}, sounds={}, category=None, default_sound=None):
+    def _load_images(self, namespace, config={}, sounds={}, default_sound=None):
         """Load a directory of images, returning a list of animations."""
         animations = []
         subdir = os.path.join(self.image_dir, namespace)
         logger.debug("Loading %s images in %s", namespace, subdir)
-        if category is not None:
-            subdir = os.path.join(subdir, category)
         for filename in os.listdir(subdir):
             name = os.path.splitext(filename)[0]
             path = os.path.join(subdir, filename)
             cfg = (config.get(namespace) or {}).get(name, {})
-            animation = Animation(name, path, category=category)
+            animation = Animation(name, path)
+            animation.category = cfg.get('category')
+            animation.frame_delay = cfg.get('frame_delay')
             animation.loops = cfg.get('loops', 1)
-
-            if 'frame_delay' in cfg:
-                animation.frame_delay = cfg['frame_delay']
 
             if 'audio' in cfg:
                 animation.audio_path = os.path.join(self.audio_dir, cfg['audio'])
@@ -136,16 +133,7 @@ class Library:
         self.uploads = self._load_images('uploads')
         self.intros = self._load_images('intros', config, sounds)
         self.outros = self._load_images('outros', config, sounds)
-
-        self.walks = []
-        for filename in os.listdir(os.path.join(self.image_dir, 'walks')):
-            subdir = os.path.join(self.image_dir, 'walks', filename):
-            if os.path.isdir(subdir):
-                subwalks = self._load_images(
-                    'walks', config, sounds,
-                    category=filename,
-                    default_sound='walk_now.wav')
-                self.walks.extend(subwalks)
+        self.outros = self._load_images('walks', config, sounds)
 
         self.weights = config['weights'] or {}
         self.schedule = [
@@ -193,42 +181,55 @@ class Library:
         return recent
 
 
-    def choose_walk(self):
+    def _choose_walk(self):
         """
         Generate a new walk scene by selecting from the available intros,
         walks, and outros.
         """
-        intro = random.choice(self.intros)
-        outro = random.choice(self.outros)
-
-        valid_categories = set([animation.category for animation in self.walks if animation.category])
         current = self._scheduled_entry()
+        valid_categories = set([animation.category for animation in self.walks if animation.category])
+
         weight_name = current and current.get('weights')
         weights = weight_name and self.weights.get(weight_name) or {}
         weights = [
             category: weight
             for category, weight in weights.items()
-            if category in categories
+            if category in valid_categories
         ]
         logger.debug("Currently scheduled entry %s resulted in pruned weight table: %s", current, repr(weights))
 
+        # Uniform random if no (or empty) weight table.
         if not weights:
-            # Uniform random if no (or empty) weight table.
-            walk = random.choice(self.walks)
-        else:
-            # Find which category our random dart lands on.
-            total = sum(weights.values)
-            point = random.randrange(0, total)
-            for category, weight in weights.items():
-                selected = category
-                point -= weight
-                if point <= 0:
-                    break
-            # Pick a random image from the category.
-            walk = random.choice([
-                animation
-                for animation in self.walks
-                if selected == '_' and animation.category not in weights or animation.category == selected
-            ])
+            return random.choice(self.walks)
 
+        # Find which category our random dart lands on.
+        total = sum(weights.values)
+        point = random.randrange(0, total)
+        for category, weight in weights.items():
+            selected = category
+            point -= weight
+            if point <= 0:
+                break
+        # Pick a random image from the category.
+        return random.choice([
+            animation
+            for animation in self.walks
+            if selected == '_' and animation.category not in weights or animation.category == selected
+        ])
+
+
+    def build_scene(self, walk_name=None):
+        """
+        Generate a new walk scene by selecting from the available intros,
+        walks, and outros. A specific walk name may be provided to force its
+        selection.
+        """
+        intro = random.choice(self.intros)
+        outro = random.choice(self.outros)
+        if walk_name is None:
+            walk = self._choose_walk()
+            logger.info("Randomly selected walk %s", walk)
+        else:
+            walk = self._find_image(walk_name)
+            logger.info("Force selected walk %s", walk)
         return Scene([intro, walk, outro])
