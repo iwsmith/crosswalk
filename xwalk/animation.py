@@ -172,7 +172,7 @@ class Library:
         # Nothing to pick if schedule is empty.
         if not self.schedule:
             return None
-        recent = self.schedule.first()
+        recent = self.schedule[0]
         for entry in self.chedule:
             start = entry.get('start')
             if start is None or time < start:
