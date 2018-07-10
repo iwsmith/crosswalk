@@ -8,8 +8,10 @@ walks:
     loops: 20
   businessmeeting:
     loops: 7
+  cartwheel:
+    loops: 4
   corgi:
-    loops: 1
+    loops: 3
   hammer-time:
     loops: 1
   meditate:
