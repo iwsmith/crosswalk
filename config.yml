@@ -3,41 +3,136 @@ intros:
 
 outros:
 
+
+# actions
+# animals
+# social
+# funny
+# long
+# mindful
+
 walks:
+  airguitar:
+    category: long
+  antelope:
+    category: animals
+  appreciate:
+    category: social
+  art:
+    category: actions
+  bike:
+    category: actions
+  bowl:
+    category: actions
+  businessmeeting:
+    category: funny
+  camel:
+    category: animals
+  cartwheel:
+    category: actions
+  converse:
+    category: social
   corgi:
-    loops: 1
+    category: funny
+    loops: 3
+  crabwalk:
+    category: actions
+  crawl:
+    category: actions
+  elephant:
+    category: animals
+  fall:
+    category: actions
+  fish:
+    category: animals
+  flying:
+    category: actions
   hammer-time:
+    category: long
     loops: 1
+  handstand:
+    category: actions
+  highfive:
+    category: social
+  horse:
+    category: animals
+  horsebackriding:
+    category: actions
+  hug:
+    category: social
+  hug3:
+    category: social
+  hug4:
+    category: social
+  hug5:
+    category: social
+  hummingbird:
+    category: animals
+  jump:
+    category: actions
+  leapfrog:
+    category: actions
+  meditate:
+    category: mindful
+  natureappreciate:
+    category: mindful
   nyan:
-    loops: 1
+    category: funny
+  orca:
+    category: animals
+  piggyback:
+    category: actions
+  pose:
+    category: funny
   presentation:
+    category: social
     loops: 1
   race:
+    category: actions
     loops: 1
-  turtle:
-    loops: 12
+  resilience:
+    category: mindful
+  rowboat:
+    category: actions
+  run:
+    category: actions
+  ski:
+    category: actions
+  sleep:
+    category: funny
+  sloth:
+    category: animals
+  surf:
+    category: actions
+  swim:
+    category: actions
+  tag:
+    category: social
+  teleport:
+    category: funny
   triptrap:
-    loops: 1
+    category: funny
+  turtle:
+    category: animals
+    loops: 12
+  walkdress:
+    category: normal
+  walkpants:
+    category: normal
+  wheelbarrow:
+    category: social
   why-cross:
+    category: mindful
     loops: 1
+  wok:
+    category: funny
+
 
 weights:
   all:
     _: 1
   normal:
     normal: 1
-  tweak:
-    normal: 5
-    animals: 1
-    joke: 1
-    style: 1
-  ampup:
-    normal: 5
-    animals: 10
-    style: 5
-    joke: 2
-    special: 2
-    trippy: 1
 
 
 schedule:
