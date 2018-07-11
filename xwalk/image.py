@@ -41,6 +41,10 @@ class ImageController:
         args.append(animation.image_path)
         return args
 
+    
+    def _done_command(self):
+        return "/usr/bin/curl http://localhost/ready"
+
 
     def playing(self):
         """Return a vector of information about the currently playing animations."""
@@ -91,8 +95,12 @@ class ImageController:
             return
 
         commands = [" ".join(self._display_command(animation)) for animation in animations]
+
+        # Hit the done endpoint so we know we are done
+        commands.insert(-1, self._done_command())
         script = " && ".join(commands)
 
         logger.info("Playing all: %s", [image.name for image in animations])
+        logger.info("Script: %s", script)
         self._exec(script, shell=True)
         self._playing = animations

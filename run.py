@@ -59,6 +59,12 @@ def refresh_library():
     return "", 204
 
 
+@app.route("/ready")
+def set_ready():
+    library.make_ready()
+    return "", 200
+
+
 @app.route("/button", methods=['POST'])
 def push_button():
     body = request.get_json() or {}

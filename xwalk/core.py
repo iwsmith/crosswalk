@@ -28,13 +28,19 @@ class CrossWalk:
         self.halt = Animation('halt', os.path.join(library.image_dir, 'stop.gif'))
         self.mode = 'off'
         self.cooldown = 17
-        self.ready_at = datetime.now()
         self.queue = []
+        self.ready = True
 
+
+    def make_ready(self):
+        """Sets the crosswalk to ready"""
+        if self.ready:
+            logger.warn('Trying to set crosswalk to ready, it is already ready')
+        self.ready = True
 
     def is_ready(self):
         """True if the crosswalk is ready for a button press."""
-        return self.ready_at <= datetime.now()
+        return self.ready
 
 
     def state(self):
@@ -47,7 +53,6 @@ class CrossWalk:
             'audio': self.audio.playing(),
             'queue': [walk.name for walk in self.queue],
             'cooldown': self.cooldown,
-            'ready_at': self.ready_at,
             'ready': self.is_ready(),
         }
 
@@ -85,6 +90,7 @@ class CrossWalk:
         """Set the crosswalk to walk mode."""
         self.demos.kill()
         self.audio.kill()
+        self.make_ready()
         self.image.play(self.halt)
         self.mode = 'walk'
 
@@ -93,9 +99,9 @@ class CrossWalk:
         """Play a walk scene."""
         scene.append(self.halt)
         self.demos.kill()
+        self.ready = False
         self.image.play_all(scene)
         self.audio.play_all(scene)
-        self.ready_at = datetime.now() + timedelta(seconds=self.cooldown)
 
 
     def sync(self, image_names):
