@@ -30,7 +30,7 @@ walks:
     category: social
   corgi:
     category: funny
-    loops: 3
+    loops: 6
   crabwalk:
     category: actions
   crawl:
