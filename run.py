@@ -61,7 +61,7 @@ def refresh_library():
 
 @app.route("/ready")
 def set_ready():
-    library.make_ready()
+    crosswalk.make_ready()
     return "", 200
 
 
