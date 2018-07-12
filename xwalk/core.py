@@ -106,7 +106,8 @@ class CrossWalk:
         self.ready = False
         self.image.play_all(scene)
         self.audio.play_all(scene)
-        self.history = self.history[1:50]
+        if len(self.history) >= 50:
+            self.history = self.history[1:50]
         self.history.append(walk)
 
 
