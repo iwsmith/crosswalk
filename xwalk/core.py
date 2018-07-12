@@ -29,6 +29,7 @@ class CrossWalk:
         self.mode = 'off'
         self.cooldown = 17
         self.queue = []
+        self.history = []
         self.ready = True
 
 
@@ -37,6 +38,7 @@ class CrossWalk:
         if self.ready:
             logger.warn('Trying to set crosswalk to ready, it is already ready')
         self.ready = True
+
 
     def is_ready(self):
         """True if the crosswalk is ready for a button press."""
@@ -52,6 +54,7 @@ class CrossWalk:
             'image': self.image.playing(),
             'audio': self.audio.playing(),
             'queue': [walk.name for walk in self.queue],
+            'history': [walk.name for walk in self.history],
             'cooldown': self.cooldown,
             'ready': self.is_ready(),
         }
@@ -97,11 +100,14 @@ class CrossWalk:
 
     def _play_walk(self, scene):
         """Play a walk scene."""
+        intro, walk = scene
         scene.append(self.halt)
         self.demos.kill()
         self.ready = False
         self.image.play_all(scene)
         self.audio.play_all(scene)
+        self.history = self.history[1:50]
+        self.history.append(walk)
 
 
     def sync(self, image_names):
@@ -145,7 +151,7 @@ class CrossWalk:
                     next_walk = self.queue.pop(0)
                     scene = self.library.build_scene(walk=next_walk)
                 else:
-                    scene = self.library.build_scene()
+                    scene = self.library.build_scene(exclude=self.history[-3:])
                 logger.info("Selected scene: %s", scene)
                 dual = 'crosswalk-b' if self.host == 'crosswalk-a' else 'crosswalk-a'
                 try:

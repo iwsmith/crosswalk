@@ -41,7 +41,7 @@ class ImageController:
         args.append(animation.image_path)
         return args
 
-    
+
     def _done_command(self):
         return "/usr/bin/curl http://localhost/ready"
 

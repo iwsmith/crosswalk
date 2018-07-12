@@ -224,7 +224,7 @@ class Library:
         ])
 
 
-    def build_scene(self, walk=None):
+    def build_scene(self, walk=None, exclude=[]):
         """
         Generate a new walk scene by selecting from the available intros,
         walks, and outros. A specific walk name may be provided to force its
@@ -233,7 +233,12 @@ class Library:
         intro = random.choice(self.intros)
         outro = random.choice(self.outros)
         if walk is None:
-            walk = self._choose_walk()
+            for attempt in range(10):
+                walk = self._choose_walk()
+                if walk in exclude:
+                    logger.debug("Skipping walk %s which is in exclusions %s", walk.name, [animation.name for animation in exclude])
+                else:
+                    break
             logger.info("Randomly selected walk %s", walk)
         else:
             logger.info("Force selected walk %s", walk)
