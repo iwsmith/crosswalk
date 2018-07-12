@@ -30,7 +30,7 @@
   {{ status }}
   <br>
   <ol>
-    {% for walk_name, count in recent() %}
+    {% for walk_name, count in recent %}
     <li><strong>{{ walk_name }}:</strong> {{ count }}</li>
     {% endfor %}
   </ol>
