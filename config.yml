@@ -35,6 +35,10 @@ walks:
     category: actions
   crawl:
     category: actions
+  dots:
+    category: trip
+    loops: 10
+    sound: trip.wav
   elephant:
     category: animals
   fall:
@@ -43,6 +47,10 @@ walks:
     category: animals
   flying:
     category: actions
+  frida:
+    category: trip
+    loops: 10
+    sound: trip.wav
   hammer-time:
     category: long
     loops: 1
@@ -88,6 +96,14 @@ walks:
   race:
     category: actions
     loops: 1
+  rainbow_heart:
+    category: trip
+    loops: 10
+    sound: trip.wav
+  rainbow_paw_cat:
+    category: trip
+    loops: 10
+    sound: trip.wav
   resilience:
     category: mindful
     loops: 17
@@ -156,6 +172,12 @@ weights:
     actions: 3
     animals: 3
     social: 2
+  wednesday-night:
+    normal: 1
+    actions: 3
+    animals: 3
+    social: 2
+    trip: 1
   thursday:
     normal: 1
     actions: 3
@@ -185,7 +207,9 @@ schedule:
     weights: tuesday
   - start: '2018-07-11T00:00:00'
     weights: wednesday
-  - start: '2018-07-12T00:00:00'
+  - start: '2018-07-11T22:00:00'
+    weights: wednesday-night
+  - start: '2018-07-12T06:00:00'
     weights: thursday
   - start: '2018-07-13T00:00:00'
     weights: friday
