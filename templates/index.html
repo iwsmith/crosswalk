@@ -22,12 +22,18 @@
 
 <div class="container">
   <h1>Current Status</h1>
-  {{ status }}
-  <br>
   <button class="btn btn-danger" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'off'})">Off</button>
   <button class="btn btn-success" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'walk'})">Walk</button>
   <button class="btn btn-success" onclick="sendRequest('POST', '{{ url_for('refresh_library') }}'); window.location.reload(true)">Refresh</button>
   <button class="btn btn-primary" onclick="sendRequest('POST', '{{ url_for('push_button') }}', {})">Button</button>
+  <br>
+  {{ status }}
+  <br>
+  <ol>
+    {% for walk_name, count in recent() %}
+    <li><strong>{{ walk_name }}:</strong> {{ count }}</li>
+    {% endfor %}
+  </ol>
 
   <hr>
   <h1>Demos</h1>
