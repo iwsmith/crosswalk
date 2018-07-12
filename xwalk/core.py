@@ -100,7 +100,7 @@ class CrossWalk:
 
     def _play_walk(self, scene):
         """Play a walk scene."""
-        intro, walk = scene
+        intro, walk, outro = scene
         scene.append(self.halt)
         self.demos.kill()
         self.ready = False
