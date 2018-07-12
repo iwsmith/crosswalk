@@ -43,7 +43,7 @@ class ImageController:
 
 
     def _done_command(self):
-        return "/usr/bin/curl http://localhost/ready"
+        return "/usr/bin/curl --silent http://localhost/ready"
 
 
     def playing(self):
