@@ -18,9 +18,10 @@ class CrossWalk:
     Core crossXwalk logic engine.
     """
 
-    def __init__(self, library):
+    def __init__(self, library, log_file='walks.tsv'):
         with open('/etc/hostname') as f:
             self.host = f.read().rstrip()
+        self._log_file = log_file
         self.library = library
         self.demos = DemoController()
         self.image = ImageController()
@@ -98,7 +99,7 @@ class CrossWalk:
         self.mode = 'walk'
 
 
-    def _play_walk(self, scene):
+    def _play_walk(self, tag, scene):
         """Play a walk scene."""
         intro, walk, outro = scene
         scene.append(self.halt)
@@ -109,6 +110,8 @@ class CrossWalk:
         if len(self.history) >= 50:
             self.history = self.history[1:50]
         self.history.append(walk)
+        with open(self._log_file, 'a') as log:
+            log.write("{}\t{}\t{}\n".format(datetime.now(), tag, walk.name))
 
 
     def sync(self, image_names):
@@ -126,7 +129,7 @@ class CrossWalk:
         else:
             logger.warn("Overriding cooldown state for contentious sync call")
         scene = self.library.find_scene(image_names)
-        self._play_walk(scene)
+        self._play_walk('sync', scene)
 
 
     def button(self, hold=0.0):
@@ -151,12 +154,14 @@ class CrossWalk:
                 if self.queue:
                     next_walk = self.queue.pop(0)
                     scene = self.library.build_scene(walk=next_walk)
+                    tag = 'queue'
                 else:
                     scene = self.library.build_scene(exclude=self.history[-3:])
+                    tag = 'random'
                 logger.info("Selected scene: %s", scene)
                 dual = 'crosswalk-b' if self.host == 'crosswalk-a' else 'crosswalk-a'
                 try:
                     requests.post("http://{}/sync".format(dual), json={'scene': [animation.name for animation in scene]})
                 except Exception as ex:
                     logger.warn("Failed to synchronize with %s: %s", dual, ex)
-                self._play_walk(scene)
+                self._play_walk(tag, scene)
