@@ -26,16 +26,16 @@ class ImageController:
         self._playing = None
 
 
-    def _display_command(self, animation):
+    def _display_command(self, animation, forever=False):
         """
         Return a list of command line arguments for showing the animated image.
         """
         args = []
         args.extend(VIEWER_COMMAND)
-        if animation.loops:
+        if not forever and animation.loops:
             args.append("-l")
             args.append(str(animation.loops))
-        if animation.frame_delay:
+        if not forever and animation.frame_delay:
             args.append("-D")
             args.append(str(animation.frame_delay))
         args.append(animation.image_path)
@@ -77,7 +77,7 @@ class ImageController:
         if animation is None:
             return
 
-        command = self._display_command(animation)
+        command = self._display_command(animation, forever=True)
 
         logger.info("Playing: %s", animation)
         self._exec(command)
