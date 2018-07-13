@@ -184,6 +184,7 @@ weights:
     animals: 2
     social: 3
     funny: 2
+    trip: 1
   friday:
     actions: 3
     animals: 1
