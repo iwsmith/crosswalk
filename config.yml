@@ -38,6 +38,7 @@ walks:
     category: actions
   dance1:
     category: dance
+    loops: 7
   dance2:
     category: dance
   dance3:
@@ -55,10 +56,9 @@ walks:
   dance9:
     category: dance
     audio: dance6.wav
-  dance10:
-    category: dance
   dancebattle:
     category: dance
+    loops: 1
   dance_rasputin:
     category: dance
     audio: rasputin.wav
@@ -112,8 +112,10 @@ walks:
     loops: 60
   mime:
     category: actions
+    loops: 2
   moonwalk:
     category: dance
+    loops: 1
   natureappreciate:
     category: mindful
     loops: 7
@@ -190,11 +192,10 @@ walks:
     category: funny
   walkingtogether:
     category: social
-  westworldmaze:
-    category: mindful
-    loops: 18
+  yoga1:
+    category: actions
   zombie:
-    category: action
+    category: actions
 
 
 # normal
