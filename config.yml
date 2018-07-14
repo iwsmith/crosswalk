@@ -5,6 +5,8 @@ outros:
 
 
 walks:
+  abolishice:
+    category: long
   airguitar:
     category: long
     loops: 20
@@ -30,7 +32,7 @@ walks:
     category: social
   corgi:
     category: funny
-    loops: 6
+    loops: 8
   crabwalk:
     category: actions
   crawl:
@@ -38,7 +40,7 @@ walks:
   dots:
     category: trip
     loops: 10
-    sound: trip.wav
+    audio: trip.wav
   elephant:
     category: animals
   fall:
@@ -50,7 +52,7 @@ walks:
   frida:
     category: trip
     loops: 10
-    sound: trip.wav
+    audio: trip.wav
   hammer-time:
     category: long
     loops: 1
@@ -99,11 +101,11 @@ walks:
   rainbow_heart:
     category: trip
     loops: 10
-    sound: trip.wav
+    audio: trip.wav
   rainbow_paw_cat:
     category: trip
     loops: 10
-    sound: trip.wav
+    audio: trip.wav
   resilience:
     category: mindful
     loops: 17
