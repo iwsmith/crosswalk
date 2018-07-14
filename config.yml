@@ -11,8 +11,6 @@ walks:
   airguitar:
     category: long
     loops: 20
-  antelope:
-    category: animals
   appreciate:
     category: social
   art:
@@ -24,11 +22,11 @@ walks:
   businessmeeting:
     category: funny
     loops: 7
-  camel:
-    category: animals
   cartwheel:
     category: actions
     loops: 4
+  chestbump:
+    category: actions
   converse:
     category: social
   corgi:
@@ -38,6 +36,38 @@ walks:
     category: actions
   crawl:
     category: actions
+  dance1:
+    category: dance
+  dance2:
+    category: dance
+  dance3:
+    category: dance
+  dance4:
+    category: dance
+  dance5:
+    category: dance
+  dance6:
+    category: dance
+  dance7:
+    category: dance
+  dance8:
+    category: dance
+  dance9:
+    category: dance
+    audio: dance6.wav
+  dance10:
+    category: dance
+  dancebattle:
+    category: dance
+  dance_rasputin:
+    category: dance
+    audio: rasputin.wav
+  dance_rasputin2:
+    category: dance
+    audio: rasputin.wav
+  dance_rasputin3:
+    category: dance
+    audio: rasputin.wav
   dots:
     category: trip
     loops: 10
@@ -46,8 +76,6 @@ walks:
     category: animals
   fall:
     category: actions
-  fish:
-    category: animals
   flying:
     category: actions
   frida:
@@ -73,8 +101,8 @@ walks:
     category: social
   hug5:
     category: social
-  hummingbird:
-    category: animals
+  jazzhands:
+    category: actions
   jump:
     category: actions
   leapfrog:
@@ -82,20 +110,24 @@ walks:
   meditate:
     category: mindful
     loops: 60
+  mime:
+    category: actions
+  moonwalk:
+    category: dance
   natureappreciate:
     category: mindful
     loops: 7
   nyan:
     category: funny
     loops: 5
-  orca:
-    category: animals
+  partyrock:
+    category: dance
   piggyback:
     category: actions
   pose:
     category: funny
   presentation:
-    category: social
+    category: mindful
     loops: 1
   race:
     category: actions
@@ -117,10 +149,14 @@ walks:
     category: actions
   ski:
     category: actions
+  skip:
+    category: actions
   sleep:
     category: funny
   sloth:
     category: animals
+  somersault:
+    category: actions
   surf:
     category: actions
   swim:
@@ -129,6 +165,8 @@ walks:
     category: social
   teleport:
     category: funny
+  timewarp:
+    category: dance
   triptrap:
     category: funny
   turtle:
@@ -136,6 +174,9 @@ walks:
     loops: 12
   unicycle:
     category: actions
+  vogue:
+    category: dance
+    audio: dance7.wav
   walkdress:
     category: normal
   walkpants:
@@ -152,11 +193,14 @@ walks:
   westworldmaze:
     category: mindful
     loops: 18
+  zombie:
+    category: action
 
 
 # normal
 # actions
 # animals
+# dance
 # social
 # funny
 # long
@@ -202,7 +246,15 @@ weights:
     social: 3
     funny: 3
     long: 2
-    mindful: 2
+    mindful: 1
+  saturday-night:
+    actions: 3
+    animals: 1
+    social: 3
+    funny: 3
+    long: 2
+    mindful: 1
+    dance: 3
 
 
 schedule:
@@ -220,3 +272,5 @@ schedule:
     weights: friday
   - start: '2018-07-14T00:00:00'
     weights: saturday
+  - start: '2018-07-14T19:00:00'
+    weights: saturday-night
