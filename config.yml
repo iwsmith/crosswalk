@@ -19,9 +19,6 @@ walks:
     category: actions
   bowl:
     category: actions
-  businessmeeting:
-    category: funny
-    loops: 7
   cartwheel:
     category: actions
     loops: 4
@@ -128,9 +125,6 @@ walks:
     category: actions
   pose:
     category: funny
-  presentation:
-    category: mindful
-    loops: 1
   race:
     category: actions
     loops: 1
@@ -194,6 +188,7 @@ walks:
     category: social
   yoga1:
     category: actions
+    loops: 1
   zombie:
     category: actions
 
