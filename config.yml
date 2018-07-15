@@ -8,9 +8,6 @@ walks:
   abolishice:
     category: long
     loops: 7
-  airguitar:
-    category: long
-    loops: 20
   appreciate:
     category: social
   art:
@@ -24,24 +21,35 @@ walks:
     loops: 4
   chestbump:
     category: actions
+  cocoadome:
+    category: funny
   converse:
     category: social
   corgi:
     category: funny
     loops: 8
+  cube:
+    category: trip
+    loops: 7
+    audio: trip.wav
+  croix:
+    category: funny
+    loops: 6
+    audio: hydrate.wav
   crabwalk:
     category: actions
   crawl:
     category: actions
   dance1:
     category: dance
-    loops: 7
+    loops: 10
   dance2:
     category: dance
   dance3:
     category: dance
   dance4:
     category: dance
+    loops: 10
   dance5:
     category: dance
   dance6:
@@ -65,12 +73,18 @@ walks:
   dance_rasputin3:
     category: dance
     audio: rasputin.wav
+  dizzy:
+    category: trip
+    loops: 10
+    audio: trip.wav
   dots:
     category: trip
     loops: 10
     audio: trip.wav
   elephant:
     category: animals
+  fartbox:
+    category: funny
   fall:
     category: actions
   flying:
@@ -84,6 +98,10 @@ walks:
     loops: 1
   handstand:
     category: actions
+  headpop:
+    category: trip
+    loops: 7
+    audio: trip.wav
   highfive:
     category: social
   horse:
@@ -98,6 +116,12 @@ walks:
     category: social
   hug5:
     category: social
+  hydrate:
+    category: actions
+  infinity:
+    category: trip
+    loops: 5
+    audio: trip.wav
   jazzhands:
     category: actions
   jump:
@@ -113,6 +137,10 @@ walks:
   moonwalk:
     category: dance
     loops: 1
+  mouthface:
+    category: trip
+    loops: 1
+    audio: trip.wav
   natureappreciate:
     category: mindful
     loops: 7
@@ -163,14 +191,19 @@ walks:
     category: funny
   timewarp:
     category: dance
+    loops: 6
+  titdance:
+    category: trip
+    loops: 8
+    audio: trip.wav
   triptrap:
-    category: funny
+    category: trip
   turtle:
     category: animals
     loops: 12
   unicycle:
     category: actions
-  vogue:
+  vogue1:
     category: dance
     audio: dance7.wav
   walkdress:
@@ -186,9 +219,51 @@ walks:
     category: funny
   walkingtogether:
     category: social
+  werewolf:
+    category: action
+  weirddance:
+    category: trip
+    loops: 10
+    audio: trip.wav
+  weirddog:
+    category: trip
+    loops: 10
+    audio: trip.wav
+  weirdeye:
+    category: trip
+    loops: 4
+    audio: trip.wav
+  weirdeyes:
+    category: trip
+    loops: 6
+    audio: trip.wav
+  wizard:
+    category: funny
   yoga1:
     category: actions
     loops: 1
+  yoga2:
+    category: actions
+    loops: 1
+  yoga3:
+    category: actions
+    loops: 1
+  yoga4:
+    category: actions
+    loops: 1
+  yoga5:
+    category: actions
+    loops: 1
+  yoga6:
+    category: actions
+    loops: 1
+  yoga7:
+    category: actions
+    loops: 1
+  zebra:
+    category: trip
+    loops: 15
+    audio: trip.wav
   zombie:
     category: actions
 
@@ -244,13 +319,14 @@ weights:
     long: 2
     mindful: 1
   saturday-night:
-    actions: 3
+    actions: 4
     animals: 1
     social: 3
-    funny: 3
-    long: 2
+    funny: 4
+    long: 1
     mindful: 1
-    dance: 3
+    dance: 4
+    trip: 4
 
 
 schedule:
