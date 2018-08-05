@@ -45,8 +45,14 @@ crosswalk.walk()
 
 @app.route("/")
 def index():
+    recent = {}
+    for animation in crosswalk.history:
+        count = recent.get(animation.name, 0)
+        recent[animation.name] = count + 1
+    recent = sorted(recent.items(), key=lambda e: e[1], reverse=True)
     return render_template(
         'index.html',
+        recent=recent,
         demos=crosswalk.demos,
         walks=library.walks,
         uploads=library.uploads,
@@ -57,6 +63,12 @@ def index():
 def refresh_library():
     library.refresh()
     return "", 204
+
+
+@app.route("/ready")
+def set_ready():
+    crosswalk.make_ready()
+    return "", 200
 
 
 @app.route("/button", methods=['POST'])

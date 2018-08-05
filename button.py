@@ -41,7 +41,6 @@ button.when_held = button_held
 while True:
     try:
         state = requests.get("http://localhost/state").json()
-        ready_at = datetime.strptime(state["ready_at"], "%a, %d %b %Y %H:%M:%S %Z")
         now = datetime.now()
         if state["ready"]:
             # Crosswalk reports as ready
@@ -50,23 +49,11 @@ while True:
             sign_ready = True
             led.on()
             time.sleep(10)
-        elif ready_at <= now:
-            # Crosswalk just became ready.
-            logging.debug("Wait for it...")
-            time.sleep(1)
         else:
             # Crosswalk is not ready yet
             sign_ready = False
             led.off()
-            delta = ready_at - now
-            if delta.seconds >= 60:
-                naptime = 30
-            elif delta.seconds >= 1:
-                naptime = delta.seconds/2
-            else:
-                naptime = delta.total_seconds() + 0.25
-            logging.debug("Crosswalk ready in %s (sleeping %.2f)", delta, naptime)
-            time.sleep(naptime)
+            time.sleep(2)
     except Exception as ex:
         logging.error("Caught exception while checking crosswalk state: %s", ex)
         time.sleep(10)

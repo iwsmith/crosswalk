@@ -18,23 +18,32 @@ class CrossWalk:
     Core crossXwalk logic engine.
     """
 
-    def __init__(self, library):
+    def __init__(self, library, log_file='walks.tsv'):
         with open('/etc/hostname') as f:
             self.host = f.read().rstrip()
+        self._log_file = log_file
         self.library = library
         self.demos = DemoController()
         self.image = ImageController()
         self.audio = AudioController()
-        self.halt = Animation('halt', os.path.join(library.image_dir, 'stop.png'))
+        self.halt = Animation('halt', os.path.join(library.image_dir, 'stop.gif'))
         self.mode = 'off'
-        self.cooldown = 30
-        self.ready_at = datetime.now()
+        self.cooldown = 17
         self.queue = []
+        self.history = []
+        self.ready = True
+
+
+    def make_ready(self):
+        """Sets the crosswalk to ready"""
+        if self.ready:
+            logger.warn('Trying to set crosswalk to ready, it is already ready')
+        self.ready = True
 
 
     def is_ready(self):
         """True if the crosswalk is ready for a button press."""
-        return self.ready_at <= datetime.now()
+        return self.ready
 
 
     def state(self):
@@ -46,8 +55,8 @@ class CrossWalk:
             'image': self.image.playing(),
             'audio': self.audio.playing(),
             'queue': [walk.name for walk in self.queue],
+            'history': [walk.name for walk in self.history],
             'cooldown': self.cooldown,
-            'ready_at': self.ready_at,
             'ready': self.is_ready(),
         }
 
@@ -85,16 +94,24 @@ class CrossWalk:
         """Set the crosswalk to walk mode."""
         self.demos.kill()
         self.audio.kill()
+        self.make_ready()
         self.image.play(self.halt)
         self.mode = 'walk'
 
 
-    def _play_walk(self, scene):
+    def _play_walk(self, tag, scene):
         """Play a walk scene."""
+        intro, walk, outro = scene
         scene.append(self.halt)
+        self.demos.kill()
+        self.ready = False
         self.image.play_all(scene)
         self.audio.play_all(scene)
-        self.ready_at = datetime.now() + timedelta(seconds=self.cooldown)
+        if len(self.history) >= 50:
+            self.history = self.history[1:50]
+        self.history.append(walk)
+        with open(self._log_file, 'a') as log:
+            log.write("{}\t{}\t{}\n".format(datetime.now(), tag, walk.name))
 
 
     def sync(self, image_names):
@@ -112,7 +129,7 @@ class CrossWalk:
         else:
             logger.warn("Overriding cooldown state for contentious sync call")
         scene = self.library.find_scene(image_names)
-        self._play_walk(scene)
+        self._play_walk('sync', scene)
 
 
     def button(self, hold=0.0):
@@ -134,11 +151,17 @@ class CrossWalk:
         elif self.mode == 'walk':
             # TODO: if long press, switch off
             if self.is_ready():
-                scene = self.library.choose_walk()
+                if self.queue:
+                    next_walk = self.queue.pop(0)
+                    scene = self.library.build_scene(walk=next_walk)
+                    tag = 'queue'
+                else:
+                    scene = self.library.build_scene(exclude=self.history[-3:])
+                    tag = 'random'
                 logger.info("Selected scene: %s", scene)
                 dual = 'crosswalk-b' if self.host == 'crosswalk-a' else 'crosswalk-a'
                 try:
                     requests.post("http://{}/sync".format(dual), json={'scene': [animation.name for animation in scene]})
                 except Exception as ex:
                     logger.warn("Failed to synchronize with %s: %s", dual, ex)
-                self._play_walk(scene)
+                self._play_walk(tag, scene)

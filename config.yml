@@ -2,18 +2,347 @@
 intros:
 
 outros:
-  9s-count:
-    file: 9s-count.gif
+
 
 walks:
+  abolishice:
+    category: long
+    loops: 7
+  appreciate:
+    category: social
+  art:
+    category: actions
+  bike:
+    category: actions
+  bowl:
+    category: actions
+  cartwheel:
+    category: actions
+    loops: 4
+  chestbump:
+    category: actions
+  cocoadome:
+    category: funny
+  converse:
+    category: social
   corgi:
-    audio: corgi.wav
+    category: funny
+    loops: 8
+  cube:
+    category: trip
+    loops: 7
+    audio: trip.wav
+  croix:
+    category: funny
+    loops: 6
+    audio: hydrate.wav
+  crabwalk:
+    category: actions
+  crawl:
+    category: actions
+  dance1:
+    category: dance
+    loops: 10
+  dance2:
+    category: dance
+  dance3:
+    category: dance
+  dance4:
+    category: dance
+    loops: 10
+  dance5:
+    category: dance
+  dance6:
+    category: dance
+  dance7:
+    category: dance
+  dance8:
+    category: dance
+  dance9:
+    category: dance
+    audio: dance6.wav
+  dancebattle:
+    category: dance
+    loops: 1
+  dance_rasputin:
+    category: dance
+    audio: rasputin.wav
+  dance_rasputin2:
+    category: dance
+    audio: rasputin.wav
+  dance_rasputin3:
+    category: dance
+    audio: rasputin.wav
+  dizzy:
+    category: trip
+    loops: 10
+    audio: trip.wav
+  dots:
+    category: trip
+    loops: 10
+    audio: trip.wav
+  elephant:
+    category: animals
+  fartbox:
+    category: funny
+  fall:
+    category: actions
+  flying:
+    category: actions
+  frida:
+    category: trip
+    loops: 10
+    audio: trip.wav
+  hammer-time:
+    category: long
+    loops: 1
+  handstand:
+    category: actions
+  headpop:
+    category: trip
+    loops: 7
+    audio: trip.wav
+  highfive:
+    category: social
+  horse:
+    category: animals
+  horsebackriding:
+    category: actions
+  hug:
+    category: social
+  hug3:
+    category: social
+  hug4:
+    category: social
+  hug5:
+    category: social
+  hydrate:
+    category: actions
+  infinity:
+    category: trip
+    loops: 5
+    audio: trip.wav
+  jazzhands:
+    category: actions
+  jump:
+    category: actions
+  leapfrog:
+    category: actions
+  meditate:
+    category: mindful
+    loops: 60
+  mime:
+    category: actions
+    loops: 2
+  moonwalk:
+    category: dance
+    loops: 1
+  mouthface:
+    category: trip
+    loops: 1
+    audio: trip.wav
+  natureappreciate:
+    category: mindful
+    loops: 7
+  nyan:
+    category: funny
+    loops: 5
+  partyrock:
+    category: dance
+  piggyback:
+    category: actions
+  pose:
+    category: funny
+  race:
+    category: actions
+    loops: 1
+  rainbow_heart:
+    category: trip
+    loops: 5
+    audio: trip.wav
+  rainbow_paw_cat:
+    category: trip
+    loops: 10
+    audio: trip.wav
+  resilience:
+    category: mindful
+    loops: 17
+  rowboat:
+    category: actions
+  run:
+    category: actions
+  ski:
+    category: actions
+  skip:
+    category: actions
+  sleep:
+    category: funny
+  sloth:
+    category: animals
+  somersault:
+    category: actions
+  surf:
+    category: actions
+  swim:
+    category: actions
+  tag:
+    category: social
+  teleport:
+    category: funny
+  timewarp:
+    category: dance
+    loops: 6
+  titdance:
+    category: trip
+    loops: 8
+    audio: trip.wav
+  triptrap:
+    category: trip
+  turtle:
+    category: animals
+    loops: 12
+  unicycle:
+    category: actions
+  vogue1:
+    category: dance
+    audio: dance7.wav
+  walkdress:
+    category: normal
+  walkpants:
+    category: normal
+  wheelbarrow:
+    category: social
+  why-cross:
+    category: mindful
+    loops: 1
+  wok:
+    category: funny
+  walkingtogether:
+    category: social
+  werewolf:
+    category: action
+  weirddance:
+    category: trip
+    loops: 10
+    audio: trip.wav
+  weirddog:
+    category: trip
+    loops: 10
+    audio: trip.wav
+  weirdeye:
+    category: trip
+    loops: 4
+    audio: trip.wav
+  weirdeyes:
+    category: trip
+    loops: 6
+    audio: trip.wav
+  wizard:
+    category: funny
+  yoga1:
+    category: actions
+    loops: 1
+  yoga2:
+    category: actions
+    loops: 1
+  yoga3:
+    category: actions
+    loops: 1
+  yoga4:
+    category: actions
+    loops: 1
+  yoga5:
+    category: actions
+    loops: 1
+  yoga6:
+    category: actions
+    loops: 1
+  yoga7:
+    category: actions
+    loops: 1
+  zebra:
+    category: trip
+    loops: 15
+    audio: trip.wav
+  zombie:
+    category: actions
 
+
+# normal
+# actions
+# animals
+# dance
+# social
+# funny
+# long
+# mindful
 
 weights:
-  A: {}
+  all:
+    _: 1
+  monday:
+    normal: 1
+  tuesday:
+    normal: 1
+    actions: 2
+    animals: 2
+  wednesday:
+    normal: 1
+    actions: 3
+    animals: 3
+    social: 2
+  wednesday-night:
+    normal: 1
+    actions: 3
+    animals: 3
+    social: 2
+    trip: 1
+  thursday:
+    normal: 1
+    actions: 3
+    animals: 2
+    social: 3
+    funny: 2
+    trip: 1
+  friday:
+    actions: 3
+    animals: 1
+    social: 3
+    funny: 4
+    long: 1
+    mindful: 1
+  saturday:
+    actions: 3
+    animals: 1
+    social: 3
+    funny: 3
+    long: 2
+    mindful: 1
+  saturday-night:
+    actions: 4
+    animals: 1
+    social: 3
+    funny: 4
+    long: 1
+    mindful: 1
+    dance: 4
+    trip: 4
 
 
 schedule:
-  - start: 2018-07-09T00:00:00
-    weights: A
+  - start: '2018-07-09T00:00:00'
+    weights: monday
+  - start: '2018-07-10T00:00:00'
+    weights: tuesday
+  - start: '2018-07-11T00:00:00'
+    weights: wednesday
+  - start: '2018-07-11T22:00:00'
+    weights: wednesday-night
+  - start: '2018-07-12T06:00:00'
+    weights: thursday
+  - start: '2018-07-13T00:00:00'
+    weights: friday
+  - start: '2018-07-14T00:00:00'
+    weights: saturday
+  - start: '2018-07-14T19:00:00'
+    weights: saturday-night
