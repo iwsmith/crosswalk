@@ -11,7 +11,7 @@ walks:
   appreciate:
     category: social
   art:
-    category: actions
+    category: inactive
   bike:
     category: actions
   bowl:
@@ -43,8 +43,6 @@ walks:
   dance1:
     category: dance
     loops: 10
-  dance2:
-    category: dance
   dance3:
     category: dance
   dance4:
@@ -52,31 +50,14 @@ walks:
     loops: 10
   dance5:
     category: dance
-  dance6:
-    category: dance
-  dance7:
-    category: dance
   dance8:
     category: dance
   dance9:
     category: dance
     audio: dance6.wav
   dancebattle:
-    category: dance
+    category: inactive
     loops: 1
-  dance_rasputin:
-    category: dance
-    audio: rasputin.wav
-  dance_rasputin2:
-    category: dance
-    audio: rasputin.wav
-  dance_rasputin3:
-    category: dance
-    audio: rasputin.wav
-  dizzy:
-    category: trip
-    loops: 10
-    audio: trip.wav
   dots:
     category: trip
     loops: 10
@@ -84,7 +65,7 @@ walks:
   elephant:
     category: animals
   fartbox:
-    category: funny
+    category: inactive
   fall:
     category: actions
   flying:
@@ -94,18 +75,14 @@ walks:
     loops: 10
     audio: trip.wav
   hammer-time:
-    category: long
+    category: inactive
     loops: 1
   handstand:
     category: actions
-  headpop:
-    category: trip
-    loops: 7
-    audio: trip.wav
   highfive:
     category: social
   horse:
-    category: animals
+    category: inactive
   horsebackriding:
     category: actions
   hug:
@@ -118,41 +95,29 @@ walks:
     category: social
   hydrate:
     category: actions
-  infinity:
-    category: trip
-    loops: 5
-    audio: trip.wav
   jazzhands:
-    category: actions
+    category: inactive
   jump:
     category: actions
   leapfrog:
     category: actions
   meditate:
-    category: mindful
+    category: inactive
     loops: 60
-  mime:
-    category: actions
-    loops: 2
-  moonwalk:
-    category: dance
-    loops: 1
-  mouthface:
-    category: trip
-    loops: 1
-    audio: trip.wav
   natureappreciate:
-    category: mindful
+    category: inactive
     loops: 7
   nyan:
     category: funny
     loops: 5
   partyrock:
-    category: dance
+    category: inactive
   piggyback:
     category: actions
   pose:
     category: funny
+  presentation:
+    category: inactive
   race:
     category: actions
     loops: 1
@@ -160,12 +125,8 @@ walks:
     category: trip
     loops: 5
     audio: trip.wav
-  rainbow_paw_cat:
-    category: trip
-    loops: 10
-    audio: trip.wav
   resilience:
-    category: mindful
+    category: inactive
     loops: 17
   rowboat:
     category: actions
@@ -173,10 +134,8 @@ walks:
     category: actions
   ski:
     category: actions
-  skip:
-    category: actions
   sleep:
-    category: funny
+    category: inactive
   sloth:
     category: animals
   somersault:
@@ -190,7 +149,7 @@ walks:
   teleport:
     category: funny
   timewarp:
-    category: dance
+    category: inactive
     loops: 6
   titdance:
     category: trip
@@ -204,7 +163,7 @@ walks:
   unicycle:
     category: actions
   vogue1:
-    category: dance
+    category: inactive
     audio: dance7.wav
   walkdress:
     category: normal
@@ -219,19 +178,13 @@ walks:
     category: funny
   walkingtogether:
     category: social
+  westworldmaze:
+    category: inactive
   werewolf:
     category: action
-  weirddance:
-    category: trip
-    loops: 10
-    audio: trip.wav
   weirddog:
     category: trip
     loops: 10
-    audio: trip.wav
-  weirdeye:
-    category: trip
-    loops: 4
     audio: trip.wav
   weirdeyes:
     category: trip
@@ -240,25 +193,25 @@ walks:
   wizard:
     category: funny
   yoga1:
-    category: actions
+    category: inactive
     loops: 1
   yoga2:
-    category: actions
+    category: inactive
     loops: 1
   yoga3:
-    category: actions
+    category: inactive
     loops: 1
   yoga4:
-    category: actions
+    category: inactive
     loops: 1
   yoga5:
-    category: actions
+    category: inactive
     loops: 1
   yoga6:
-    category: actions
+    category: inactive
     loops: 1
   yoga7:
-    category: actions
+    category: inactive
     loops: 1
   zebra:
     category: trip
