@@ -3,10 +3,9 @@ intros:
 
 outros:
 
-
 walks:
   abolishice:
-    category: long
+    category: rare
     loops: 7
   appreciate:
     category: social
@@ -22,7 +21,7 @@ walks:
   chestbump:
     category: actions
   cocoadome:
-    category: funny
+    category: inactive
   converse:
     category: social
   corgi:
@@ -32,10 +31,6 @@ walks:
     category: trip
     loops: 7
     audio: trip.wav
-  croix:
-    category: funny
-    loops: 6
-    audio: hydrate.wav
   crabwalk:
     category: actions
   crawl:
@@ -148,12 +143,6 @@ walks:
   timewarp:
     category: inactive
     loops: 6
-  titdance:
-    category: trip
-    loops: 8
-    audio: trip.wav
-  triptrap:
-    category: trip
   turtle:
     category: animals
     loops: 12
@@ -169,7 +158,7 @@ walks:
   wheelbarrow:
     category: social
   why-cross:
-    category: mindful
+    category: rare
     loops: 1
   wok:
     category: funny
@@ -178,7 +167,7 @@ walks:
   westworldmaze:
     category: inactive
   werewolf:
-    category: action
+    category: animals
   weirddog:
     category: trip
     loops: 10
@@ -217,82 +206,29 @@ walks:
   zombie:
     category: actions
 
-
-# normal
-# actions
-# animals
-# dance
-# social
-# funny
-# long
-# mindful
-
 weights:
   all:
     _: 1
-  monday:
-    normal: 1
-  tuesday:
-    normal: 1
-    actions: 2
-    animals: 2
-  wednesday:
-    normal: 1
-    actions: 3
-    animals: 3
-    social: 2
-  wednesday-night:
-    normal: 1
-    actions: 3
-    animals: 3
-    social: 2
-    trip: 1
-  thursday:
-    normal: 1
-    actions: 3
-    animals: 2
-    social: 3
-    funny: 2
-    trip: 1
-  friday:
-    actions: 3
-    animals: 1
-    social: 3
-    funny: 4
-    long: 1
-    mindful: 1
-  saturday:
-    actions: 3
-    animals: 1
-    social: 3
-    funny: 3
-    long: 2
-    mindful: 1
-  saturday-night:
-    actions: 4
-    animals: 1
-    social: 3
-    funny: 4
-    long: 1
-    mindful: 1
-    dance: 4
-    trip: 4
-
+  seacomp_day:
+    normal: 8
+    actions: 23
+    social: 10
+    funny: 6
+    dance: 6
+    animals: 8
+    rare: 2
+  seacomp_night:
+    normal: 4
+    actions: 20
+    social: 10
+    trip: 8
+    funny: 9
+    dance: 6
+    animals: 4
+    rare: 2
 
 schedule:
-  - start: '2018-07-09T00:00:00'
-    weights: monday
-  - start: '2018-07-10T00:00:00'
-    weights: tuesday
-  - start: '2018-07-11T00:00:00'
-    weights: wednesday
-  - start: '2018-07-11T22:00:00'
-    weights: wednesday-night
-  - start: '2018-07-12T06:00:00'
-    weights: thursday
-  - start: '2018-07-13T00:00:00'
-    weights: friday
-  - start: '2018-07-14T00:00:00'
-    weights: saturday
-  - start: '2018-07-14T19:00:00'
-    weights: saturday-night
+  - start: '2018-10-20T00:00:00'
+    weights: seacomp_day
+  - start: '2018-10-20T20:00:00'
+    weights: seacomp_night
