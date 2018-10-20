@@ -166,6 +166,7 @@ walks:
     category: actions
   spaceodyssea:
     category: funny
+    frame_delay: 25.0
     audio: seacompression.wav
   surf:
     category: actions
@@ -250,7 +251,7 @@ weights:
     normal: 8
     actions: 23
     social: 10
-    funny: 6
+    funny: 10
     dance: 4
     animals: 8
     rare: 2
@@ -259,13 +260,18 @@ weights:
     actions: 20
     social: 10
     trip: 8
-    funny: 9
+    funny: 14
     dance: 4
     animals: 4
     rare: 2
+  seacomp_over:
+    trip: 2
+    fin: 1
 
 schedule:
   - start: '2018-10-20T00:00:00'
     weights: seacomp_day
   - start: '2018-10-20T20:00:00'
     weights: seacomp_night
+  - start: '2018-10-21T02:00:00'
+    weights: seacomp_over
