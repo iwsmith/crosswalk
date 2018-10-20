@@ -38,6 +38,9 @@ walks:
   dance1:
     category: dance
     loops: 10
+  dance2:
+    category: dance
+    loops: 10
   dance3:
     category: dance
   dance4:
@@ -45,11 +48,14 @@ walks:
     loops: 10
   dance5:
     category: dance
+  dance6:
+    category: dance
+  dance7:
+    category: dance
   dance8:
     category: dance
-  dance9:
+  dance10:
     category: dance
-    audio: dance6.wav
   dots:
     category: trip
     loops: 10
@@ -224,7 +230,7 @@ weights:
     actions: 23
     social: 10
     funny: 6
-    dance: 6
+    dance: 4
     animals: 8
     rare: 2
   seacomp_night:
@@ -233,7 +239,7 @@ weights:
     social: 10
     trip: 8
     funny: 9
-    dance: 6
+    dance: 4
     animals: 4
     rare: 2
 
