@@ -9,6 +9,21 @@ walks:
     loops: 7
   appreciate:
     category: social
+  airguitar1:
+    category: dance
+    loops: 13
+  airguitar2:
+    category: dance
+    loops: 13
+  airguitar3:
+    category: dance
+    loops: 13
+  airguitar4:
+    category: dance
+    loops: 13
+  airguitar5:
+    category: dance
+    loops: 13
   art:
     category: inactive
   bike:
@@ -37,25 +52,31 @@ walks:
     category: actions
   dance1:
     category: dance
-    loops: 10
+    loops: 13
   dance2:
     category: dance
-    loops: 10
+    loops: 13
   dance3:
     category: dance
+    loops: 13
   dance4:
     category: dance
-    loops: 10
+    loops: 13
   dance5:
     category: dance
+    loops: 13
   dance6:
     category: dance
+    loops: 13
   dance7:
     category: dance
+    loops: 13
   dance8:
     category: dance
+    loops: 13
   dance10:
     category: dance
+    loops: 13
   dots:
     category: trip
     loops: 10
@@ -73,7 +94,7 @@ walks:
     loops: 10
     audio: trip.wav
   hammer-time:
-    category: inactive
+    category: dance
     loops: 1
   handstand:
     category: actions
