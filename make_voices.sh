@@ -59,7 +59,7 @@ say -v $VOICE "Flying sign is on. Fly now." --data-format=$DATA_FORMAT -o $SND_F
 
 say -v $VOICE "Piggyback sign is on. piggyback now." --data-format=$DATA_FORMAT -o $SND_FOLDER/piggyback.wav
 
-say -v $VOICE "Handshake sign is on. Shake hands now." --data-format=$DATA_FORMAT -o $SND_FOLDER/piggyback.wav
+say -v $VOICE "Handshake sign is on. Shake hands now." --data-format=$DATA_FORMAT -o $SND_FOLDER/handshake.wav
 
 say -v $VOICE "Hug sign is on. Ask for consent and hug someone now." --data-format=$DATA_FORMAT -o $SND_FOLDER/hug.wav
 
@@ -69,17 +69,22 @@ say -v $VOICE "Three person hug sign is on. Hug two other consenting people now.
 
 say -v $VOICE "Four person hug sign is on. Hug three other consenting people now" --data-format=$DATA_FORMAT -o $SND_FOLDER/hug4.wav
 
+say -v $VOICE "Five person hug sign is on. Hug four other consenting people now" --data-format=$DATA_FORMAT -o $SND_FOLDER/hug5.wav
+
+say -v $VOICE "Bowling sign is on. Bowl now." --data-format=$DATA_FORMAT -o $SND_FOLDER/bowl.wav
+
 say -v $VOICE "The race is about to begin. [[slnc 500]] On your marks [[slnc 500]] Get set [[slnc 500]] Go\!" --data-format=$DATA_FORMAT -o $SND_FOLDER/race.wav
 
 say -v $VOICE "Air guitar sign is on. Air guitar now." --data-format=$DATA_FORMAT -o $SND_FOLDER/airguitar.wav
 
 say -v $VOICE "[[rate 170]] Resilience sign is on. Reflect on a challenge you have had in the past now. [[slnc 500]] [[rate 160]] Remind yourself that challenge is part of life, and that you are courageous for pushing yourself to grow in uncomfortable situations. [[slnc 500]] Though there have been setbacks, each day you can learn from them and develop the skills and knowledge needed to succeed in the future. [[slnc 500]] The path to success lies with effort and persistence." --data-format=$DATA_FORMAT -o $SND_FOLDER/resilience.wav
+say -v $VOICE "[[rate 170]] Resilience sign is on. Reflect on a challenge you have had in the past now." --data-format=$DATA_FORMAT -o $SND_FOLDER/resilience_short.wav
 
 say -v $VOICE "Teleport sign is on. Teleport now." --data-format=$DATA_FORMAT -o $SND_FOLDER/teleport.wav
 
 say -v $VOICE "Surf sign is on. Hang 10 now." --data-format=$DATA_FORMAT -o $SND_FOLDER/surf.wav
 
-say -v $VOICE "Tag sign is on. The person wearing the most colors is it. The game begins in [[slnc 500]] 3 [[slnc 500]] 2 [[slnc 500]] 1 [[slnc 500]] go." --data-format=$DATA_FORMAT -o $SND_FOLDER/tag.wav
+say -v $VOICE "Tag sign is on. Whoever pushed the button is it. The game begins in [[slnc 500]] 3 [[slnc 500]] 2 [[slnc 500]] 1 [[slnc 500]] go." --data-format=$DATA_FORMAT -o $SND_FOLDER/tag.wav
 
 say -v $VOICE "Horseback riding sign is on. Ride a consenting horse or human now." --data-format=$DATA_FORMAT -o $SND_FOLDER/horsebackriding.wav
 
@@ -121,5 +126,22 @@ say -V $VOICE "Whale sign is on. [[slcn 1000]] now." --data-format=$DATA_FORMAT 
 
 say -V $VOICE "Hummingbird sign is on. [[slcn 1000]] now." --data-format=$DATA_FORMAT -o $SND_FOLDER/hummingbird.wav
 
+say -v $VOICE "Trip sign is on. Distort reality now." --data-format=LEF32@22050 -o $SND_FOLDER/trip.wav
+
+say -v $VOICE "Hydrate sign is on. Drink water now." --data-format=$DATA_FORMAT -o $SND_FOLDER/hydrate.wav
+
+say -v $VOICE "Cocoa dome sign is on. Drink hot chocolate now." --data-format=$DATA_FORMAT -o $SND_FOLDER/cocoadome.wav
+
+say -v $VOICE "Werewolf sign is on. Howl at the moon now." --data-format=$DATA_FORMAT -o $SND_FOLDER/werewolf.wav
+
+say -v $VOICE "Fart box sign is on. Fart now." --data-format=$DATA_FORMAT -o $SND_FOLDER/fartbox.wav
+
+say -v $VOICE "Wizard sign is on. Be a wizard now." --data-format=$DATA_FORMAT -o $SND_FOLDER/wizard.wav
+
+say -v $VOICE "Party parrot sign is on. Party now." --data-format=$DATA_FORMAT -o $SND_FOLDER/partyparrot.wav
+
+say -v $VOICE "Crabwalk sign is on. Crabwalk now." --data-format=$DATA_FORMAT -o $SND_FOLDER/crabwalk.wav
+
+#say -v $VOICE "" --data-format=$DATA_FORMAT -o $SND_FOLDER/
 #say -v $VOICE "" --data-format=$DATA_FORMAT -o $SND_FOLDER/
 
