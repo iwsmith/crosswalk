@@ -55,9 +55,6 @@ walks:
   dance9:
     category: dance
     audio: dance6.wav
-  dancebattle:
-    category: inactive
-    loops: 1
   dots:
     category: trip
     loops: 10
