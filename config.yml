@@ -73,6 +73,8 @@ walks:
     category: actions
   highfive:
     category: social
+  home:
+    category: fin
   horse:
     category: inactive
   horsebackriding:
@@ -87,6 +89,9 @@ walks:
     category: social
   hydrate:
     category: actions
+  inw:
+    category: funny
+    audio: seacompression.wav
   jazzhands:
     category: inactive
   jump:
@@ -132,12 +137,17 @@ walks:
     category: animals
   somersault:
     category: actions
+  spaceodyssea:
+    category: funny
+    audio: seacompression.wav
   surf:
     category: actions
   swim:
     category: actions
   tag:
     category: social
+  takeoff:
+    category: trip
   teleport:
     category: funny
   timewarp:
