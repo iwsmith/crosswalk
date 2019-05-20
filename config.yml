@@ -9,21 +9,38 @@ walks:
     loops: 7
   appreciate:
     category: social
-  airguitar1:
+  airguitar_wed1:
     category: dance
-    loops: 13
-  airguitar2:
+  airguitar_wed2:
+    category: dance    
+  airguitar_wed3:
     category: dance
-    loops: 13
-  airguitar3:
+  airguitar_wed4:
     category: dance
-    loops: 13
-  airguitar4:
+   airguitar_thu1:
     category: dance
-    loops: 13
-  airguitar5:
+  airguitar_thu2:
+    category: dance    
+  airguitar_thu3:
     category: dance
-    loops: 13
+  airguitar_thu4:
+    category: dance   
+   airguitar_fri1:
+    category: dance
+  airguitar_fri2:
+    category: dance    
+  airguitar_fri3:
+    category: dance
+  airguitar_fri4:
+    category: dance  
+   airguitar_sat1:
+    category: dance
+  airguitar_sat2:
+    category: dance    
+  airguitar_sat3:
+    category: dance
+  airguitar_sat4:
+    category: dance  
   art:
     category: inactive
   bike:
