@@ -62,12 +62,15 @@ walks:
     loops: 1
   baseball:
     category: actions
+    loops: 1
   bird:
     category: animals
+    loops: 1
   bike:
     category: actions
   bowl:
     category: actions
+    loops: 1
   cartwheel:
     category: actions
     loops: 4
