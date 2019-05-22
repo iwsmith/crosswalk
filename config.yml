@@ -71,6 +71,7 @@ walks:
     loops: 1
   applaud:
     category: actions
+    loops: 1
   art:
     category: inactive
   babyshark:
@@ -85,6 +86,9 @@ walks:
   bike:
     category: actions
   bowl:
+    category: actions
+    loops: 1
+  burp:
     category: actions
     loops: 1
   cartwheel:
