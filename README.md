@@ -62,3 +62,6 @@ $ ansible-playbook site.yml -i inventory.ini [-l crosswalk-x] [-C] [-D]
 
 ### Creating New Voice Commands
 On a Mac `say -v Samantha "Walk Sign Is On. Walk Now." --data-format=LEF32@22050 -o walk_now.wav` 
+
+### Creating gifs in Photoshop
+Using photoshop's timeline, create a frame animation. Timing for each walk is set using the frame delay. Even single images need at least two visually distinct frames (for whatever reason, the the software doesn't respect the frame delay if there are two identitcal frames). Most walks have two frames, one with a dark grey pixel in a corner, and a delay that matches with the length of the audio. Loop count should be set to "Once" in the timeline.
