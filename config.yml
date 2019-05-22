@@ -11,12 +11,16 @@ walks:
     category: social
   aircello:
     category: dance
+    loops: 1
   airdrum:
     category: dance
+    loops: 1
   airsax:
     category: dance
+    loops: 1
   airtrombone:
     category: dance
+    loops: 1
   airguitar_wed1:
     category: dance
   airguitar_wed2:
