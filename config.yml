@@ -59,6 +59,7 @@ walks:
     category: inactive
   babyshark:
     category: rare
+    loops: 1
   baseball:
     category: actions
   bird:
