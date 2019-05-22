@@ -23,36 +23,52 @@ walks:
     loops: 1
   airguitar_wed1:
     category: dance
+    loops: 1
   airguitar_wed2:
-    category: dance    
+    category: dance
+    loops: 1    
   airguitar_wed3:
     category: dance
+    loops: 1
   airguitar_wed4:
     category: dance
+    loops: 1
   airguitar_thu1:
     category: dance
+    loops: 1
   airguitar_thu2:
-    category: dance    
+    category: dance
+    loops: 1
   airguitar_thu3:
     category: dance
+    loops: 1
   airguitar_thu4:
-    category: dance   
+    category: dance
+    loops: 1
   airguitar_fri1:
     category: dance
+    loops: 1
   airguitar_fri2:
-    category: dance    
+    category: dance
+    loops: 1
   airguitar_fri3:
     category: dance
+    loops: 1
   airguitar_fri4:
-    category: dance  
+    category: dance
+    loops: 1
   airguitar_sat1:
     category: dance
+    loops: 1
   airguitar_sat2:
-    category: dance    
+    category: dance
+    loops: 1
   airguitar_sat3:
     category: dance
+    loops: 1
   airguitar_sat4:
-    category: dance  
+    category: dance
+    loops: 1
   applaud:
     category: actions
   art:
