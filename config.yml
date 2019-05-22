@@ -11,16 +11,12 @@ walks:
     category: social
   aircello:
     category: dance
-    loops: 0
   airdrum:
     category: dance
-    loops: 0
   airsax:
     category: dance
-    loops: 0
   airtrombone:
     category: dance
-    loops: 0
   airguitar_wed1:
     category: dance
   airguitar_wed2:
@@ -55,23 +51,18 @@ walks:
     category: dance  
   applaud:
     category: actions
-    loops: 0
   art:
     category: inactive
   babyshark:
     category: rare
-    loops: 0
   baseball:
     category: actions
-    loops: 0
   bird:
     category: animals
-    loops: 0
   bike:
     category: actions
   bowl:
     category: actions
-    loops: 0
   cartwheel:
     category: actions
     loops: 4
