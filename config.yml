@@ -9,6 +9,14 @@ walks:
     loops: 7
   appreciate:
     category: social
+  aircello:
+    category: dance
+  airdrum:
+    category: dance
+  airsax:
+    category: dance
+  airtrombone:
+    category: dance
   airguitar_wed1:
     category: dance
   airguitar_wed2:
@@ -41,8 +49,16 @@ walks:
     category: dance
   airguitar_sat4:
     category: dance  
+  applaud:
+    category: dance
   art:
     category: inactive
+  babyshark:
+    category: rare
+  baseball:
+    category: actions
+  bird:
+    category: animals
   bike:
     category: actions
   bowl:
