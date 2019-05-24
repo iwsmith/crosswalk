@@ -94,15 +94,27 @@ walks:
   cartwheel:
     category: actions
     loops: 4
+  cat:
+    category: animals
+    loops: 1
   chestbump:
     category: actions
   cocoadome:
     category: inactive
+  conga:
+    category: dance
+    loops: 1  
   converse:
     category: social
   corgi:
     category: funny
     loops: 8
+  cow:
+    category: animals
+    loops: 1
+  cowboy:
+    category: actions
+    loops: 1
   cube:
     category: trip
     loops: 7
@@ -111,6 +123,15 @@ walks:
     category: actions
   crawl:
     category: actions
+  crossingguard:
+    category: actions
+    loops: 1
+  crossingguard-wizard:
+    category: actions
+    loops: 1
+  cry:
+    category: actions
+    loops: 1
   dance1:
     category: dance
     loops: 13
