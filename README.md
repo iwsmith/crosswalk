@@ -67,3 +67,8 @@ On a Mac `say -v Samantha "Walk Sign Is On. Walk Now." --data-format=LEF32@22050
 Using photoshop's timeline, create a frame animation. Timing for each walk is set using the frame delay. Even single images need at least two visually distinct frames (for whatever reason, the the software doesn't respect the frame delay if there are two identitcal frames). Most walks have two frames, one with a dark grey pixel in a corner, and a delay that matches with the length of the audio. Loop count should be set to "Once" in the timeline.
 
 In the config file, the loops attribute should have a value of 1.
+
+## Moving to HQ Mode
+1. Move the button from pin 18 to pin 25 on the HAT
+1. Solder a jumper wire between pin 4 and 18. See [this diagram](https://github.com/hzeller/rpi-rgb-led-matrix/blob/master/img/adafruit-mod.jpg)
+1. Reinstall the drivers (see above), this time selecting option one in the last step (quality).
