@@ -10,7 +10,7 @@ logging.basicConfig(
 
 logging.warning("Starting button watcher")
 led = LED(24)
-button = Button(25, hold_time=20)
+button = Button(19, hold_time=20)
 sign_ready = False
 
 
