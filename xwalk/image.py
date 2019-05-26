@@ -6,8 +6,7 @@ VIEWER_COMMAND = [
     'led-image-viewer',
     '--led-cols=64',
     '--led-chain=2',
-    '--led-no-hardware-pulse',
-    '--led-gpio-mapping=adafruit-hat',
+    '--led-gpio-mapping=adafruit-hat-pwm',
     '-L',
     '-R 270',
 ]
