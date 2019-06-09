@@ -59,6 +59,14 @@
     group: root
     mode: '0644'
 
+- name: Set default soundcard
+  copy:
+    src: asound.conf
+    dest: /etc/asound.conf
+    owner: root
+    group: root
+    mode: '0644'
+
 - name: Write button service unit
   template:
     src: button.service

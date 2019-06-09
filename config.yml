@@ -9,39 +9,112 @@ walks:
     loops: 7
   appreciate:
     category: social
-  airguitar1:
+  aircello:
     category: dance
-    loops: 13
-  airguitar2:
+    loops: 1
+  airdrum:
     category: dance
-    loops: 13
-  airguitar3:
+    loops: 1
+  airsax:
     category: dance
-    loops: 13
-  airguitar4:
+    loops: 1
+  airtrombone:
     category: dance
-    loops: 13
-  airguitar5:
+    loops: 1
+  airguitar_wed1:
     category: dance
-    loops: 13
+    loops: 1
+  airguitar_wed2:
+    category: dance
+    loops: 1    
+  airguitar_wed3:
+    category: dance
+    loops: 1
+  airguitar_wed4:
+    category: dance
+    loops: 1
+  airguitar_thu1:
+    category: dance
+    loops: 1
+  airguitar_thu2:
+    category: dance
+    loops: 1
+  airguitar_thu3:
+    category: dance
+    loops: 1
+  airguitar_thu4:
+    category: dance
+    loops: 1
+  airguitar_fri1:
+    category: dance
+    loops: 1
+  airguitar_fri2:
+    category: dance
+    loops: 1
+  airguitar_fri3:
+    category: dance
+    loops: 1
+  airguitar_fri4:
+    category: dance
+    loops: 1
+  airguitar_sat1:
+    category: dance
+    loops: 1
+  airguitar_sat2:
+    category: dance
+    loops: 1
+  airguitar_sat3:
+    category: dance
+    loops: 1
+  airguitar_sat4:
+    category: dance
+    loops: 1
+  applaud:
+    category: actions
+    loops: 1
   art:
     category: inactive
+  babyshark:
+    category: rare
+    loops: 1
+  baseball:
+    category: actions
+    loops: 1
+  bird:
+    category: animals
+    loops: 1
   bike:
     category: actions
   bowl:
     category: actions
+    loops: 1
+  burp:
+    category: actions
+    loops: 1
   cartwheel:
     category: actions
     loops: 4
+  cat:
+    category: animals
+    loops: 1
   chestbump:
     category: actions
   cocoadome:
     category: inactive
+  conga:
+    category: dance
+    loops: 1  
   converse:
     category: social
   corgi:
     category: funny
     loops: 8
+  cow:
+    category: animals
+    loops: 1
+  cowboy:
+    category: actions
+    loops: 1
   cube:
     category: trip
     loops: 7
@@ -50,6 +123,54 @@ walks:
     category: actions
   crawl:
     category: actions
+  crossingguard:
+    category: actions
+    loops: 1
+  crossingguard-wizard:
+    category: actions
+    loops: 1
+  cry:
+    category: actions
+    loops: 1
+  dab:
+    category: dance
+    loops: 1
+  daftpunk-1:
+    category: funny
+    loops: 1
+  daftpunk-2:
+    category: funny
+    loops: 1
+  daftpunk-3:
+    category: funny
+    loops: 1
+  daftpunk-4:
+    category: funny
+    loops: 1
+  dance-hustle:
+    category: dance
+    loops: 1
+  dance-macarena:
+    category: dance
+    loops: 1
+  dance-twerk:
+    category: dance
+    loops: 1
+  dance-twist:
+    category: dance
+    loops: 1
+  dancemove-chacha:
+    category: dance
+    loops: 1
+  dancemove-cupidshuffle:
+    category: dance
+    loops: 1
+  dancemove-hokeypokey:
+    category: dance
+    loops: 1
+  dancemove-whipnaenae:
+    category: dance
+    loops: 1
   dance1:
     category: dance
     loops: 13
@@ -77,10 +198,19 @@ walks:
   dance10:
     category: dance
     loops: 13
+  dog:
+    category: animals
+    loops: 1
+  DFV:
+    category: actions
+    loops: 1
   dots:
     category: trip
     loops: 10
     audio: trip.wav
+  duck:
+    category: animals
+    loops: 1
   elephant:
     category: animals
   fartbox:
