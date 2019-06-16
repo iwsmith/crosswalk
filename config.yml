@@ -345,6 +345,8 @@ walks:
     audio: trip.wav
   wizard:
     category: funny
+  workout-test:
+    loops:1
   yoga1:
     category: inactive
     loops: 1
