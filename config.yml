@@ -346,6 +346,7 @@ walks:
   wizard:
     category: funny
   workout-test:
+    category: inactive
     loops:1
   yoga1:
     category: inactive
