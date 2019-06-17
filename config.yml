@@ -253,6 +253,15 @@ walks:
     category: inactive
   jump:
     category: actions
+  karaoke-totalEclipse:
+    category: dance
+    loops: 1
+  karaoke-tubthumping:
+    category: dance
+    loops: 1
+  karaoke-wannaDance:
+    category: dance
+    loops: 1
   leapfrog:
     category: actions
   meditate:
