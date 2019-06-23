@@ -26,7 +26,7 @@ walks:
     loops: 1
   airguitar_wed2:
     category: dance
-    loops: 1    
+    loops: 1
   airguitar_wed3:
     category: dance
     loops: 1
@@ -103,7 +103,7 @@ walks:
     category: inactive
   conga:
     category: dance
-    loops: 1  
+    loops: 1
   converse:
     category: social
   corgi:
@@ -398,7 +398,7 @@ weights:
     trip: 2
     fin: 1
 
-schedule:
+menu:
   - start: '2018-10-20T00:00:00'
     weights: seacomp_day
   - start: '2018-10-20T20:00:00'

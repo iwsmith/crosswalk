@@ -87,7 +87,7 @@ class Library:
         self.walks = []
         self.uploads = []
         self.weights = {}
-        self.schedule = []
+        self.menu = []
         self.refresh()
 
 
@@ -142,12 +142,12 @@ class Library:
         self.walks = self._load_images('walks', config, sounds, 'walk_now.wav', 5)
 
         self.weights = config['weights'] or {}
-        self.schedule = [
+        self.menu = [
             {
                 'start': datetime.strptime(entry['start'], "%Y-%m-%dT%H:%M:%S"),
                 'weights': entry['weights'],
             }
-            for entry in config['schedule']
+            for entry in config['menu']
         ]
 
 
@@ -161,7 +161,8 @@ class Library:
     def find_scene(self, image_names):
         """
         Build a scene attempting to match the given intro, walk, and outro
-        names.
+        names. This is used for synchronizing with the choices made by the other
+        sign.
         """
         intro_name, walk_name, outro_name = image_names
         intro = next(image for image in self.intros if image.name == intro_name)
@@ -170,16 +171,16 @@ class Library:
         return Scene([intro, walk, outro])
 
 
-    def _scheduled_entry(self, time=datetime.now()):
+    def _menu_entry(self, time=datetime.now()):
         """
-        Search through the schedule looking at the start dates. Returns the last
+        Search through the menu looking at the start dates. Returns the last
         entry which is earlier than the given time.
         """
-        # Nothing to pick if schedule is empty.
-        if not self.schedule:
+        # Nothing to pick if menu is empty.
+        if not self.menu:
             return None
-        recent = self.schedule[0]
-        for entry in self.schedule:
+        recent = self.menu[0]
+        for entry in self.menu:
             start = entry.get('start')
             if start is None or time < start:
                 break
@@ -192,7 +193,7 @@ class Library:
         Generate a new walk scene by selecting from the available intros,
         walks, and outros.
         """
-        current = self._scheduled_entry()
+        current = self._menu_entry()
         valid_categories = set([animation.category for animation in self.walks if animation.category])
 
         weight_name = current and current.get('weights')
@@ -202,7 +203,7 @@ class Library:
             for category, weight in weights.items()
             if category in valid_categories
         }
-        logger.debug("Currently scheduled entry %s resulted in pruned weight table: %s", current, repr(weights))
+        logger.debug("Currently scheduled menu entry %s resulted in pruned weight table: %s", current, repr(weights))
 
         # Uniform random if no (or empty) weight table.
         if not weights:
@@ -216,6 +217,7 @@ class Library:
             point -= weight
             if point <= 0:
                 break
+
         # Pick a random image from the category.
         return random.choice([
             animation
