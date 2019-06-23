@@ -72,8 +72,6 @@ walks:
   applaud:
     category: actions
     loops: 1
-  art:
-    category: inactive
   babyshark:
     category: rare
     loops: 1
@@ -171,33 +169,6 @@ walks:
   dancemove-whipnaenae:
     category: dance
     loops: 1
-  dance1:
-    category: dance
-    loops: 13
-  dance2:
-    category: dance
-    loops: 13
-  dance3:
-    category: dance
-    loops: 13
-  dance4:
-    category: dance
-    loops: 13
-  dance5:
-    category: dance
-    loops: 13
-  dance6:
-    category: dance
-    loops: 13
-  dance7:
-    category: dance
-    loops: 13
-  dance8:
-    category: dance
-    loops: 13
-  dance10:
-    category: dance
-    loops: 13
   dog:
     category: animals
     loops: 1
@@ -232,8 +203,6 @@ walks:
     category: social
   home:
     category: fin
-  horse:
-    category: inactive
   horsebackriding:
     category: actions
   hug:
@@ -249,29 +218,21 @@ walks:
   inw:
     category: funny
     audio: seacompression.wav
-  jazzhands:
-    category: inactive
   jump:
     category: actions
   leapfrog:
     category: actions
-  meditate:
-    category: inactive
-    loops: 60
+  meditationWednesday:
+    loops: 1
   natureappreciate:
-    category: inactive
-    loops: 7
+    loops: 1
   nyan:
     category: funny
     loops: 5
-  partyrock:
-    category: inactive
   piggyback:
     category: actions
   pose:
     category: funny
-  presentation:
-    category: inactive
   race:
     category: actions
     loops: 1
@@ -279,9 +240,6 @@ walks:
     category: trip
     loops: 5
     audio: trip.wav
-  resilience:
-    category: inactive
-    loops: 17
   rowboat:
     category: actions
   run:
@@ -292,8 +250,6 @@ walks:
     category: inactive
   sloth:
     category: animals
-  somersault:
-    category: actions
   spaceodyssea:
     category: funny
     audio: seacompression.wav
@@ -307,17 +263,11 @@ walks:
     category: trip
   teleport:
     category: funny
-  timewarp:
-    category: inactive
-    loops: 6
   turtle:
     category: animals
     loops: 12
   unicycle:
     category: actions
-  vogue1:
-    category: inactive
-    audio: dance7.wav
   walkdress:
     category: normal
   walkpants:
@@ -331,8 +281,6 @@ walks:
     category: funny
   walkingtogether:
     category: social
-  westworldmaze:
-    category: inactive
   werewolf:
     category: animals
   weirddog:
@@ -345,30 +293,8 @@ walks:
     audio: trip.wav
   wizard:
     category: funny
-  workout-test:
-    category: inactive
+  workoutWednesday:
     loops:1
-  yoga1:
-    category: inactive
-    loops: 1
-  yoga2:
-    category: inactive
-    loops: 1
-  yoga3:
-    category: inactive
-    loops: 1
-  yoga4:
-    category: inactive
-    loops: 1
-  yoga5:
-    category: inactive
-    loops: 1
-  yoga6:
-    category: inactive
-    loops: 1
-  yoga7:
-    category: inactive
-    loops: 1
   zebra:
     category: trip
     loops: 15
