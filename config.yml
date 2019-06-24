@@ -301,7 +301,6 @@ walks:
     audio: tongueTwister.wav
   tongueTwister4:
     loops: 1
-    audio: tongueTwister.wav
   turtle:
     category: animals
     loops: 12
