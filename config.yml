@@ -249,7 +249,7 @@ walks:
   rowboat:
     category: actions
   rps:
-    loops :1
+    loops: 1
   run:
     category: actions
   ski:
