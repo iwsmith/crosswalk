@@ -287,6 +287,60 @@ walks:
   rps9:
     loops: 1
     audio: rps.wav
+  rps10:
+    loops: 1
+    audio: rps.wav
+  rps11:
+    loops: 1
+    audio: rps.wav
+  rps12:
+    loops: 1
+    audio: rps.wav
+  rps13:
+    loops: 1
+    audio: rps.wav
+  rps14:
+    loops: 1
+    audio: rps.wav
+  rps15:
+    loops: 1
+    audio: rps.wav
+  rps16:
+    loops: 1
+    audio: rps.wav
+  rps17:
+    loops: 1
+    audio: rps.wav
+  rps18:
+    loops: 1
+    audio: rps.wav
+  rps19:
+    loops: 1
+    audio: rps.wav
+  rps20:
+    loops: 1
+    audio: rps.wav
+  rps21:
+    loops: 1
+    audio: rps.wav
+  rps22:
+    loops: 1
+    audio: rps.wav
+  rps23:
+    loops: 1
+    audio: rps.wav
+  rps24:
+    loops: 1
+    audio: rps.wav
+  rps25:
+    loops: 1
+    audio: rps.wav
+  rps26:
+    loops: 1
+    audio: rps.wav
+  rps27:
+    loops: 1
+    audio: rps.wav
   run:
     category: actions
   ski:
