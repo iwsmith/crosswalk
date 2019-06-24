@@ -188,12 +188,15 @@ walks:
     category: inactive
   fall:
     category: actions
+    loops: 1
   flying:
     category: actions
   frida:
     category: trip
     loops: 10
     audio: trip.wav
+  hadouken:
+    loops: 1
   hammer-time:
     category: dance
     loops: 1
@@ -248,8 +251,33 @@ walks:
     loops: 1
   rowboat:
     category: actions
-  rps:
+  rps1:
     loops: 1
+    audio: rps.wav
+  rps2:
+    loops: 1
+    audio: rps.wav
+  rps3:
+    loops: 1
+    audio: rps.wav
+  rps4:
+    loops: 1
+    audio: rps.wav
+  rps5:
+    loops: 1
+    audio: rps.wav
+  rps6:
+    loops: 1
+    audio: rps.wav
+  rps7:
+    loops: 1
+    audio: rps.wav
+  rps8:
+    loops: 1
+    audio: rps.wav
+  rps9:
+    loops: 1
+    audio: rps.wav
   run:
     category: actions
   ski:
