@@ -233,15 +233,23 @@ walks:
     category: actions
   pose:
     category: funny
+  propose:
+    loops: 1
   race:
     category: actions
+    loops: 1
+  raptor:
     loops: 1
   rainbow_heart:
     category: trip
     loops: 5
     audio: trip.wav
+  rickroll:
+    loops: 1
   rowboat:
     category: actions
+  rps:
+    loops :1
   run:
     category: actions
   ski:
@@ -250,6 +258,8 @@ walks:
     category: inactive
   sloth:
     category: animals
+  somersault:
+    loops: 1
   spaceodyssea:
     category: funny
     audio: seacompression.wav
@@ -261,26 +271,45 @@ walks:
     category: social
   takeoff:
     category: trip
+  teamCheer:
+    loops: 1
   teleport:
     category: funny
+  thankRangers:
+    loops: 1
+  tightrope:
+    loops: 1
+  toothbrush:
+    loops: 1
+  tongueTwister1:
+    loops: 1
+    audio: toungeTwister.wav
+  tongueTwister2:
+    loops: 1
+    audio: toungeTwister.wav
+  tongueTwister3:
+    loops: 1
+    audio: toungeTwister.wav
+  tongueTwister4:
+    loops: 1
+    audio: toungeTwister.wav
   turtle:
     category: animals
     loops: 12
   unicycle:
     category: actions
+  vacuum:
+    loops: 1
+  walkBackwards:
+    loops: 1
   walkdress:
     category: normal
-  walkpants:
-    category: normal
-  wheelbarrow:
-    category: social
-  why-cross:
-    category: rare
+  walkingLunge:
     loops: 1
-  wok:
-    category: funny
   walkingtogether:
     category: social
+  walkpants:
+    category: normal
   werewolf:
     category: animals
   weirddog:
@@ -291,10 +320,25 @@ walks:
     category: trip
     loops: 6
     audio: trip.wav
+  wheelbarrow:
+    category: social
+  why-cross:
+    category: rare
+    loops: 1
+  witch:
+    loops: 1
   wizard:
     category: funny
+  wok:
+    category: funny
   workoutWednesday:
-    loops:1
+    loops: 1
+  worm:
+    loops: 1
+  yogaWednesday:
+    loops: 1
+  youDoIt:
+    loops: 1
   zebra:
     category: trip
     loops: 15
