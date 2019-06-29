@@ -223,6 +223,15 @@ walks:
     audio: seacompression.wav
   jump:
     category: actions
+  karaoke-totalEclipse:
+    category: dance
+    loops: 1
+  karaoke-tubthumping:
+    category: dance
+    loops: 1
+  karaoke-wannaDance:
+    category: dance
+    loops: 1
   leapfrog:
     category: actions
   meditationWednesday:
@@ -372,10 +381,9 @@ walks:
     audio: tongueTwister.wav
   tongueTwister3:
     loops: 1
-    audio: tonugeTwister.wav
+    audio: tongueTwister.wav
   tongueTwister4:
     loops: 1
-    audio: tonugeTwister.wav
   turtle:
     category: animals
     loops: 12
@@ -403,11 +411,8 @@ walks:
     category: trip
     loops: 6
     audio: trip.wav
-  wheelbarrow:
-    category: social
   why-cross:
     category: rare
-    loops: 1
   witch:
     loops: 1
   wizard:

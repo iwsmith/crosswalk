@@ -1,13 +1,12 @@
 ---
 - name: Install python packages
   apt:
-    name: 'python3-{{item}}'
+    name:
+      - python3-flask
+      - python3-gpiozero
+      - python3-requests
+      - python3-yaml
     state: present
-  with_items:
-    - flask
-    - gpiozero
-    - requests
-    - yaml
 
 - name: Create crosswalk user
   user:
@@ -29,12 +28,12 @@
     state: directory
     owner: crosswalk
     group: crosswalk
-    mode: '0750'
+    mode: '0755'
 
 - name: Copy driver binaries
   copy:
     src: '{{led_driver_src}}/{{item}}'
-    dest: '{{crosswalk_home}}/bin/'
+    dest: '{{crosswalk_home}}/bin/{{item | basename}}'
     remote_src: true
     owner: crosswalk
     group: crosswalk
