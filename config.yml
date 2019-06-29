@@ -465,3 +465,10 @@ menu:
     weights: seacomp_night
   - start: '2018-10-21T02:00:00'
     weights: seacomp_over
+
+schedule:
+  - time: '2019-07-09T12:00:00'
+    label: crossfit
+    image: crossfit-event
+    audio: crossfit-event
+    ad: crossfit-halt-ad
