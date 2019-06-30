@@ -145,6 +145,52 @@ class CrossWalk:
         self._play_walk('sync', scene)
 
 
+    def _walk_button(self):
+        """
+        What to do when the button is pressed in walk mode.
+        """
+        # Bail if the crosswalk is not ready.
+        if not self.is_ready():
+            return
+
+        # If the next scheduled event is in the _past_ we had it queued
+        # up and should play the event now.
+        next_event = self.library.next_scheduled_event()
+        if next_event:
+            # FIXME: build scheduled event scene
+            logger.warning("Would have played scheduled event %s: %s", next_event['title'], next_event)
+            self.schedule.advance()
+            scene = None
+            tag = 'event'
+
+        # If there are walks queued up, play the next one.
+        elif self.queue:
+            next_walk = self.queue.pop(0)
+            scene = self.library.build_scene(walk=next_walk)
+            tag = 'queue'
+
+        # Otherwise randomly pick a walk.
+        else:
+            scene = self.library.build_scene(exclude=self.history[-3:])
+            tag = 'random'
+
+        logger.info("Selected scene: %s", scene)
+
+        # Sync selection with the other crosswalk.
+        dual = 'crosswalk-b' if self.host == 'crosswalk-a' else 'crosswalk-a'
+        try:
+            req = {'scene': [animation.name for animation in scene]}
+            if tag == 'event':
+                # TODO: pass the event being triggered, if any
+                pass
+            requests.post("http://{}/sync".format(dual), json=req)
+        except Exception as ex:
+            logger.warn("Failed to synchronize with %s: %s", dual, ex)
+
+        # Play the selected scene.
+        self._play_walk(tag, scene)
+
+
     def button(self, hold=0.0):
         """
         Indicate that a button has been pressed. If 'hold' is set, it means the
@@ -163,18 +209,4 @@ class CrossWalk:
             pass
         elif self.mode == 'walk':
             # TODO: if long press, switch off
-            if self.is_ready():
-                if self.queue:
-                    next_walk = self.queue.pop(0)
-                    scene = self.library.build_scene(walk=next_walk)
-                    tag = 'queue'
-                else:
-                    scene = self.library.build_scene(exclude=self.history[-3:])
-                    tag = 'random'
-                logger.info("Selected scene: %s", scene)
-                dual = 'crosswalk-b' if self.host == 'crosswalk-a' else 'crosswalk-a'
-                try:
-                    requests.post("http://{}/sync".format(dual), json={'scene': [animation.name for animation in scene]})
-                except Exception as ex:
-                    logger.warn("Failed to synchronize with %s: %s", dual, ex)
-                self._play_walk(tag, scene)
+            self._walk_button()
