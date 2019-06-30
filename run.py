@@ -116,9 +116,16 @@ def set_state():
 def sync_state():
     body = request.get_json() or {}
     scene = body.get('scene')
+    event = body.get('event')
+
     if not scene:
         return jsonify({'error': "Missing scene to synchronize"}), 400
-    crosswalk.sync(scene)
+
+    if event:
+        crosswalk.sync(scene, event.get('time'), event.get('label'))
+    else:
+        crosswalk.sync(scene)
+
     return jsonify(crosswalk.state())
 
 

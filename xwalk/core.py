@@ -100,18 +100,6 @@ class CrossWalk:
         self.mode = 'walk'
 
 
-    def _halt_image():
-        """Return the halt image to use when between walks."""
-        # See if we're within a certain period of the next event and if that
-        # event has a custom halt advertisement.
-        next_event = self.schedule.next_event(before=timedelta(hours=1))
-        if next_event and next_event.ad:
-            ad = self.library.find_image(next_event.ad)
-            return ad or self.halt
-        else:
-            return self.halt
-
-
     def _play_walk(self, tag, scene):
         """Play a walk scene."""
         intro, walk, outro = scene
@@ -127,7 +115,19 @@ class CrossWalk:
             log.write("{}\t{}\t{}\n".format(datetime.now(), tag, walk.name))
 
 
-    def sync(self, image_names):
+    def _halt_image():
+        """Return the halt image to use when between walks."""
+        # See if we're within a certain period of the next event and if that
+        # event has a custom halt advertisement.
+        next_event = self.schedule.next_event(before=timedelta(hours=1))
+        if next_event and next_event.ad:
+            ad = self.library.find_image(next_event.ad)
+            return ad or self.halt
+        else:
+            return self.halt
+
+
+    def sync(self, image_names, event_time=None, event_label=None):
         """
         Synchronize this crosswalk with an animation scene selected by the
         other sign.
@@ -141,6 +141,13 @@ class CrossWalk:
             return
         else:
             logger.warn("Overriding cooldown state for contentious sync call")
+
+        # If the other crosswalk is initiating an event, take it off of the
+        # local schedule.
+        if event_time or event_label:
+            self.schedule.advance(event_time, event_label)
+
+        # Locate and play the walk scene.
         scene = self.library.find_scene(image_names)
         self._play_walk('sync', scene)
 
@@ -181,8 +188,10 @@ class CrossWalk:
         try:
             req = {'scene': [animation.name for animation in scene]}
             if tag == 'event':
-                # TODO: pass the event being triggered, if any
-                pass
+                req['event'] = {
+                    'time': event.time,
+                    'label': event.label,
+                }
             requests.post("http://{}/sync".format(dual), json=req)
         except Exception as ex:
             logger.warn("Failed to synchronize with %s: %s", dual, ex)
