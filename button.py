@@ -11,6 +11,7 @@ logging.basicConfig(
 logging.warning("Starting button watcher")
 led = LED(24)
 button = Button(19, hold_time=20)
+pressed_at = time.perf_counter()
 sign_ready = False
 
 
@@ -19,7 +20,8 @@ def button_released():
     logging.debug("Button released: %s (LED: %s)", sign_ready, led.value)
     if sign_ready:
         sign_ready = False
-        requests.post("http://localhost/button")
+        elapsed = time.perf_counter() - pressed_at
+        requests.post("http://localhost/button", json={'hold': elapsed})
         led.off()
 
 
@@ -30,12 +32,13 @@ def button_held():
 
 def button_pressed():
     logging.debug("Button pressed (ready: %s)", sign_ready)
-    #led.off()
+    pressed_at = time.perf_counter()
 
 
 button.when_pressed = button_pressed
 button.when_released = button_released
 button.when_held = button_held
+
 
 # Spin and check /state to set button light.
 while True:
