@@ -62,8 +62,9 @@ def index():
 
 
 @app.route("/refresh", methods=['POST'])
-def refresh_library():
+def refresh():
     library.refresh()
+    schedule.refresh()
     return "", 204
 
 

@@ -24,7 +24,7 @@
   <h1>Current Status</h1>
   <button class="btn btn-danger" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'off'})">Off</button>
   <button class="btn btn-success" onclick="sendRequest('POST', '{{ url_for('set_state') }}', {mode: 'walk'})">Walk</button>
-  <button class="btn btn-success" onclick="sendRequest('POST', '{{ url_for('refresh_library') }}'); window.location.reload(true)">Refresh</button>
+  <button class="btn btn-success" onclick="sendRequest('POST', '{{ url_for('refresh') }}'); window.location.reload(true)">Refresh</button>
   <button class="btn btn-primary" onclick="sendRequest('POST', '{{ url_for('push_button') }}', {})">Button</button>
   <br>
   {{ status }}
