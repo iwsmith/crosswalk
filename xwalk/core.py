@@ -123,7 +123,7 @@ class CrossWalk:
         # event has a custom halt advertisement.
         next_event = self.schedule.next_event(before=timedelta(hours=1))
         if next_event and next_event.ad_prefix:
-            ad_image = self.library.find_image(next_event.current_ad())
+            ad_image = self.library.find_image(next_event.current_ad(), self.library.ads)
 
         return ad_image or self.halt
 
@@ -165,10 +165,10 @@ class CrossWalk:
         # up and should play the event now.
         next_event = self.library.next_scheduled_event()
         if next_event:
-            # FIXME: build scheduled event scene
             logger.warning("Would have played scheduled event %s: %s", next_event['title'], next_event)
             self.schedule.advance()
-            scene = None
+            # TODO: custom intro or skip intro?
+            scene = self.library.build_scene(walk=next_event.image)
             tag = 'event'
 
         # If there are walks queued up, play the next one.
@@ -190,8 +190,8 @@ class CrossWalk:
             req = {'scene': [animation.name for animation in scene]}
             if tag == 'event':
                 req['event'] = {
-                    'time': event.time,
-                    'label': event.label,
+                    'time': next_event.time,
+                    'label': next_event.label,
                 }
             requests.post("http://{}/sync".format(dual), json=req)
         except Exception as ex:

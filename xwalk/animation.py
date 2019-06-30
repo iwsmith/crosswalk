@@ -140,6 +140,7 @@ class Library:
         self.intros = self._load_images('intros', config, sounds)
         self.outros = self._load_images('outros', config, sounds)
         self.walks = self._load_images('walks', config, sounds, 'walk_now.wav', 5)
+        self.ads = self._load_images('ads', config, sounds)
 
         self.weights = config['weights'] or {}
         self.menu = [
@@ -151,9 +152,12 @@ class Library:
         ]
 
 
-    def find_image(self, name):
+    def find_image(self, name, coll=None):
         """Look for an image by name in the walks and uploads folders."""
-        for animation in self.walks + self.uploads:
+        if coll is None:
+            coll = self.walks + self.uploads
+
+        for animation in coll:
             if animation.name == name:
                 return animation
 
