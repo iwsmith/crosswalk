@@ -468,7 +468,5 @@ menu:
 
 schedule:
   - time: '2019-07-09T12:00:00'
-    label: crossfit
-    image: crossfit-event
-    audio: crossfit-event
-    ad: crossfit-halt-ad
+    label: workoutWednesday
+    ad_prefix: workout

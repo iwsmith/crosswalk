@@ -11,13 +11,38 @@ class Event:
     A scheduled event.
     """
 
-    def __init__(self, label, time, image, audio, ad=None):
+    def __init__(self, label, time, image, audio, ad_prefix=None):
         """Construct a new schedule event."""
         self.label = label
         self.time = time
         self.image = image
         self.audio = audio
-        self.ad = ad
+        self.ad_prefix = ad_prefix
+
+
+    def current_ad(self, time=datetime.now()):
+        """
+        Return the current advertisement image path based on the number of
+        minutes between now and the event start.
+        """
+        if self.ad_prefix is None:
+            return None
+
+        pending = (self.time - time).total_seconds()
+        current = None
+
+        # Find the *last* entry which is greater than the pending time.
+        for minutes in [60, 45, 30, 15, 10, 5, 0]:
+            if pending <= minutes:
+                current = minutes
+
+        # Construct the ad image name.
+        if current is None:
+            return None
+        elif current == 0:
+            return '{}-start.gif'.format(self.ad_prefix)
+        else:
+            return '{}-{}m.gif'.format(self.ad_prefix, current)
 
 
 class Schedule:
@@ -45,8 +70,11 @@ class Schedule:
         # Load the scheduled events and drop any that have already happened.
         for e in config['schedule']:
             time = datetime.strptime(e['time'], "%Y-%m-%dT%H:%M:%S")
+            label = e['label']
+            image = e.get('image', label)
+            audio = e.get('audio', label)
             if now < time:
-                event = Event(time, e['label'], e['image'], e['audio'], e.get('ad'))
+                event = Event(time, label, image, audio, e.get('ad_prefix'))
                 self.events.append(event)
 
 

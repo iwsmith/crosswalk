@@ -117,14 +117,15 @@ class CrossWalk:
 
     def _halt_image():
         """Return the halt image to use when between walks."""
+        ad_image = None
+
         # See if we're within a certain period of the next event and if that
         # event has a custom halt advertisement.
         next_event = self.schedule.next_event(before=timedelta(hours=1))
-        if next_event and next_event.ad:
-            ad = self.library.find_image(next_event.ad)
-            return ad or self.halt
-        else:
-            return self.halt
+        if next_event and next_event.ad_prefix:
+            ad_image = self.library.find_image(next_event.current_ad())
+
+        return ad_image or self.halt
 
 
     def sync(self, image_names, event_time=None, event_label=None):
