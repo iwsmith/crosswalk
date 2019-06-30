@@ -18,11 +18,12 @@ class CrossWalk:
     Core crossXwalk logic engine.
     """
 
-    def __init__(self, library, log_file='walks.tsv'):
+    def __init__(self, library, schedule, log_file='walks.tsv'):
         with open('/etc/hostname') as f:
             self.host = f.read().rstrip()
         self._log_file = log_file
         self.library = library
+        self.schedule = schedule
         self.demos = DemoController()
         self.image = ImageController()
         self.audio = AudioController()

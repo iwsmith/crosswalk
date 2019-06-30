@@ -9,6 +9,7 @@ from werkzeug.utils import secure_filename
 
 from xwalk.animation import Library
 from xwalk.core import CrossWalk
+from xwalk.schedule import Schedule
 
 
 logging.basicConfig(
@@ -17,7 +18,8 @@ logging.basicConfig(
 
 app = Flask(__name__)
 library = Library('config.yml', './static/img', './static/snd')
-crosswalk = CrossWalk(library)
+schedule = Schedule('config.yml')
+crosswalk = CrossWalk(library, schedule)
 crosswalk.walk()
 
 
