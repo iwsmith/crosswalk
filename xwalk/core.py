@@ -96,14 +96,26 @@ class CrossWalk:
         self.demos.kill()
         self.audio.kill()
         self.make_ready()
-        self.image.play(self.halt)
+        self.image.play(self._halt_image())
         self.mode = 'walk'
+
+
+    def _halt_image():
+        """Return the halt image to use when between walks."""
+        # See if we're within a certain period of the next event and if that
+        # event has a custom halt advertisement.
+        next_event = self.schedule.next_event(before=timedelta(hours=1))
+        if next_event and next_event.ad:
+            ad = self.library.find_image(next_event.ad)
+            return ad or self.halt
+        else:
+            return self.halt
 
 
     def _play_walk(self, tag, scene):
         """Play a walk scene."""
         intro, walk, outro = scene
-        scene.append(self.halt)
+        scene.append(self._halt_image())
         self.demos.kill()
         self.ready = False
         self.image.play_all(scene)
