@@ -10,11 +10,16 @@ fi
 DEPLOY_HOST="$1"
 DEPLOY_USER="${DEPLOY_USER:-pi}"
 
+ssh_sudo() {
+    ssh "${DEPLOY_USER}@${DEPLOY_HOST}" "sudo $@"
+}
+
 echo "Copying code to ${DEPLOY_HOST}"
 rsync -rz --progress *.py config.yml static templates xwalk "${DEPLOY_USER}@${DEPLOY_HOST}:/tmp/crosswalk"
 
 echo "Synchronizing deployed code"
-ssh "${DEPLOY_USER}@${DEPLOY_HOST}" "sudo rsync -r /tmp/crosswalk/ /srv/crosswalk/code/"
+ssh_sudo rsync -r /tmp/crosswalk/ /srv/crosswalk/code/
 
-echo "Restarting crosswalk service"
-ssh "${DEPLOY_USER}@${DEPLOY_HOST}" "sudo systemctl restart crosswalk"
+echo "Restarting crosswalk and button service"
+ssh_sudo systemctl restart button
+ssh_sudo systemctl restart crosswalk
