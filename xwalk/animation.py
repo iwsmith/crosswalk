@@ -232,8 +232,11 @@ class Library:
         walks, and outros. A specific walk name may be provided to force its
         selection.
         """
+        # Select a random intro and outro.
         intro = random.choice(self.intros)
         outro = random.choice(self.outros)
+
+        # Select a walk by randomly choosing from the weighted menu.
         if walk is None:
             for attempt in range(10):
                 walk = self._choose_walk()
@@ -244,4 +247,5 @@ class Library:
             logger.info("Randomly selected walk %s", walk)
         else:
             logger.info("Force selected walk %s", walk)
+
         return Scene([intro, walk, outro])
