@@ -92,10 +92,10 @@ class Schedule:
         """
         Return the next scheduled event occurring before the given time.
         """
-        if not self.schedule:
+        if not self.events:
             return None
         else:
-            event = self.schedule[0]
+            event = self.events[0]
             if event.time <= before:
                 return event
             else:

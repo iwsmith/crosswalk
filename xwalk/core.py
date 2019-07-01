@@ -115,7 +115,7 @@ class CrossWalk:
             log.write("{}\t{}\t{}\n".format(datetime.now(), tag, walk.name))
 
 
-    def _halt_image():
+    def _halt_image(self):
         """Return the halt image to use when between walks."""
         ad_image = None
 
@@ -207,7 +207,7 @@ class CrossWalk:
         button was held down for at least that many seconds.
         """
         long_press = (5.0 <= hold)
-        logger.debug("Button %s press: %.1f s", long_press ? 'long' : 'short', hold)
+        logger.debug("Button %s press: %.1f s", 'long' if long_press else 'short', hold)
         if self.mode == 'off':
             if long_press:
                 self.walk()
