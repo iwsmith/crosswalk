@@ -9,7 +9,7 @@ from werkzeug.utils import secure_filename
 
 from xwalk.animation import Library
 from xwalk.core import CrossWalk
-from xwalk.schedule import Schedule
+from xwalk.schedule import Schedule, format_event_key
 
 
 logging.basicConfig(
@@ -122,10 +122,8 @@ def sync_state():
     if not scene:
         return jsonify({'error': "Missing scene to synchronize"}), 400
 
-    if event:
-        crosswalk.sync(scene, event.get('time'), event.get('label'))
-    else:
-        crosswalk.sync(scene)
+    event_key = format_event_key(event.get('label'), event.get('time')) if event else None
+    crosswalk.sync(scene, event_key)
 
     return jsonify(crosswalk.state())
 

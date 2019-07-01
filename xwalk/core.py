@@ -128,7 +128,7 @@ class CrossWalk:
         return ad_image or self.halt
 
 
-    def sync(self, image_names, event_time=None, event_label=None):
+    def sync(self, image_names, event_key=None):
         """
         Synchronize this crosswalk with an animation scene selected by the
         other sign.
@@ -145,8 +145,8 @@ class CrossWalk:
 
         # If the other crosswalk is initiating an event, take it off of the
         # local schedule.
-        if event_time or event_label:
-            self.schedule.advance(event_time, event_label)
+        if event_key:
+            self.schedule.advance(event_key)
 
         # Locate and play the walk scene.
         scene = self.library.find_scene(image_names)

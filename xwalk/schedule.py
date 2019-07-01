@@ -6,6 +6,11 @@ import yaml
 logger = logging.getLogger(__name__)
 
 
+def format_event_key(label, time):
+    """Generate a new event key based on the label and time."""
+    return "{}|{}".format(label, time)
+
+
 class Event:
     """
     A scheduled event.
@@ -18,6 +23,11 @@ class Event:
         self.image = image
         self.audio = audio
         self.ad_prefix = ad_prefix
+
+
+    def event_key(self):
+        """Return a key identifying this event."""
+        return format_event_key(self.label, self.time)
 
 
     def current_ad(self, time=datetime.now()):
@@ -92,7 +102,7 @@ class Schedule:
                 return None
 
 
-    def advance(self, time=None, label=None):
+    def advance(self, event_key=None):
         """
         Drop the next scheduled event, optionally checking that it has a
         matching time and label. Returns the dropped event, or None.
@@ -101,10 +111,9 @@ class Schedule:
             return None
 
         first = self.schedule[0]
-        if time is not None and time != first.time:
-            return None
-        elif label is not None and label != first.label:
-            return None
-        else:
+
+        if event_key == first.event_key():
             self.schedule.pop(0)
             return first
+        else:
+            return None
