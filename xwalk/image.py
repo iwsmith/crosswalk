@@ -7,6 +7,7 @@ VIEWER_COMMAND = [
     '--led-cols=64',
     '--led-chain=2',
     '--led-gpio-mapping=adafruit-hat-pwm',
+    '--led-pwm-lsb-nanoseconds=400',
     '-L',
     '-R 270',
 ]
