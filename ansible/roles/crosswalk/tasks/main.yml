@@ -42,11 +42,27 @@
     - 'examples-api-use/demo'
     - 'utils/led-image-viewer'
 
-- name: Clone crosswalk repo
-  git:
-    repo: '{{crosswalk_src}}'
-    dest: '{{crosswalk_home}}/code'
-    version: '{{crosswalk_version}}'
+- name: Create code directory
+  file:
+    path: '{{crosswalk_home}}/code'
+    state: directory
+    owner: crosswalk
+    group: crosswalk
+    mode: '0755'
+
+- name: Copy crosswalk code
+  copy:
+    src: "../../../../{{item}}"
+    dest: "{{crosswalk_home}}/code/"
+    owner: crosswalk
+    group: crosswalk
+    #mode: '0755'
+  with_items:
+    - xwalk
+    - templates
+    - config.yml
+    - button.py
+    - run.py
   notify:
     - Restart crosswalk
 
