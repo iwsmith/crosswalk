@@ -30,7 +30,7 @@ class Event:
         return format_event_key(self.label, self.time)
 
 
-    def current_ad(self, time=datetime.now()):
+    def current_ad(self):
         """
         Return the current advertisement image path based on the number of
         minutes between now and the event start.
@@ -38,7 +38,7 @@ class Event:
         if self.ad_prefix is None:
             return None
 
-        pending = (self.time - time).total_seconds()
+        pending = (self.time - datetime.now()).total_seconds()/60
         current = None
 
         # Find the *last* entry which is greater than the pending time.
@@ -50,9 +50,9 @@ class Event:
         if current is None:
             return None
         elif current == 0:
-            return '{}-start.gif'.format(self.ad_prefix)
+            return '{}-start'.format(self.ad_prefix)
         else:
-            return '{}-{}m.gif'.format(self.ad_prefix, current)
+            return '{}-{}m'.format(self.ad_prefix, current)
 
 
 class Schedule:
@@ -84,11 +84,11 @@ class Schedule:
             image = e.get('image', label)
             audio = e.get('audio', label)
             if now < time:
-                event = Event(time, label, image, audio, e.get('ad_prefix'))
+                event = Event(label, time, image, audio, e.get('ad_prefix'))
                 self.events.append(event)
 
 
-    def next_event(self, before=datetime.now()):
+    def next_event(self, before=None):
         """
         Return the next scheduled event occurring before the given time.
         """
@@ -96,6 +96,7 @@ class Schedule:
             return None
         else:
             event = self.events[0]
+            before = before or datetime.now()
             if event.time <= before:
                 return event
             else:
@@ -107,13 +108,13 @@ class Schedule:
         Drop the next scheduled event, optionally checking that it has a
         matching time and label. Returns the dropped event, or None.
         """
-        if not self.schedule:
+        if not self.events:
             return None
 
-        first = self.schedule[0]
+        first = self.events[0]
 
         if event_key == first.event_key():
-            self.schedule.pop(0)
+            self.events.pop(0)
             return first
         else:
             return None

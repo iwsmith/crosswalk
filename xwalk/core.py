@@ -121,7 +121,7 @@ class CrossWalk:
 
         # See if we're within a certain period of the next event and if that
         # event has a custom halt advertisement.
-        next_event = self.schedule.next_event(before=timedelta(hours=1))
+        next_event = self.schedule.next_event(before=(datetime.now() + timedelta(hours=1)))
         if next_event and next_event.ad_prefix:
             ad_image = self.library.find_image(next_event.current_ad(), self.library.ads)
 
@@ -163,12 +163,13 @@ class CrossWalk:
 
         # If the next scheduled event is in the _past_ we had it queued
         # up and should play the event now.
-        next_event = self.library.next_scheduled_event()
+        next_event = self.schedule.next_event()
         if next_event:
-            logger.warning("Would have played scheduled event %s: %s", next_event['title'], next_event)
+            logger.debug("Playing scheduled event %s: %s", next_event.label, next_event)
             self.schedule.advance()
             # TODO: custom intro or skip intro?
-            scene = self.library.build_scene(walk=next_event.image)
+            walk = self.library.find_image(next_event.image)
+            scene = self.library.build_scene(walk=walk)
             tag = 'event'
 
         # If there are walks queued up, play the next one.

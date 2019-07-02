@@ -140,7 +140,7 @@ class Library:
         self.intros = self._load_images('intros', config, sounds)
         self.outros = self._load_images('outros', config, sounds)
         self.walks = self._load_images('walks', config, sounds, 'walk_now.wav', 5)
-        self.ads = self._load_images('ads', config, sounds)
+        self.ads = self._load_images('ads', config, sounds, default_loops=None)
 
         self.weights = config['weights'] or {}
         self.menu = [
@@ -175,7 +175,7 @@ class Library:
         return Scene([intro, walk, outro])
 
 
-    def _menu_entry(self, time=datetime.now()):
+    def _menu_entry(self, time=None):
         """
         Search through the menu looking at the start dates. Returns the last
         entry which is earlier than the given time.
@@ -183,6 +183,7 @@ class Library:
         # Nothing to pick if menu is empty.
         if not self.menu:
             return None
+        time = time or datetime.now()
         recent = self.menu[0]
         for entry in self.menu:
             start = entry.get('start')
