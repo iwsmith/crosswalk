@@ -27,7 +27,8 @@ class CrossWalk:
         self.demos = DemoController()
         self.image = ImageController()
         self.audio = AudioController()
-        self.halt = Animation('halt', os.path.join(library.image_dir, 'stop.gif'))
+        self.base_halt = Animation('halt', os.path.join(library.image_dir, 'stop.gif'))
+        self.last_halt = None
         self.mode = 'off'
         self.cooldown = 17
         self.queue = []
@@ -96,14 +97,18 @@ class CrossWalk:
         self.demos.kill()
         self.audio.kill()
         self.make_ready()
-        self.image.play(self._halt_image())
+        halt = self._halt_image()
+        self.last_halt = halt.image_path
+        self.image.play(halt)
         self.mode = 'walk'
 
 
     def _play_walk(self, tag, scene):
         """Play a walk scene."""
         intro, walk, outro = scene
-        scene.append(self._halt_image())
+        halt = self._halt_image()
+        self.last_halt = halt.image_path
+        scene.append(halt)
         self.demos.kill()
         self.ready = False
         self.image.play_all(scene)
@@ -125,7 +130,7 @@ class CrossWalk:
         if next_event and next_event.ad_prefix:
             ad_image = self.library.find_image(next_event.current_ad(), self.library.ads)
 
-        return ad_image or self.halt
+        return ad_image or self.base_halt
 
 
     def sync(self, image_names, event_key=None):
@@ -151,6 +156,16 @@ class CrossWalk:
         # Locate and play the walk scene.
         scene = self.library.find_scene(image_names)
         self._play_walk('sync', scene)
+
+
+    def tick(self):
+        """Handle periodic tasks by triggering a timer."""
+        # Check if halt image should be changed.
+        if self.mode == 'walk' and self.ready:
+            halt = self._halt_image()
+            if halt.image_path != self.last_halt:
+                self.last_halt = halt.image_path
+                self.image.play(halt)
 
 
     def _walk_button(self):

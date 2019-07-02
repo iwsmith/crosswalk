@@ -30,6 +30,7 @@ crosswalk.walk()
 # GET    /state          get the current app state
 # POST   /state          set a new state for the app
 # POST   /sync           synchronize the sign
+# POST   /tick           indicate that time has passed
 
 # GET    /demos/         list available demos
 # GET    /walks/         list available walk animations
@@ -84,6 +85,7 @@ def push_button():
 
 @app.route("/state")
 def get_state():
+    crosswalk.tick()
     return jsonify(crosswalk.state())
 
 
@@ -127,6 +129,11 @@ def sync_state():
 
     return jsonify(crosswalk.state())
 
+
+@app.route("/tick", methods=['POST'])
+def tick():
+    crosswalk.tick()
+    return jsonify({'tock': True})
 
 
 ### Demo Handlers ###
