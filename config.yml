@@ -7,18 +7,10 @@ walks:
   abolishice:
     category: rare
     loops: 7
-  appreciate:
-    category: social
   aircello:
     category: dance
     loops: 1
   airdrum:
-    category: dance
-    loops: 1
-  airsax:
-    category: dance
-    loops: 1
-  airtrombone:
     category: dance
     loops: 1
   airguitar_wed1:
@@ -69,20 +61,28 @@ walks:
   airguitar_sat4:
     category: dance
     loops: 1
+  airsax:
+    category: dance
+    loops: 1
+  airtrombone:
+    category: dance
+    loops: 1
   applaud:
     category: actions
     loops: 1
+  appreciate:
+    category: social
   babyshark:
     category: rare
     loops: 1
   baseball:
     category: actions
     loops: 1
+  bike:
+    category: actions
   bird:
     category: animals
     loops: 1
-  bike:
-    category: actions
   bowl:
     category: actions
     loops: 1
@@ -104,19 +104,12 @@ walks:
     loops: 1  
   converse:
     category: social
-  corgi:
-    category: funny
-    loops: 8
   cow:
     category: animals
     loops: 1
   cowboy:
     category: actions
     loops: 1
-  cube:
-    category: trip
-    loops: 7
-    audio: trip.wav
   crabwalk:
     category: actions
   crawl:
@@ -169,43 +162,88 @@ walks:
   dancemove-whipnaenae:
     category: dance
     loops: 1
+  dfv:
+    category: actions
+    loops: 1
   dog:
     category: animals
     loops: 1
-  DFV:
-    category: actions
-    loops: 1
-  dots:
-    category: trip
-    loops: 10
-    audio: trip.wav
   duck:
     category: animals
     loops: 1
-  elephant:
-    category: animals
-  fartbox:
-    category: inactive
   fall:
     category: actions
     loops: 1
+  fartbox:
+    category: inactive
   flying:
     category: actions
-  frida:
-    category: trip
+  frankensteinsmonsterwalk:
+    category: actions
+    loops: 1
+  ghost:
+    category: actions
+  gif-corgi:
+    category: funny
+    loops: 8
+  gif-cube:
+    category: inactive
+    loops: 7
+    audio: trip.wav
+  gif-dots:
+    category: inactive
     loops: 10
     audio: trip.wav
+  gif-frida:
+    category: inactive
+    loops: 10
+    audio: trip.wav
+  gif-nyan:
+    category: funny
+    loops: 5
+  gif-rainbow_heart:
+    category: inactive
+    loops: 5
+    audio: trip.wav
+  gif-weirddog:
+    category: inactive
+    loops: 10
+    audio: trip.wav
+  gif-weirdeyes:
+    category: inactive
+    loops: 6
+    audio: trip.wav
+  gif-zebra:
+    category: inactive
+    loops: 15
+    audio: trip.wav
+  golf:
+    category: actions
+    loops: 1
   hadouken:
+    category: funny
     loops: 1
   hammer-time:
     category: dance
     loops: 1
+  handshake:
+    category: actions
+    loops: 1
   handstand:
     category: actions
+  headpatbellyrub:
+    category: actions
+    loops: 1
   highfive:
     category: social
   home:
     category: fin
+  hop:
+    category: actions
+    loops: 1
+  hopscotch:
+    category: actions
+    loops: 1
   horsebackriding:
     category: actions
   hug:
@@ -216,13 +254,25 @@ walks:
     category: social
   hug5:
     category: social
+  hurdle:
+    category: actions
+    loops: 1
   hydrate:
     category: actions
   inw:
-    category: funny
+    category: inactive
     audio: seacompression.wav
   jump:
     category: actions
+  jumpingjacks:
+    category: actions
+    loops: 1
+  jumprope:
+    category: actions
+    loops: 1
+  kangaroo:
+    category: animals
+    loops: 1
   karaoke-totalEclipse:
     category: dance
     loops: 1
@@ -232,30 +282,40 @@ walks:
   karaoke-wannaDance:
     category: dance
     loops: 1
+  laugh:
+    category: actions
+    loops: 1
   leapfrog:
     category: actions
+  longjump:
+    category: actions
+    loops: 1
   meditationWednesday:
     loops: 1
-  natureappreciate:
+  mime:
+    category: actions
     loops: 1
-  nyan:
-    category: funny
-    loops: 5
+  monkey:
+    category: animals
+    loops: 1
+  orderbyheight:
+    category: social
+    loops: 1
   piggyback:
     category: actions
   pose:
     category: funny
   propose:
+    category: actions
+    loops: 1
+  pushup:
+    category: actions
     loops: 1
   race:
     category: actions
     loops: 1
   raptor:
     loops: 1
-  rainbow_heart:
-    category: trip
-    loops: 5
-    audio: trip.wav
   rickroll:
     loops: 1
   rowboat:
@@ -343,77 +403,254 @@ walks:
     audio: rps.wav
   run:
     category: actions
+  screenless:
+    category: rare
+    loops: 1
   ski:
     category: actions
+  skip:
+    category: actions
+    loops: 1
   sleep:
     category: inactive
   sloth:
     category: animals
+  smile:
+    category: actions
+    loops: 1
+  snake:
+    category: animals
+    loops: 1
   somersault:
+    category: actions
     loops: 1
   spaceodyssea:
-    category: funny
+    category: inactive
     frame_delay: 25.0
     audio: seacompression.wav
+  spin:
+    category: actions
+    loops: 1
   surf:
     category: actions
+  swashbuckle:
+    category: social
+    loops: 1
   swim:
     category: actions
   tag:
     category: social
-  takeoff:
-    category: trip
   teamCheer:
+    category: actions
     loops: 1
   teleport:
     category: funny
   thankRangers:
     loops: 1
   tightrope:
-    loops: 1
-  toothbrush:
+    category: actions
     loops: 1
   tongueTwister1:
+    category: actions
     loops: 1
     audio: tongueTwister.wav
   tongueTwister2:
+    category: actions
     loops: 1
     audio: tongueTwister.wav
   tongueTwister3:
+    category: actions
     loops: 1
     audio: tongueTwister.wav
   tongueTwister4:
+    category: actions
     loops: 1
+    audio: tongueTwister.wav
+  toothbrush:
+    category: actions
+    loops: 1
+  trip-cauliflower:
+    category: trip
+    loops: 10
+    audio: trip.wav
+  trip-cauliflower_mask:
+    category: trip
+    loops: 10
+    audio: trip.wav
+  trip-cube:
+    category: trip
+    loops: 5
+    audio: trip.wav
+  trip-cube_mask:
+    category: trip
+    loops: 5
+    audio: trip.wav
+  trip-dizzy:
+    category: trip
+    loops: 5
+    audio: trip.wav
+  trip-dizzy_mask:
+    category: trip
+    loops: 5
+    audio: trip.wav
+  trip-dots:
+    category: trip
+    loops: 10
+    audio: trip.wav
+  trip-dots_mask:
+    category: trip
+    loops: 10
+    audio: trip.wav
+  trip-glorbs:
+    category: trip
+    loops: 1
+    audio: trip.wav
+  trip-glorbs_mask:
+    category: trip
+    loops: 1
+    audio: trip.wav
+  trip-grillz:
+    category: trip
+    loops: 2
+    audio: trip.wav
+  trip-grillz_mask:
+    category: trip
+    loops: 2
+    audio: trip.wav
+  trip-jellyRainbow:
+    category: trip
+    loops: 4
+    audio: trip.wav
+  trip-jellyRainbow_mask:
+    category: trip
+    loops: 4
+    audio: trip.wav
+  trip-lasercats:
+    category: trip
+    loops: 4
+    audio: trip.wav
+  trip-lavalamp:
+    category: trip
+    loops: 4
+    audio: trip.wav
+  trip-lavalamp_mask:
+    category: trip
+    loops: 4
+    audio: trip.wav
+  trip-plaidSpeed:
+    category: trip
+    loops: 7
+    audio: trip.wav
+  trip-plaidSpeed_mask:
+    category: trip
+    loops: 7
+    audio: trip.wav
+  trip-rainbowKnot:
+    category: trip
+    loops: 8
+    audio: trip.wav
+  trip-rainbowKnot_mask:
+    category: trip
+    loops: 8
+    audio: trip.wav
+  trip-rainbowTunnel:
+    category: trip
+    loops: 5
+    audio: trip.wav
+  trip-rainbowTunnel_mask:
+    category: trip
+    loops: 5
+    audio: trip.wav
+  trip-rainbowWiggles:
+    category: trip
+    loops: 2
+    audio: trip.wav
+  trip-rainbowWiggles_mask:
+    category: trip
+    loops: 2
+    audio: trip.wav
+  trip-redEye:
+    category: trip
+    loops: 3
+    audio: trip.wav
+  trip-redEye_mask:
+    category: trip
+    loops: 3
+    audio: trip.wav
+  trip-scopey:
+    category: trip
+    loops: 5
+    audio: trip.wav
+  trip-scopey_mask:
+    category: trip
+    loops: 5
+    audio: trip.wav
+  trip-warpSpeed:
+    category: trip
+    loops: 7
+    audio: trip.wav
+  trip-warpSpeed_mask:
+    category: trip
+    loops: 7
+    audio: trip.wav
+  trip-weirdEyes:
+    category: trip
+    loops: 3
+    audio: trip.wav
+  trip-weirdEyes_mask:
+    category: trip
+    loops: 3
+    audio: trip.wav
+  trip-weirdStatic:
+    category: trip
+    loops: 10
+    audio: trip.wav
+  trip-weirdStatic_mask:
+    category: trip
+    loops: 10
+    audio: trip.wav
+  trip-zebra:
+    category: trip
+    loops: 11
+    audio: trip.wav
+  trip-zebraSphere:
+    category: trip
+    loops: 20
+    audio: trip.wav
+  trip-zebra_mask:
+    category: trip
+    loops: 11
+    audio: trip.wav
+  trip-zebraSphere_mask:
+    category: trip
+    loops: 20
+    audio: trip.wav
   turtle:
     category: animals
     loops: 12
   unicycle:
-    category: actions
+    category: inactive
   vacuum:
+    category: actions
     loops: 1
   walkBackwards:
+    category: actions
     loops: 1
   walkdress:
     category: normal
   walkingLunge:
+    category: actions
     loops: 1
-  walkingtogether:
-    category: social
   walkpants:
     category: normal
   werewolf:
     category: animals
-  weirddog:
-    category: trip
-    loops: 10
-    audio: trip.wav
-  weirdeyes:
-    category: trip
-    loops: 6
-    audio: trip.wav
+  wheelbarrow:
+    category: actions
   why-cross:
     category: rare
   witch:
+    category: funny
     loops: 1
   wizard:
     category: funny
@@ -422,15 +659,13 @@ walks:
   workoutWednesday:
     loops: 1
   worm:
+    category: animals
     loops: 1
   yogaWednesday:
     loops: 1
   youDoIt:
+    category: funny
     loops: 1
-  zebra:
-    category: trip
-    loops: 15
-    audio: trip.wav
   zombie:
     category: actions
 
