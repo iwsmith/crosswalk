@@ -89,6 +89,9 @@ walks:
   burp:
     category: actions
     loops: 1
+  carryHeavy:
+    category: actions
+    loops: 1
   cartwheel:
     category: actions
     loops: 4
@@ -97,6 +100,9 @@ walks:
     loops: 1
   chestbump:
     category: actions
+  clickHeels:
+    category: actions
+    loops: 1
   cocoadome:
     category: inactive
   conga:
@@ -181,6 +187,9 @@ walks:
   frankensteinsmonsterwalk:
     category: actions
     loops: 1
+  getschwifty:
+    category: rare
+    loops: 1
   ghost:
     category: actions
   gif-corgi:
@@ -223,7 +232,7 @@ walks:
   hadouken:
     category: funny
     loops: 1
-  hammer-time:
+  hammertime:
     category: dance
     loops: 1
   handshake:
@@ -259,6 +268,9 @@ walks:
     loops: 1
   hydrate:
     category: actions
+  invisibleCar:
+    category: actions
+    loops: 1
   inw:
     category: inactive
     audio: seacompression.wav
@@ -272,6 +284,36 @@ walks:
     loops: 1
   kangaroo:
     category: animals
+    loops: 1
+  karaoke-ABC:
+    category: dance
+    loops: 1
+  karaoke-HeyYa:
+    category: dance
+    loops: 1
+  karaoke-HookedOnAFeeling:
+    category: dance
+    loops: 1
+  karaoke-IAmTheWalrus:
+    category: dance
+    loops: 1
+  karaoke-IWantItThatWay:
+    category: dance
+    loops: 1
+  karaoke-LoveShack:
+    category: dance
+    loops: 1
+  karaoke-ReturnOfTheMack:
+    category: dance
+    loops: 1
+  karaoke-SayMyName:
+    category: dance
+    loops: 1
+  karaoke-SinceYouBeenGone:
+    category: dance
+    loops: 1
+  karaoke-SweetHomeAlabama:
+    category: dance
     loops: 1
   karaoke-totalEclipse:
     category: dance
@@ -301,8 +343,32 @@ walks:
   orderbyheight:
     category: social
     loops: 1
+  penguin:
+    category: animals
+    loops: 1
+  pickUpMoop:
+    category: actions
+    loops: 1
   piggyback:
     category: actions
+  poetry-dreams:
+    category: rare
+    loops: 1
+  poetry-dreams:
+    category: rare
+    loops: 1
+  poetry-hope:
+    category: rare
+    loops: 1
+  poetry-loveAfterLove:
+    category: rare
+    loops: 1
+  poetry-meFromMyself:
+    category: rare
+    loops: 1
+  poetry-theWindOneBrilliantDay:
+    category: rare
+    loops: 1
   pose:
     category: funny
   propose:
@@ -421,6 +487,12 @@ walks:
   snake:
     category: animals
     loops: 1
+  snap:
+    category: actions
+    loops: 1
+  sneeze:
+    category: actions
+    loops: 1
   somersault:
     category: actions
     loops: 1
@@ -431,15 +503,24 @@ walks:
   spin:
     category: actions
     loops: 1
+  staringContest:
+    category: social
+    loops: 1
   surf:
     category: actions
   swashbuckle:
     category: social
     loops: 1
+  sweep:
+    category: actions
+    loops: 1
   swim:
     category: actions
   tag:
     category: social
+  tapDance:
+    category: actions
+    loops: 1
   teamCheer:
     category: actions
     loops: 1
@@ -647,6 +728,9 @@ walks:
     category: animals
   wheelbarrow:
     category: actions
+  whistle:
+    category: actions
+    loops: 1
   why-cross:
     category: rare
   witch:
