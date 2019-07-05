@@ -334,6 +334,12 @@ walks:
     loops: 1
   meditationWednesday:
     loops: 1
+  meditationThursday:
+    loops: 1
+  meditationFriday:
+    loops: 1
+  meditationSaturday:
+    loops: 1
   mime:
     category: actions
     loops: 1
@@ -742,10 +748,22 @@ walks:
     category: funny
   workoutWednesday:
     loops: 1
+  workoutThursday:
+    loops: 1
+  workoutFriday:
+    loops: 1
+  workoutSaturday:
+    loops: 1
   worm:
     category: animals
     loops: 1
   yogaWednesday:
+    loops: 1
+  yogaThursday:
+    loops: 1
+  yogaFriday:
+    loops: 1
+  yogaSaturday:
     loops: 1
   youDoIt:
     category: funny
