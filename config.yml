@@ -467,6 +467,6 @@ menu:
     weights: seacomp_over
 
 schedule:
-  - time: '2019-07-09T12:00:00'
+  - time: '2019-07-06T00:35:00'
     label: workoutWednesday
     ad_prefix: workout
