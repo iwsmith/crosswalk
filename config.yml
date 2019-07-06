@@ -87,7 +87,7 @@ walks:
     category: actions
     loops: 1
   burp:
-    category: actions
+    category: funny
     loops: 1
   carryHeavy:
     category: actions
@@ -133,16 +133,16 @@ walks:
     category: dance
     loops: 1
   daftpunk-1:
-    category: funny
+    category: rare
     loops: 1
   daftpunk-2:
-    category: funny
+    category: rare
     loops: 1
   daftpunk-3:
-    category: funny
+    category: rare
     loops: 1
   daftpunk-4:
-    category: funny
+    category: rare
     loops: 1
   dance-hustle:
     category: dance
@@ -167,7 +167,7 @@ walks:
     loops: 1
   dancemove-whipnaenae:
     category: dance
-    loops: 1
+    loops: 3
   dfv:
     category: actions
     loops: 1
@@ -205,7 +205,7 @@ walks:
     audio: trip.wav
   gif-frida:
     category: inactive
-    loops: 10
+    loops: 7
     audio: trip.wav
   gif-nyan:
     category: funny
