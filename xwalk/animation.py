@@ -104,6 +104,8 @@ class Library:
             animation.category = cfg.get('category')
             animation.frame_delay = cfg.get('frame_delay')
             animation.loops = cfg.get('loops', default_loops)
+            animation.skip_intro = cfg.get('skip_intro', False)
+            animation.skip_outro = cfg.get('skip_outro', False)
 
             if 'audio' in cfg:
                 animation.audio_path = os.path.join(self.audio_dir, cfg['audio'])
@@ -169,8 +171,8 @@ class Library:
         sign.
         """
         intro_name, walk_name, outro_name = image_names
-        intro = next(image for image in self.intros if image.name == intro_name)
-        outro = next(image for image in self.outros if image.name == outro_name)
+        intro = next(image for image in self.intros if image.name == intro_name) if intro_name else None
+        outro = next(image for image in self.outros if image.name == outro_name) if outro_name else None
         walk = next(image for image in self.walks if image.name == walk_name)
         return Scene([intro, walk, outro])
 
@@ -237,9 +239,15 @@ class Library:
         walks, and outros. A specific walk name may be provided to force its
         selection.
         """
-        # Select a random intro and outro.
-        intro = random.choice(self.intros)
-        outro = random.choice(self.outros)
+        # Select a random intro if not skipped.
+        intro = None
+        if walk is None or not walk.skip_intro:
+            intro = random.choice(self.intros)
+
+        # Select a random outro if not skipped.
+        outro = None
+        if walk is None or not walk.skip_outro:
+            outro = random.choice(self.outros)
 
         # Select a walk by randomly choosing from the weighted menu.
         if walk is None:

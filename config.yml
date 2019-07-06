@@ -722,21 +722,33 @@ walks:
   walk-arabic:
     category: normal
     loops: 1
+    skip_intro: true
+    skip_outro: true
   walk-danish:
     category: normal
     loops: 1
+    skip_intro: true
+    skip_outro: true
   walk-dutch:
     category: normal
     loops: 1
+    skip_intro: true
+    skip_outro: true
   walk-german:
     category: normal
     loops: 1
+    skip_intro: true
+    skip_outro: true
   walk-japanese:
     category: normal
     loops: 1
+    skip_intro: true
+    skip_outro: true
   walk-mandarin_taiwan:
     category: normal
     loops: 1
+    skip_intro: true
+    skip_outro: true
   walkBackwards:
     category: actions
     loops: 3

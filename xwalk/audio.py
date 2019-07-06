@@ -73,7 +73,7 @@ class AudioController:
         paths = [
             animation.audio_path
             for animation in animations
-            if animation.audio_path
+            if animation and animation.audio_path
         ]
 
         if not paths:

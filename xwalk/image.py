@@ -91,10 +91,12 @@ class ImageController:
         """
         self.kill()
 
+        animations = [image for image in animations if image]
+
         if not animations:
             return
 
-        commands = [" ".join(self._display_command(animation)) for animation in animations]
+        commands = [" ".join(self._display_command(image)) for image in animations]
 
         # Hit the done endpoint so we know we are done
         commands.insert(-1, self._done_command())
