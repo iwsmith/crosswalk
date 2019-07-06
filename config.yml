@@ -718,6 +718,24 @@ walks:
   vacuum:
     category: actions
     loops: 3
+  walk-arabic:
+    category: normal
+    loops: 1
+  walk-danish:
+    category: normal
+    loops: 1
+  walk-dutch:
+    category: normal
+    loops: 1
+  walk-german:
+    category: normal
+    loops: 1
+  walk-japanese:
+    category: normal
+    loops: 1
+  walk-mandarin-taiwan:
+    category: normal
+    loops: 1
   walkBackwards:
     category: actions
     loops: 3
@@ -763,9 +781,6 @@ walks:
   yogaFriday:
     loops: 1
   yogaSaturday:
-    loops: 1
-  youDoIt:
-    category: funny
     loops: 1
   zombie:
     category: actions
