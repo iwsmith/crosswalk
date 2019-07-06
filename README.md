@@ -72,3 +72,6 @@ In the config file, the loops attribute should have a value of 1.
 1. Move the button from pin 18 to pin 19 on the HAT
 1. Solder a jumper wire between pin 4 and 18. See [this diagram](https://github.com/hzeller/rpi-rgb-led-matrix/blob/master/img/adafruit-mod.jpg)
 1. Reinstall the drivers (see above), this time selecting option one in the last step (quality). Make sure you `wget` the latest script, don't just re-run what's on device.
+
+## Improving Quality
+`echo "isolcpus=3" >> /boot/cmdline.txt`
