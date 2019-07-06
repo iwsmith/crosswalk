@@ -45,7 +45,7 @@ fi
 
 if [[ $SYNC_CODE ]]; then
     echo "Copying code to ${DEPLOY_HOST}"
-    rsync -rz --progress --delete xwalk templates config.yml run.py button.py $DEPLOY_DEST
+    rsync -rz --delete xwalk templates config.yml run.py button.py $DEPLOY_DEST
 fi
 
 if [[ $SYNC_MEDIA ]]; then
