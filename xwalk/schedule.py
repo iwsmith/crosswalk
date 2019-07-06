@@ -113,7 +113,7 @@ class Schedule:
 
         first = self.events[0]
 
-        if event_key == first.event_key():
+        if event_ukey is None or event_key == first.event_key():
             self.events.pop(0)
             return first
         else:
