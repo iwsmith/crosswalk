@@ -192,6 +192,7 @@ walks:
     loops: 1
   ghost:
     category: actions
+    loops: 1
   gif-corgi:
     category: funny
     loops: 8
@@ -536,19 +537,19 @@ walks:
     loops: 1
   tongueTwister1:
     category: actions
-    loops: 1
+    loops: 2
     audio: tongueTwister.wav
   tongueTwister2:
     category: actions
-    loops: 1
+    loops: 2
     audio: tongueTwister.wav
   tongueTwister3:
     category: actions
-    loops: 1
+    loops: 2
     audio: tongueTwister.wav
   tongueTwister4:
     category: actions
-    loops: 1
+    loops: 2
     audio: tongueTwister.wav
   toothbrush:
     category: actions
