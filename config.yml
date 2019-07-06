@@ -347,7 +347,7 @@ walks:
   monkey:
     category: animals
     loops: 1
-  orderbyheight:
+  orderByHeight:
     category: social
     loops: 1
   penguin:
