@@ -1,3 +1,4 @@
 ---
 led_driver_src: /home/pi/rpi-rgb-led-matrix
 crosswalk_port: 80
+crosswalk_button_pin: 19

@@ -1,6 +1,7 @@
 from datetime import datetime
 from gpiozero import LED, Button
 import logging
+import os
 import requests
 import time
 
@@ -8,9 +9,10 @@ logging.basicConfig(
     level='DEBUG',
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-logging.warning("Starting button watcher")
+button_pin = int(os.getenv('XWALK_BUTTON_PIN', 19))
+logging.warning("Starting button watcher on pin %d", button_pin)
 led = LED(24)
-button = Button(19, hold_time=20)
+button = Button(button_pin, hold_time=30)
 pressed_at = time.perf_counter()
 sign_ready = False
 
@@ -31,6 +33,7 @@ def button_held():
 
 
 def button_pressed():
+    global pressed_at
     logging.debug("Button pressed (ready: %s)", sign_ready)
     pressed_at = time.perf_counter()
 
