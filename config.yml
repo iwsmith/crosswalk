@@ -485,6 +485,7 @@ walks:
     category: inactive
   sloth:
     category: animals
+    audio: turtle.wav
   smile:
     category: actions
     loops: 1
@@ -733,7 +734,7 @@ walks:
   walk-japanese:
     category: normal
     loops: 1
-  walk-mandarin-taiwan:
+  walk-mandarin_taiwan:
     category: normal
     loops: 1
   walkBackwards:
