@@ -50,21 +50,22 @@
     group: crosswalk
     mode: '0755'
 
-- name: Copy crosswalk code
-  copy:
-    src: "../../../../{{item}}"
-    dest: "{{crosswalk_home}}/code/"
-    owner: crosswalk
-    group: crosswalk
-    #mode: '0755'
-  with_items:
-    - xwalk
-    - templates
-    - config.yml
-    - button.py
-    - run.py
-  notify:
-    - Restart crosswalk
+# NOTE: this is obviated by the deploy.sh script - maybe run that directly?
+#- name: Copy crosswalk code
+#  copy:
+#    src: "../../../../{{item}}"
+#    dest: "{{crosswalk_home}}/code/"
+#    owner: crosswalk
+#    group: crosswalk
+#    #mode: '0755'
+#  with_items:
+#    - xwalk
+#    - templates
+#    - config.yml
+#    - button.py
+#    - run.py
+#  notify:
+#    - Restart crosswalk
 
 - name: Set audio mixer default
   copy:
