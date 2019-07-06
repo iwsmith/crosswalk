@@ -213,7 +213,7 @@ walks:
     loops: 5
   gif-rainbow_heart:
     category: inactive
-    loops: 5
+    loops: 3
     audio: trip.wav
   gif-weirddog:
     category: inactive
@@ -717,10 +717,10 @@ walks:
     category: inactive
   vacuum:
     category: actions
-    loops: 1
+    loops: 3
   walkBackwards:
     category: actions
-    loops: 1
+    loops: 3
   walkdress:
     category: normal
   walkingLunge:
@@ -737,6 +737,7 @@ walks:
     loops: 1
   why-cross:
     category: rare
+    loops: 1
   witch:
     category: funny
     loops: 1
@@ -802,6 +803,6 @@ menu:
     weights: seacomp_over
 
 schedule:
-  - time: '2019-07-06T00:35:00'
+  - time: '2019-07-05T19:31:00'
     label: workoutWednesday
     ad_prefix: workout
