@@ -19,12 +19,12 @@
   cron:
     name: "start quiet hours"
     hour: '2-7'
-    minute: '0'
-    job: 'amixer -c 1 set Speaker 50%'
+    minute: '*/10'
+    job: 'amixer -c 1 set Speaker 50\%'
 
 - name: Quiet hours exit cron
   cron:
     name: "stop quiet hours"
     hour: '8-22'
-    minute: '0'
-    job: 'amixer -c 1 set Speaker 90%'
+    minute: '*/10'
+    job: 'amixer -c 1 set Speaker 90\%'
