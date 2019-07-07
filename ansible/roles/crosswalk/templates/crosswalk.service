@@ -10,7 +10,8 @@ Group=crosswalk
 WorkingDirectory={{crosswalk_home}}/code
 Environment=FLASK_APP=run.py
 Environment=PATH={{crosswalk_home}}/bin:${PATH}
-EnvironmentFile=-/etc/default/crosswalk
+Environment=XWALK_LED_ANGLE={{crosswalk_led_angle}}
+#EnvironmentFile=-/etc/default/crosswalk
 ExecStart=/usr/bin/flask run --host=0.0.0.0 --port={{crosswalk_port}}
 KillMode=control-group
 Restart=always

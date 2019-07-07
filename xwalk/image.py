@@ -1,4 +1,5 @@
 import logging
+import os
 import subprocess
 
 
@@ -9,7 +10,8 @@ VIEWER_COMMAND = [
     '--led-gpio-mapping=adafruit-hat-pwm',
     '--led-pwm-lsb-nanoseconds=400',
     '-L',
-    '-R 270',
+    '-R',
+    os.getenv('XWALK_LED_ANGLE', 0)
 ]
 
 logger = logging.getLogger(__name__)

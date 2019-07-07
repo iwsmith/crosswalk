@@ -9,7 +9,7 @@ User=root
 Group=root
 WorkingDirectory={{crosswalk_home}}/code
 Environment=XWALK_BUTTON_PIN={{crosswalk_button_pin}}
-EnvironmentFile=-/etc/default/crosswalk
+#EnvironmentFile=-/etc/default/crosswalk
 ExecStart=/usr/bin/python3 button.py
 KillMode=process
 Restart=always
