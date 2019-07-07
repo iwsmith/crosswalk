@@ -1068,7 +1068,6 @@ weights:
     fin: 1
 
 
-
 menu:
   - start: '2018-07-07T00:00:00'
     weights: sunday
@@ -1096,6 +1095,7 @@ menu:
     weights: saturday_night
   - start: '2018-07-14T06:00:00'
     weights: gohome
+
 
 schedule:
   - time: '2019-07-06T21:00:00'

@@ -205,10 +205,7 @@ class CrossWalk:
         try:
             req = {'scene': [animation.name for animation in scene]}
             if tag == 'event':
-                req['event'] = {
-                    'time': next_event.time,
-                    'label': next_event.label,
-                }
+                req['event'] = next_event.event_key()
             requests.post("http://{}/sync".format(dual), json=req)
         except Exception as ex:
             logger.warn("Failed to synchronize with %s: %s", dual, ex)
