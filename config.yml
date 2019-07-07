@@ -848,7 +848,7 @@ weights:
     normalish: 0
     rare: 0
     RPS: 0
-    silly: 0 
+    silly: 0
     sleep: 0
     social: 0
     trip: 0
@@ -869,7 +869,7 @@ weights:
     normalish: 0
     rare: 0
     RPS: 0
-    silly: 0 
+    silly: 0
     sleep: 0
     social: 0
     trip: 0
@@ -890,7 +890,7 @@ weights:
     normalish: 20
     rare: 0
     RPS: 0
-    silly: 0 
+    silly: 0
     sleep: 0
     social: 0
     trip: 0
@@ -911,7 +911,7 @@ weights:
     normalish: 5
     rare: 0
     RPS: 0
-    silly: 0 
+    silly: 0
     sleep: 0
     social: 10
     trip: 0
@@ -932,7 +932,7 @@ weights:
     normalish: 5
     rare: 0
     RPS: 0
-    silly: 0 
+    silly: 0
     sleep: 0
     social: 10
     trip: 5
@@ -995,7 +995,7 @@ weights:
     normalish: 6
     rare: 6
     RPS: 2
-    silly: 6 
+    silly: 6
     sleep: 0
     social: 7
     trip: 0
@@ -1016,7 +1016,7 @@ weights:
     normalish: 5
     rare: 2
     RPS: 2
-    silly: 6 
+    silly: 6
     sleep: 0
     social: 5
     trip: 15
@@ -1037,7 +1037,7 @@ weights:
     normalish: 6
     rare: 2
     RPS: 2
-    silly: 7 
+    silly: 7
     sleep: 0
     social: 7
     trip: 0
@@ -1058,7 +1058,7 @@ weights:
     normalish: 6
     rare: 2
     RPS: 2
-    silly: 6 
+    silly: 6
     sleep: 0
     social: 5
     trip: 15
@@ -1069,31 +1069,31 @@ weights:
 
 
 menu:
-  - start: '2018-07-07T00:00:00'
+  - start: '2019-07-07T00:00:00'
     weights: sunday
-  - start: '2018-07-08T06:00:00'
+  - start: '2019-07-08T06:00:00'
     weights: monday
-  - start: '2018-07-09T02:00:00'
+  - start: '2019-07-09T02:00:00'
     weights: quiethours
-  - start: '2018-07-09T06:00:00'
+  - start: '2019-07-09T06:00:00'
     weights: tuesday
-  - start: '2018-07-10T06:00:00'
+  - start: '2019-07-10T06:00:00'
     weights: wednesday_day
-  - start: '2018-07-10T22:00:00'
+  - start: '2019-07-10T22:00:00'
     weights: wednesday_night
-  - start: '2018-07-11T06:00:00'
+  - start: '2019-07-11T06:00:00'
     weights: thursday
-  - start: '2018-07-11T22:00:00'
+  - start: '2019-07-11T22:00:00'
     weights: thursday_night
-  - start: '2018-07-12T06:00:00'
+  - start: '2019-07-12T06:00:00'
     weights: friday
-  - start: '2018-07-12T22:00:00'
+  - start: '2019-07-12T22:00:00'
     weights: friday_night
-  - start: '2018-07-13T06:00:00'
+  - start: '2019-07-13T06:00:00'
     weights: saturday
-  - start: '2018-07-13T22:00:00'
+  - start: '2019-07-13T22:00:00'
     weights: saturday_night
-  - start: '2018-07-14T06:00:00'
+  - start: '2019-07-14T06:00:00'
     weights: gohome
 
 
