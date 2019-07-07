@@ -1,0 +1,43 @@
+---
+- name: Install python packages
+  apt:
+    name:
+      - python3-flask
+      - python3-gpiozero
+      - python3-requests
+      - python3-yaml
+    state: present
+
+- name: Create crosswalk user
+  user:
+    name: crosswalk
+    home: '{{crosswalk_home}}'
+    shell: /usr/sbin/nologin
+
+- name: Create service directory
+  file:
+    path: '{{crosswalk_home}}'
+    state: directory
+    owner: crosswalk
+    group: crosswalk
+    mode: '0755'
+
+- name: Create bin directory
+  file:
+    path: '{{crosswalk_home}}/bin'
+    state: directory
+    owner: crosswalk
+    group: crosswalk
+    mode: '0755'
+
+- name: Copy driver binaries
+  copy:
+    src: '{{led_driver_src}}/{{item}}'
+    dest: '{{crosswalk_home}}/bin/{{item | basename}}'
+    remote_src: true
+    owner: crosswalk
+    group: crosswalk
+    mode: '0755'
+  with_items:
+    - 'examples-api-use/demo'
+    - 'utils/led-image-viewer'

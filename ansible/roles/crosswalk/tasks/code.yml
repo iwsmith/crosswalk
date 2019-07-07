@@ -1,0 +1,59 @@
+---
+- name: Create code directory
+  file:
+    path: '{{crosswalk_home}}/code'
+    state: directory
+    owner: crosswalk
+    group: crosswalk
+    mode: '0755'
+
+# NOTE: this is obviated by the deploy.sh script - maybe run that directly?
+#- name: Copy crosswalk code
+#  copy:
+#    src: "../../../../{{item}}"
+#    dest: "{{crosswalk_home}}/code/"
+#    owner: crosswalk
+#    group: crosswalk
+#    #mode: '0755'
+#  with_items:
+#    - xwalk
+#    - templates
+#    - config.yml
+#    - button.py
+#    - run.py
+#  notify:
+#    - Restart crosswalk
+
+- name: Write button service unit
+  template:
+    src: button.service
+    dest: /lib/systemd/system/button.service
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - Restart button
+
+- name: Enable button service
+  systemd:
+    name: button
+    state: started
+    enabled: true
+    daemon_reload: true
+
+- name: Write crosswalk service unit
+  template:
+    src: crosswalk.service
+    dest: /lib/systemd/system/crosswalk.service
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - Restart crosswalk
+
+- name: Enable crosswalk service
+  systemd:
+    name: crosswalk
+    state: started
+    enabled: true
+    daemon_reload: true
