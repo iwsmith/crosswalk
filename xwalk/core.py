@@ -219,9 +219,12 @@ class CrossWalk:
         Indicate that a button has been pressed. If 'hold' is set, it means the
         button was held down for at least that many seconds.
         """
-        long_press = (5.0 <= hold)
+        long_press = (10.0 <= hold)
         logger.debug("Button %s press: %.1f s", 'long' if long_press else 'short', hold)
         if self.mode == 'off':
+            # IDEA: short press could cycle between 'on' modes and show a mode
+            # name on the screen for a short time, then long press activates
+            # that mode?
             if long_press:
                 self.walk()
         elif self.mode == 'demo':
@@ -232,9 +235,6 @@ class CrossWalk:
         elif self.mode == 'image':
             if long_press:
                 self.off()
-            else:
-                # TODO: show next image
-                pass
         elif self.mode == 'walk':
             if long_press:
                 self.off()
