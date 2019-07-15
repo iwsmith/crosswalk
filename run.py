@@ -120,19 +120,25 @@ def sync_state():
     body = request.get_json() or {}
     scene = body.get('scene')
     event_key = body.get('event')
+    now = body.get('now')
 
     if not scene:
         return jsonify({'error': "Missing scene to synchronize"}), 400
 
     crosswalk.sync(scene, event_key)
 
+    if now is not None:
+        crosswalk.tick(now=now)
+
     return jsonify(crosswalk.state())
 
 
 @app.route("/tick", methods=['POST'])
 def tick():
-    crosswalk.tick()
-    return jsonify({'tock': True})
+    body = request.get_json() or {}
+    now = body.get('now')
+    tock = crosswalk.tick(now=now)
+    return jsonify(tock)
 
 
 ### Demo Handlers ###

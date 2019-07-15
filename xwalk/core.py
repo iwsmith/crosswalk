@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 import logging
+import subprocess
 import os
 
 import requests
@@ -60,6 +61,7 @@ class CrossWalk:
             'history': [walk.name for walk in self.history],
             'cooldown': self.cooldown,
             'ready': self.is_ready(),
+            'now': str(datetime.now()),
         }
 
 
@@ -158,14 +160,23 @@ class CrossWalk:
         self._play_walk('sync', scene)
 
 
-    def tick(self):
-        """Handle periodic tasks by triggering a timer."""
+    def tick(self, now=None):
+        """Handle periodic tasks and updating the current time."""
+        # If remote clock is far ahead of this one, fast forward.
+        if now is not None:
+            remote_now = datetime.fromtimestamp(now)
+            local_now = datetime.now()
+            skew = (remote_now - local_now).total_seconds()
+            if 60 <= skew:
+                logger.warn("Fast-forwarding clock to %s", now)
+                subprocess.Popen("date " + now.strftime("%m%d%H%M%Y.%S"))
         # Check if halt image should be changed.
         if self.mode == 'walk' and self.ready:
             halt = self._halt_image()
             if halt.image_path != self.last_halt:
                 self.last_halt = halt.image_path
                 self.image.play(halt)
+        return {"tock": True}
 
 
     def _walk_button(self):
@@ -203,7 +214,10 @@ class CrossWalk:
         # Sync selection with the other crosswalk.
         dual = 'crosswalk-b' if self.host == 'crosswalk-a' else 'crosswalk-a'
         try:
-            req = {'scene': [animation.name for animation in scene]}
+            req = {
+                'now': datetime.now().timestamp(),
+                'scene': [animation.name for animation in scene],
+            }
             if tag == 'event':
                 req['event'] = next_event.event_key()
             requests.post("http://{}/sync".format(dual), json=req)

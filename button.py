@@ -12,7 +12,7 @@ logging.basicConfig(
 button_pin = int(os.getenv('XWALK_BUTTON_PIN', 19))
 logging.warning("Starting button watcher on pin %d", button_pin)
 led = LED(24)
-button = Button(button_pin, hold_time=30)
+button = Button(button_pin)
 pressed_at = time.perf_counter()
 sign_ready = False
 
@@ -27,11 +27,6 @@ def button_released():
         led.off()
 
 
-def button_held():
-    logging.warning("Long button press detected, resetting...")
-    requests.post("http://localhost/reset")
-
-
 def button_pressed():
     global pressed_at
     logging.debug("Button pressed (ready: %s)", sign_ready)
@@ -40,7 +35,6 @@ def button_pressed():
 
 button.when_pressed = button_pressed
 button.when_released = button_released
-button.when_held = button_held
 
 
 # Spin and check /state to set button light.
@@ -54,7 +48,7 @@ while True:
                 logging.info("Crosswalk is ready!")
             sign_ready = True
             led.on()
-            time.sleep(10)
+            time.sleep(5)
         else:
             # Crosswalk is not ready yet
             sign_ready = False

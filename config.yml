@@ -4,6 +4,66 @@ intros:
 outros:
 
 walks:
+  chimchim:
+    category: ad
+    loops: 1
+  chimera:
+    category: ad
+    loops: 1
+  conversationbar:
+    category: ad
+    loops: 1
+  coyotegarden:
+    category: ad
+    loops: 1
+  divinationstation:
+    category: ad
+    loops: 1
+  dragonheights:
+    category: ad
+    loops: 1
+  flockofcybirds:
+    category: ad
+    loops: 1
+  frontporch:
+    category: ad
+    loops: 1
+  hippietrap:
+    category: ad
+    loops: 1
+  hotdogcamp:
+    category: ad
+    loops: 1
+  hotnoods:
+    category: ad
+    loops: 1
+  hypnodrome:
+    category: ad
+    loops: 5
+  idlehands:
+    category: ad
+    loops: 1
+  kevinbacon:
+    category: ad
+    loops: 1
+  labyrinth:
+    category: ad
+    loops: 1
+  mintyfresh:
+    category: ad
+    loops: 1
+  pickleparadise:
+    category: ad
+    loops: 1
+  sandworm:
+    category: ad
+    loops: 1
+  teahousecollective:
+    category: ad
+    loops: 1
+  thewell:
+    category: ad
+    loops: 1
   abolishice:
     category: rare
     loops: 7
@@ -255,7 +315,7 @@ walks:
     category: actionsplus
     loops: 1
   horsebackriding:
-    category: animal
+    category: animals
   hug:
     category: social
   hug3:
@@ -837,7 +897,7 @@ weights:
     action plus: 0
     ad: 0
     airguitar: 0
-    animal: 0
+    animals: 0
     animal plus: 0
     dance: 0
     fin: 0
@@ -858,7 +918,7 @@ weights:
     action plus: 0
     ad: 0
     airguitar: 0
-    animal: 0
+    animals: 0
     animal plus: 0
     dance: 0
     fin: 0
@@ -879,7 +939,7 @@ weights:
     action plus: 0
     ad: 0
     airguitar: 0
-    animal: 25
+    animals: 25
     animal plus: 0
     dance: 0
     fin: 0
@@ -900,7 +960,7 @@ weights:
     action plus: 0
     ad: 0
     airguitar: 10
-    animal: 20
+    animals: 20
     animal plus: 0
     dance: 0
     fin: 0
@@ -921,7 +981,7 @@ weights:
     action plus: 0
     ad: 5
     airguitar: 10
-    animal: 15
+    animals: 15
     animal plus: 0
     dance: 5
     fin: 0
@@ -942,7 +1002,7 @@ weights:
     action plus: 0
     ad: 10
     airguitar: 5
-    animal: 11
+    animals: 11
     animal plus: 0
     dance: 11
     fin: 0
@@ -963,7 +1023,7 @@ weights:
     action plus: 0
     ad: 11
     airguitar: 6
-    animal: 10
+    animals: 10
     animal plus: 0
     dance: 11
     fin: 0
@@ -979,85 +1039,85 @@ weights:
     social: 8
     trip: 15
   friday:
-    action: 8
-    action charade: 5
-    action plus: 8
-    ad: 11
-    airguitar: 5
-    animal: 7
-    animal plus: 6
-    dance: 6
+    actions: 14
+    actionscharade: 7
+    actionsplus: 20
+    ad: 20
+    airguitar: 1
+    animals: 11
+    animalsplus: 8
+    dance: 10
     fin: 0
-    game: 7
-    karaoke: 4
-    language: 6
-    normal: 4
-    normalish: 6
-    rare: 6
-    RPS: 2
-    silly: 6
+    game: 5
+    karaoke: 1
+    language: 0
+    normal: 1
+    normalish: 7
+    rare: 14
+    rps: 2
+    silly: 11
     sleep: 0
-    social: 7
+    social: 10
     trip: 0
   friday_night:
-    action: 8
-    action charade: 0
-    action plus: 6
-    ad: 15
-    airguitar: 5
-    animal: 5
-    animal plus: 5
+    actions: 18
+    actionscharade: 0
+    actionsplus: 20
+    ad: 24
+    airguitar: 2
+    animals: 11
+    animalsplus: 5
     dance: 5
     fin: 0
     game: 0
     karaoke: 6
-    language: 5
-    normal: 5
+    language: 0
+    normal: 0
     normalish: 5
     rare: 2
-    RPS: 2
+    rps: 2
     silly: 6
     sleep: 0
     social: 5
     trip: 15
   saturday:
-    action: 7
-    action charade: 6
-    action plus: 7
-    ad: 7
-    airguitar: 5
-    animal: 7
-    animal plus: 6
-    dance: 6
-    fin: 0
-    game: 7
-    karaoke: 4
-    language: 6
-    normal: 4
-    normalish: 6
-    rare: 2
-    RPS: 2
-    silly: 7
-    sleep: 0
-    social: 7
-    trip: 0
-  saturday_night:
-    action: 6
-    action charade: 6
-    action plus: 6
-    ad: 5
-    airguitar: 3
-    animal: 6
-    animal plus: 6
-    dance: 5
+    actions: 18
+    actionscharade: 7
+    actionsplus: 20
+    ad: 24
+    airguitar: 1
+    animals: 11
+    animalsplus: 8
+    dance: 10
     fin: 0
     game: 5
-    karaoke: 3
+    karaoke: 2
     language: 6
-    normal: 4
-    normalish: 6
+    normal: 0
+    normalish: 7
+    rare: 14
+    rps: 2
+    silly: 11
+    sleep: 0
+    social: 10
+    trip: 0
+  saturday_night:
+    actions: 18
+    actionscharade: 0
+    actionsplus: 20
+    ad: 24
+    airguitar: 2
+    animals: 11
+    animalsplus: 5
+    dance: 5
+    fin: 0
+    game: 0
+    karaoke: 6
+    language: 5
+    normal: 0
+    normalish: 5
     rare: 2
-    RPS: 2
+    rps: 2
     silly: 6
     sleep: 0
     social: 5
