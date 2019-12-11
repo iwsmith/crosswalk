@@ -248,7 +248,7 @@ walks:
     category: animalsplus
     loops: 1
   getschwifty:
-    category: rare
+    category: inactive
     loops: 1
   ghost:
     category: animalsplus
@@ -621,7 +621,7 @@ walks:
   teleport:
     category: silly
   thankRangers:
-    category: rare
+    category: ad
     loops: 1
   tightrope:
     category: actionscharade
@@ -891,6 +891,27 @@ walks:
 weights:
   all:
     _: 1
+  demo:
+    actions: 18
+    actionscharade: 7
+    actionsplus: 20
+    ad: 0
+    airguitar: 2
+    animals: 11
+    animalsplus: 8
+    dance: 10
+    fin: 0
+    game: 1
+    karaoke: 2
+    language: 7
+    normal: 7
+    normalish: 7
+    rare: 2
+    rps: 2
+    silly: 11
+    sleep: 0
+    social: 10
+    trip: 0
   seacompression2019day:
     actions: 19
     actionscharade: 7
@@ -1203,6 +1224,8 @@ menu:
     weights: seacompression2019night
   - start: '2019-10-20T01:45:00'
     weights: gohome
+  - start: '2019-11-01T01:45:00'
+    weights: demo
 
 schedule: []
   #- time: '2019-07-06T21:00:00'
