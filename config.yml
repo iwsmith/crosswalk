@@ -1192,39 +1192,7 @@ weights:
 
 
 menu:
-  #- start: '2019-07-07T00:00:00'
-  #  weights: sunday
-  #- start: '2019-07-08T06:00:00'
-  #  weights: monday
-  #- start: '2019-07-09T02:00:00'
-  #  weights: quiethours
-  #- start: '2019-07-09T06:00:00'
-  #  weights: tuesday
-  #- start: '2019-07-10T06:00:00'
-  #  weights: wednesday_day
-  #- start: '2019-07-10T22:00:00'
-  #  weights: wednesday_night
-  #- start: '2019-07-11T06:00:00'
-  #  weights: thursday
-  #- start: '2019-07-11T22:00:00'
-  #  weights: thursday_night
-  #- start: '2019-07-12T06:00:00'
-  #  weights: friday
-  #- start: '2019-07-12T22:00:00'
-  #  weights: friday_night
-  #- start: '2019-07-13T06:00:00'
-  #  weights: saturday
-  #- start: '2019-07-13T22:00:00'
-  #  weights: saturday_night
-  #- start: '2019-07-14T06:00:00'
-  #  weights: gohome
-  - start: '2019-10-19T06:00:00'
-    weights: seacompression2019day
-  - start: '2019-10-19T22:00:00'
-    weights: seacompression2019night
-  - start: '2019-10-20T01:45:00'
-    weights: gohome
-  - start: '2019-11-01T01:45:00'
+  - start: '2021-08-01T01:45:00'
     weights: demo
 
 schedule: []

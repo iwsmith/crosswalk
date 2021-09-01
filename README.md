@@ -75,3 +75,65 @@ In the config file, the loops attribute should have a value of 1.
 
 ## Improving Quality
 `echo "isolcpus=3" >> /boot/cmdline.txt`
+
+## Scheduling
+In `config.yml` we define walks and schedules for when they run:
+```
+walks:
+  chimchim:
+    category: ad
+    loops: 1
+  gif-dots:
+    category: inactive
+    loops: 10
+    audio: trip.wav
+```
+
+The above defines a walk called `chimchim`, that is in the `ad` category and loops only once.
+It also defines a walk called `gif-dots` that is in the `inactive` category, loops 10 times, and plays the audiofile `trip.wav`. By default walks will attempt to play a sound file matching their name (e.g. `chimchim.wav`). Similarly the gif that is played will be `chimchim.gif`.
+
+### Weights
+Weights are used to set how often walks from a given category are played. By default all walks have a weight of one. You can specify a custom weighting scheme as seen below for `demo`. Any category not explicitly listed in a weighting scheme will use the default.
+```
+weights:
+  all:
+    _: 1
+  demo:
+    actions: 18
+    actionscharade: 7
+    actionsplus: 20
+    ad: 0
+    airguitar: 2
+    animals: 11
+    animalsplus: 8
+    dance: 10
+    fin: 0
+    game: 1
+    karaoke: 2
+    language: 7
+    normal: 7
+    normalish: 7
+    rare: 2
+    rps: 2
+    silly: 11
+    sleep: 0
+    social: 10
+    trip: 0
+```
+
+### Menu
+The menu section allows you to define an active weighting scheme by time. The scheme that is the most recently set will be active (that is, the start time is in the most recently passed). In the below example the demo weighting scheme will be activate after 1:45 AM on August 1st, 2021. 
+```
+menu:
+  - start: '2021-08-01T01:45:00'
+    weights: demo
+```
+
+### Schedule
+You can also schedule a walk to play at a specific time. In the below example the `workoutWednesday` walk will play at 2100 on July 6th, 2019. Ads are automatically generated and run in the hour preceeding the event to let people know whats happening and when. The `ad_prefix` is used in some sort of generation of this ad.
+```
+schedule:
+  - time: '2019-07-06T21:00:00'
+    label: workoutWednesday
+    ad_prefix: workout
+```
