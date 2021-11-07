@@ -97,27 +97,29 @@ class Library:
         subdir = os.path.join(self.image_dir, namespace)
         logger.debug("Loading %s images in %s", namespace, subdir)
         for filename in os.listdir(subdir):
-            name = os.path.splitext(filename)[0]
-            path = os.path.join(subdir, filename)
-            cfg = (config.get(namespace) or {}).get(name, {})
-            animation = Animation(name, path)
-            animation.category = cfg.get('category')
-            animation.frame_delay = cfg.get('frame_delay')
-            animation.loops = cfg.get('loops', default_loops)
-            animation.skip_intro = cfg.get('skip_intro', False)
-            animation.skip_outro = cfg.get('skip_outro', False)
+            name, ext = os.path.splitext(filename)
 
-            if 'audio' in cfg:
-                animation.audio_path = os.path.join(self.audio_dir, cfg['audio'])
-            elif name in sounds:
-                animation.audio_path = sounds[name]
-            elif default_sound is not None:
-                animation.audio_path = os.path.join(self.audio_dir, default_sound)
+            if ext:
+                path = os.path.join(subdir, filename)
+                cfg = (config.get(namespace) or {}).get(name, {})
+                animation = Animation(name, path)
+                animation.category = cfg.get('category')
+                animation.frame_delay = cfg.get('frame_delay')
+                animation.loops = cfg.get('loops', default_loops)
+                animation.skip_intro = cfg.get('skip_intro', False)
+                animation.skip_outro = cfg.get('skip_outro', False)
 
-            if not animation.category:
-                logger.warning("No category found for %s", filename)
+                if 'audio' in cfg:
+                    animation.audio_path = os.path.join(self.audio_dir, cfg['audio'])
+                elif name in sounds:
+                    animation.audio_path = sounds[name]
+                elif default_sound is not None:
+                    animation.audio_path = os.path.join(self.audio_dir, default_sound)
 
-            animations.append(animation)
+                if not animation.category:
+                    logger.warning("No category found for %s", filename)
+
+                animations.append(animation)
 
         categories = set([animation.category for animation in animations if animation.category])
         logger.info("Loaded %d images across categories: %s", len(animations), ", ".join(categories))
