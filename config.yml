@@ -317,13 +317,13 @@ walks:
   horsebackriding:
     category: animals
   hug:
-    category: social-covid
+    category: social
   hug3:
-    category: social-covid
+    category: social
   hug4:
-    category: social-covid
+    category: social
   hug5:
-    category: social-covid
+    category: social
   hurdle:
     category: actionsplus
     loops: 1
@@ -417,7 +417,7 @@ walks:
     category: ad
     loops: 1
   piggyback:
-    category: social-covid
+    category: social
   poetry-dreams:
     category: rare
     loops: 1
@@ -911,7 +911,6 @@ weights:
     silly: 11
     sleep: 0
     social: 10
-    social-covid: 1
     trip: 2
   seacompression2019day:
     actions: 19
