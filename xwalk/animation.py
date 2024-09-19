@@ -210,12 +210,13 @@ class Library:
         weights = {
             category: weight
             for category, weight in weights.items()
-            if category in valid_categories
+            if category in valid_categories and weight
         }
         logger.debug("Currently scheduled menu entry %s resulted in pruned weight table: %s", current, repr(weights))
 
         # Uniform random if no (or empty) weight table.
         if not weights:
+            logging.warning("No weight table defined, randomly choosing from all walks")
             return random.choice(self.walks)
 
         # Find which category our random dart lands on.
