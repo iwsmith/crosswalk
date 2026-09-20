@@ -36,7 +36,7 @@ $ sudo apt-get install python
 
 # Download and install drivers
 $ wget https://github.com/adafruit/Raspberry-Pi-Installer-Scripts/raw/main/rgb-matrix.py
-$ sudo bash rgb-matrix.sh
+$ sudo python3 rgb-matrix.py
 # Answer (2) for Adafruit RGB Matrix HAT + RTC
 # Answer (Y) to enable realtime clock support
 # Answer (2) for the 'convenience' optimization level
