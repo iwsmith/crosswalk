@@ -1,7 +1,7 @@
 crossXwalk Sign
 ===============
 
-This repository holds the code and configuration for running a RaspberryPi to
+This repository holds the code and configuration for running a Raspberry Pi to
 power one of the crossXwalk signs.
 
 
@@ -21,14 +21,13 @@ synchronize and start playing the scene together. Once the scene is over, the
 sign returns to a standby 'halt' image.
 
 
-## RaspberryPi Setup
+## Raspberry Pi Setup
 
-Make sure you've done the soldering and connection work to attach the hat to the
-pi, then set up the AdaFruit drivers for the
-[RGB Matrix plus Real Time Clock Hat](https://learn.adafruit.com/adafruit-rgb-matrix-plus-real-time-clock-hat-for-raspberry-pi/driving-matrices).
+Start by [assembling the hat](https://learn.adafruit.com/adafruit-rgb-matrix-plus-real-time-clock-hat-for-raspberry-pi/assembly) by soldering all connections.
+Once that is complete, ensure you have run the Adafruit setup scripts to install the drivers for the
+[RGB Matrix plus Real Time Clock Hat](https://learn.adafruit.com/adafruit-rgb-matrix-plus-real-time-clock-hat-for-raspberry-pi/matrix-setup).
 
-Log into the pi and set things up:
-
+Log into the pi and set things up,  note you may need to use a virtual environment on modern OS versions. The commands below are a simplified overview.
 ```shell
 # Upgrade and prepare for Ansible management
 $ sudo apt-get update
@@ -36,8 +35,8 @@ $ sudo apt-get upgrade
 $ sudo apt-get install python
 
 # Download and install drivers
-$ wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/rgb-matrix.sh
-$ sudo bash rgb-matrix.sh
+$ wget https://github.com/adafruit/Raspberry-Pi-Installer-Scripts/raw/main/rgb-matrix.py
+$ sudo python3 rgb-matrix.py
 # Answer (2) for Adafruit RGB Matrix HAT + RTC
 # Answer (Y) to enable realtime clock support
 # Answer (2) for the 'convenience' optimization level
@@ -64,7 +63,7 @@ $ ansible-playbook site.yml -i inventory.ini [-l crosswalk-x] [-C] [-D]
 On a Mac `say -v Samantha "Walk Sign Is On. Walk Now." --data-format=LEF32@22050 -o walk_now.wav` 
 
 ### Creating gifs in Photoshop
-Using photoshop's timeline, create a frame animation. Timing for each walk is set using the frame delay. Even single images need at least two visually distinct frames (for whatever reason, the the software doesn't respect the frame delay if there are two identitcal frames). Most walks have two frames, one with a dark grey pixel in a corner, and a delay that matches with the length of the audio. Loop count should be set to "Once" in the timeline.
+Using Photoshop's timeline, create a frame animation. Timing for each walk is set using the frame delay. Even single images need at least two visually distinct frames (for whatever reason, the the software doesn't respect the frame delay if there are two identical frames). Most walks have two frames, one with a dark grey pixel in a corner, and a delay that matches with the length of the audio. Loop count should be set to "Once" in the timeline.
 
 In the config file, the loops attribute should have a value of 1.
 
@@ -130,7 +129,7 @@ menu:
 ```
 
 ### Schedule
-You can also schedule a walk to play at a specific time. In the below example the `workoutWednesday` walk will play at 2100 on July 6th, 2019. Ads are automatically generated and run in the hour preceeding the event to let people know whats happening and when. The `ad_prefix` is used in some sort of generation of this ad.
+You can also schedule a walk to play at a specific time. In the below example the `workoutWednesday` walk will play at 2100 on July 6th, 2019. Ads are automatically generated and run in the hour preceding the event to let people know what's happening and when. The `ad_prefix` is used in some sort of generation of this ad.
 ```
 schedule:
   - time: '2019-07-06T21:00:00'
