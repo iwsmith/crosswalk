@@ -1,3 +1,7 @@
+# DEPRECATED
+The new version of crosswalk can be found at https://github.com/iwsmith/crosswalk_v2
+
+
 crossXwalk Sign
 ===============
 
